@@ -6,7 +6,8 @@
   "scripts": {
     "pipeline": "node accurate-pipeline.js",
     "benchmark": "node benchmark-video.js",
-    "costs": "node calc-costs.js"
+    "costs": "node calc-costs.js",
+    "feedback": "node record-feedback.js"
   },
   "keywords": [
     "openclaw",

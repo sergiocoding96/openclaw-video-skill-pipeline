@@ -62,6 +62,35 @@ node benchmark-video.js "path/to/video.mp4"
 | `benchmark-video.js` | Benchmark multiple Gemini models on a video |
 | `generate-skill.js` | Simple JSON → SKILL.md converter (legacy, uses agent-browser syntax) |
 | `calc-costs.js` | Calculate per-model API costs from benchmark results |
+| `record-feedback.js` | Record replay outcomes and selector corrections |
+
+## Feedback Loop
+
+After a skill replays (successfully or not), record the outcome to improve future generations:
+
+```bash
+# Record a step failure with a corrected selector
+node record-feedback.js ./skill/my-workflow \
+  --step 3 --status fail \
+  --fix 'openclaw browser find role button --name "Save"' \
+  --note "text selector matched the tab header instead of the button"
+
+# Record a successful step
+node record-feedback.js ./skill/my-workflow --step 4 --status success
+
+# Record overall replay outcome
+node record-feedback.js ./skill/my-workflow --replay success
+
+# View accumulated feedback
+node record-feedback.js ./skill/my-workflow --show
+```
+
+Feedback accumulates per application in `app-patterns/`. When generating a new skill for the same app (e.g., another Salesforce workflow), the pipeline automatically:
+1. Loads learned patterns from previous replays
+2. Applies selector corrections (e.g., "always use `find role button` instead of `find text` for Salesforce dropdowns")
+3. Adds a "Known Issues" section to the SKILL.md
+
+This is **Option A** (prompt refinement) — no model training needed. The system gets smarter with each replay.
 
 ## Model Benchmark Results
 

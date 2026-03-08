@@ -380,6 +380,29 @@ function parseTimestamp(ts) {
   return 0;
 }
 
+// ─── App Pattern Loader ──────────────────────────────────────────────────────
+
+function loadAppPatterns(appName) {
+  const appSlug = appName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const patternsPath = path.join(__dirname, 'app-patterns', `${appSlug}.json`);
+  if (fs.existsSync(patternsPath)) {
+    const patterns = JSON.parse(fs.readFileSync(patternsPath, 'utf8'));
+    console.log(`    Loaded ${patterns.learned_patterns?.length || 0} learned patterns for "${appName}" (${(patterns.success_rate * 100).toFixed(0)}% replay success rate)`);
+    return patterns;
+  }
+  return null;
+}
+
+function applySelectorFix(selector, appPatterns) {
+  if (!appPatterns?.learned_patterns?.length) return selector;
+  for (const p of appPatterns.learned_patterns) {
+    if (p.type === 'selector_fix' && p.original_selector && selector.includes(p.original_selector)) {
+      return selector.replace(p.original_selector, p.corrected_selector);
+    }
+  }
+  return selector;
+}
+
 // ─── Pass 5: Generate Verified SKILL.md ──────────────────────────────────────
 
 function generateVerifiedSkill(analysis, transcription, outputDir, modelName) {
@@ -388,6 +411,9 @@ function generateVerifiedSkill(analysis, transcription, outputDir, modelName) {
   const title = analysis.workflow_title || 'Untitled Workflow';
   const app = analysis.application || 'Unknown';
   const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+  // Load learned patterns from previous replays of this application
+  const appPatterns = loadAppPatterns(app);
 
   let md = '';
 
@@ -466,9 +492,13 @@ function generateVerifiedSkill(analysis, transcription, outputDir, modelName) {
       };
 
       if (groundedSelector && confidence >= 0.7) {
-        md += `${toOC(groundedSelector)}\n`;
+        const fixedSelector = applySelectorFix(toOC(groundedSelector), appPatterns);
+        md += `${fixedSelector}\n`;
+        if (fixedSelector !== toOC(groundedSelector)) {
+          md += `# Original (auto-corrected from feedback): ${toOC(groundedSelector)}\n`;
+        }
         if (groundedAlt) {
-          md += `# Fallback: ${toOC(groundedAlt)}\n`;
+          md += `# Fallback: ${applySelectorFix(toOC(groundedAlt), appPatterns)}\n`;
         }
       } else if (el.text_content && el.text_content.length < 50) {
         const text = el.text_content.replace(/"/g, '\\"');
@@ -601,6 +631,20 @@ function generateVerifiedSkill(analysis, transcription, outputDir, modelName) {
   md += `5. Verify each step using the **Verify** notes before proceeding\n`;
   md += `6. For logged-in sessions, use \`openclaw browser --profile chrome\` to attach to existing Chrome\n`;
   md += `7. If an element isn't found, try \`openclaw browser snapshot\` (full tree) instead of \`--interactive\`\n\n`;
+
+  // App-specific known issues from feedback
+  if (appPatterns?.learned_patterns?.length) {
+    md += `## Known Issues (from replay feedback)\n\n`;
+    md += `Previous replays of **${app}** workflows reported these patterns:\n\n`;
+    for (const p of appPatterns.learned_patterns) {
+      if (p.type === 'selector_fix') {
+        md += `- **Selector fix**: \`${p.original_selector}\` → \`${p.corrected_selector}\` (seen ${p.occurrences}x)\n`;
+      } else {
+        md += `- **${p.failure_type || 'Issue'}**: ${p.description} (seen ${p.occurrences}x)\n`;
+      }
+    }
+    md += `\n`;
+  }
 
   md += `---\n*Multi-pass verified workflow • Gemini ${modelName || '3-flash'} + Whisper + frame grounding*\n`;
 
