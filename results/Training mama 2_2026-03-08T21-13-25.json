@@ -1,0 +1,699 @@
+{
+  "benchmark_date": "2026-03-08T21:13:25.731Z",
+  "video_file": "Training mama 2.mp4",
+  "video_size_bytes": 61152215,
+  "models_tested": [
+    "gemini-2.5-pro",
+    "gemini-2.5-flash"
+  ],
+  "prompt": "You are an expert workflow analyst. Your job is to watch this screen recording of a business workflow and produce an extremely detailed, step-by-step description that another AI agent with browser automation capabilities could use to EXACTLY replicate this workflow.\n\nFor EVERY action in the video, provide:\n\n## Output Format\n\nReturn a JSON object with this structure:\n\n{\n  \"workflow_title\": \"Brief title of the workflow\",\n  \"application\": \"What application/website is being used\",\n  \"total_steps\": <number>,\n  \"estimated_duration_seconds\": <number>,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:00-0:05\",\n      \"action_type\": \"click|type|scroll|drag|select|navigate|wait|hover|right_click|double_click|keyboard_shortcut\",\n      \"target_element\": {\n        \"description\": \"Detailed description of the UI element (e.g., 'Blue Submit button in the top-right corner')\",\n        \"element_type\": \"button|link|input|dropdown|menu_item|tab|checkbox|icon|text|image|other\",\n        \"location_on_screen\": \"top-left|top-center|top-right|center-left|center|center-right|bottom-left|bottom-center|bottom-right\",\n        \"approximate_coordinates_percent\": {\"x\": 50, \"y\": 50},\n        \"text_content\": \"Visible text on or near the element\",\n        \"parent_context\": \"What section/panel/dialog the element is in\"\n      },\n      \"input_data\": \"If typing, what text was entered. If selecting, what option was chosen.\",\n      \"keyboard_shortcut\": \"If a keyboard shortcut was used (e.g., Ctrl+C)\",\n      \"what_happened\": \"Describe the visible result/response after this action\",\n      \"why_this_action\": \"Explain the logical reason for this action in the workflow context\",\n      \"preconditions\": \"What must be true on screen before this action (e.g., 'modal dialog is open', 'page has loaded')\",\n      \"visual_feedback\": \"Any visual changes: loading spinners, highlights, animations, new elements appearing\"\n    }\n  ],\n  \"workflow_summary\": \"High-level description of what this workflow accomplishes\",\n  \"decision_points\": [\n    {\n      \"at_step\": 5,\n      \"description\": \"What decision was made and what alternatives existed\"\n    }\n  ],\n  \"potential_variations\": \"Where the workflow might differ based on data or conditions\",\n  \"error_handling_observed\": \"Any error states or validation messages seen\"\n}\n\nCRITICAL REQUIREMENTS:\n1. Be EXTREMELY precise about click locations - another agent needs to find these exact elements\n2. Include EVERY mouse movement and click, even small ones like closing popups or dismissing tooltips\n3. Note any waits/loading states between actions\n4. Describe the visual state of the screen before and after each action\n5. If text is typed, capture it EXACTLY\n6. Note any scrolling that occurs\n7. Identify the application/website being used\n8. Explain the BUSINESS LOGIC behind each action - WHY is the user doing this?\n\nRespond ONLY with the JSON object, no markdown fencing.",
+  "results": [
+    {
+      "model": "gemini-2.5-pro",
+      "success": true,
+      "elapsed_seconds": 32.2,
+      "tokens": {
+        "input": 36744,
+        "output": 2206,
+        "total": 40511
+      },
+      "raw_response": "```json\n{\n  \"workflow_title\": \"Overview of Salesforce Home Page Navigation\",\n  \"application\": \"Salesforce Lightning Experience\",\n  \"total_steps\": 7,\n  \"estimated_duration_seconds\": 35,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:29-0:31\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"The 'Accounts' tab in the main horizontal navigation bar at the top of the page.\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 24,\n          \"y\": 12\n        },\n        \"text_content\": \"Accounts\",\n        \"parent_context\": \"Main application navigation bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page navigates to the 'Accounts' list view, displaying a table of client accounts. The default view shown is '2. My Sellers'.\",\n      \"why_this_action\": \"To demonstrate how to access the list of clients, which are referred to as 'Accounts' in Salesforce.\",\n      \"preconditions\": \"The user is on the Salesforce Home page.\",\n      \"visual_feedback\": \"A loading spinner with green dots appears in the center of the screen, followed by the 'Accounts' page loading.\"\n    },\n    {\n      \"step_number\": 2,\n      \"timestamp_approx\": \"0:34-0:35\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"The dropdown arrow icon to the right of the '2. My Sellers' list view title.\",\n        \"element_type\": \"dropdown\",\n        \"location_on_screen\": \"center-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 21,\n          \"y\": 23\n        },\n        \"text_content\": \"2. My Sellers\",\n        \"parent_context\": \"Accounts list view header\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"A dropdown menu appears, showing a list of available 'Recent List Views' such as '1. My Buyers', '2. My Sellers (Pinned list)', and '3. My Tenants'.\",\n      \"why_this_action\": \"To show the different pre-configured lists of clients that can be accessed from the Accounts tab.\",\n      \"preconditions\": \"The 'Accounts' list view page is loaded.\",\n      \"visual_feedback\": \"A dropdown menu with a search bar and a list of links is displayed below the list view title.\"\n    },\n    {\n      \"step_number\": 3,\n      \"timestamp_approx\": \"0:42-0:44\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"The 'Properties' tab in the main horizontal navigation bar at the top of the page.\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 30,\n          \"y\": 12\n        },\n        \"text_content\": \"Properties\",\n        \"parent_context\": \"Main application navigation bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page navigates to the 'Properties' list view. The view is initially empty, with a 'No items to display' message.\",\n      \"why_this_action\": \"To demonstrate how to access the list of properties.\",\n      \"preconditions\": \"The user is on the 'Accounts' list view page.\",\n      \"visual_feedback\": \"A loading spinner with green dots appears, and then the 'Properties' page loads. The previously open dropdown menu on the Accounts page is no longer visible.\"\n    },\n    {\n      \"step_number\": 4,\n      \"timestamp_approx\": \"0:48-0:49\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"The dropdown arrow icon to the right of the '1. MY AVAILABLE PROPERTIES' list view title.\",\n        \"element_type\": \"dropdown\",\n        \"location_on_screen\": \"center-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 26,\n          \"y\": 23\n        },\n        \"text_content\": \"1. MY AVAILABLE PROPERTIES\",\n        \"parent_context\": \"Properties list view header\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"A dropdown menu appears, showing a list of available 'Recent List Views' for properties, such as 'My Live Properties' and 'My Pending Properties'.\",\n      \"why_this_action\": \"To show the different pre-configured lists of properties that can be accessed from the Properties tab.\",\n      \"preconditions\": \"The 'Properties' list view page is loaded.\",\n      \"visual_feedback\": \"A dropdown menu with a search bar and a list of links is displayed below the list view title.\"\n    },\n    {\n      \"step_number\": 5,\n      \"timestamp_approx\": \"1:00-1:02\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"The 'Home' tab in the main horizontal navigation bar at the top of the page.\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 14,\n          \"y\": 12\n        },\n        \"text_content\": \"Home\",\n        \"parent_context\": \"Main application navigation bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page navigates back to the main Salesforce Home Page dashboard.\",\n      \"why_this_action\": \"To return to the main dashboard to continue the overview of its components.\",\n      \"preconditions\": \"The user is on the 'Properties' list view page.\",\n      \"visual_feedback\": \"A loading spinner with green dots appears, and then the Home page reloads, displaying all its widgets.\"\n    },\n    {\n      \"step_number\": 6,\n      \"timestamp_approx\": \"1:18-1:20\",\n      \"action_type\": \"scroll\",\n      \"target_element\": {\n        \"description\": \"The main content area of the Home page.\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 50,\n          \"y\": 50\n        },\n        \"text_content\": null,\n        \"parent_context\": \"Home page body\"\n      },\n      \"input_data\": \"down\",\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page scrolls down, revealing the 'Existing Accounts ()' search component and the 'Turnover and Commissions Dashboard' at the bottom of the page.\",\n      \"why_this_action\": \"To show the components located at the bottom of the Home page.\",\n      \"preconditions\": \"The user is on the Salesforce Home page.\",\n      \"visual_feedback\": \"The content on the page moves upwards, bringing the lower sections into view.\"\n    },\n    {\n      \"step_number\": 7,\n      \"timestamp_approx\": \"2:00-2:01\",\n      \"action_type\": \"scroll\",\n      \"target_element\": {\n        \"description\": \"The main content area of the Home page.\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 50,\n          \"y\": 50\n        },\n        \"text_content\": null,\n        \"parent_context\": \"Home page body\"\n      },\n      \"input_data\": \"up\",\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page scrolls back to the top, bringing the 'Recommended Quick Links' and property filter sections back into full view.\",\n      \"why_this_action\": \"To return to the top of the page to conclude the overview.\",\n      \"preconditions\": \"The Home page is scrolled to the bottom.\",\n      \"visual_feedback\": \"The content on the page moves downwards, bringing the upper sections back into view.\"\n    }\n  ],\n  \"workflow_summary\": \"This workflow provides a brief tour of the Salesforce Home Page for a real estate business. It demonstrates how to navigate to the 'Accounts' (clients) and 'Properties' tabs, view their respective list views, and identifies key components on the home dashboard, such as quick links, property filters, and dashboards.\",\n  \"decision_points\": [],\n  \"potential_variations\": \"The narrator explicitly states that the Home Page layout and available components may differ based on the user's role (e.g., DA, manager, agent). For example, the 'Existing Accounts' search bar and 'Turnover and Commissions Dashboard' might only be visible to certain roles.\",\n  \"error_handling_observed\": \"No error handling or validation messages were observed during this workflow.\"\n}\n```",
+      "parsed": {
+        "workflow_title": "Overview of Salesforce Home Page Navigation",
+        "application": "Salesforce Lightning Experience",
+        "total_steps": 7,
+        "estimated_duration_seconds": 35,
+        "steps": [
+          {
+            "step_number": 1,
+            "timestamp_approx": "0:29-0:31",
+            "action_type": "click",
+            "target_element": {
+              "description": "The 'Accounts' tab in the main horizontal navigation bar at the top of the page.",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 24,
+                "y": 12
+              },
+              "text_content": "Accounts",
+              "parent_context": "Main application navigation bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The page navigates to the 'Accounts' list view, displaying a table of client accounts. The default view shown is '2. My Sellers'.",
+            "why_this_action": "To demonstrate how to access the list of clients, which are referred to as 'Accounts' in Salesforce.",
+            "preconditions": "The user is on the Salesforce Home page.",
+            "visual_feedback": "A loading spinner with green dots appears in the center of the screen, followed by the 'Accounts' page loading."
+          },
+          {
+            "step_number": 2,
+            "timestamp_approx": "0:34-0:35",
+            "action_type": "click",
+            "target_element": {
+              "description": "The dropdown arrow icon to the right of the '2. My Sellers' list view title.",
+              "element_type": "dropdown",
+              "location_on_screen": "center-left",
+              "approximate_coordinates_percent": {
+                "x": 21,
+                "y": 23
+              },
+              "text_content": "2. My Sellers",
+              "parent_context": "Accounts list view header"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "A dropdown menu appears, showing a list of available 'Recent List Views' such as '1. My Buyers', '2. My Sellers (Pinned list)', and '3. My Tenants'.",
+            "why_this_action": "To show the different pre-configured lists of clients that can be accessed from the Accounts tab.",
+            "preconditions": "The 'Accounts' list view page is loaded.",
+            "visual_feedback": "A dropdown menu with a search bar and a list of links is displayed below the list view title."
+          },
+          {
+            "step_number": 3,
+            "timestamp_approx": "0:42-0:44",
+            "action_type": "click",
+            "target_element": {
+              "description": "The 'Properties' tab in the main horizontal navigation bar at the top of the page.",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 30,
+                "y": 12
+              },
+              "text_content": "Properties",
+              "parent_context": "Main application navigation bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The page navigates to the 'Properties' list view. The view is initially empty, with a 'No items to display' message.",
+            "why_this_action": "To demonstrate how to access the list of properties.",
+            "preconditions": "The user is on the 'Accounts' list view page.",
+            "visual_feedback": "A loading spinner with green dots appears, and then the 'Properties' page loads. The previously open dropdown menu on the Accounts page is no longer visible."
+          },
+          {
+            "step_number": 4,
+            "timestamp_approx": "0:48-0:49",
+            "action_type": "click",
+            "target_element": {
+              "description": "The dropdown arrow icon to the right of the '1. MY AVAILABLE PROPERTIES' list view title.",
+              "element_type": "dropdown",
+              "location_on_screen": "center-left",
+              "approximate_coordinates_percent": {
+                "x": 26,
+                "y": 23
+              },
+              "text_content": "1. MY AVAILABLE PROPERTIES",
+              "parent_context": "Properties list view header"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "A dropdown menu appears, showing a list of available 'Recent List Views' for properties, such as 'My Live Properties' and 'My Pending Properties'.",
+            "why_this_action": "To show the different pre-configured lists of properties that can be accessed from the Properties tab.",
+            "preconditions": "The 'Properties' list view page is loaded.",
+            "visual_feedback": "A dropdown menu with a search bar and a list of links is displayed below the list view title."
+          },
+          {
+            "step_number": 5,
+            "timestamp_approx": "1:00-1:02",
+            "action_type": "click",
+            "target_element": {
+              "description": "The 'Home' tab in the main horizontal navigation bar at the top of the page.",
+              "element_type": "tab",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 14,
+                "y": 12
+              },
+              "text_content": "Home",
+              "parent_context": "Main application navigation bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The page navigates back to the main Salesforce Home Page dashboard.",
+            "why_this_action": "To return to the main dashboard to continue the overview of its components.",
+            "preconditions": "The user is on the 'Properties' list view page.",
+            "visual_feedback": "A loading spinner with green dots appears, and then the Home page reloads, displaying all its widgets."
+          },
+          {
+            "step_number": 6,
+            "timestamp_approx": "1:18-1:20",
+            "action_type": "scroll",
+            "target_element": {
+              "description": "The main content area of the Home page.",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": null,
+              "parent_context": "Home page body"
+            },
+            "input_data": "down",
+            "keyboard_shortcut": null,
+            "what_happened": "The page scrolls down, revealing the 'Existing Accounts ()' search component and the 'Turnover and Commissions Dashboard' at the bottom of the page.",
+            "why_this_action": "To show the components located at the bottom of the Home page.",
+            "preconditions": "The user is on the Salesforce Home page.",
+            "visual_feedback": "The content on the page moves upwards, bringing the lower sections into view."
+          },
+          {
+            "step_number": 7,
+            "timestamp_approx": "2:00-2:01",
+            "action_type": "scroll",
+            "target_element": {
+              "description": "The main content area of the Home page.",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": null,
+              "parent_context": "Home page body"
+            },
+            "input_data": "up",
+            "keyboard_shortcut": null,
+            "what_happened": "The page scrolls back to the top, bringing the 'Recommended Quick Links' and property filter sections back into full view.",
+            "why_this_action": "To return to the top of the page to conclude the overview.",
+            "preconditions": "The Home page is scrolled to the bottom.",
+            "visual_feedback": "The content on the page moves downwards, bringing the upper sections back into view."
+          }
+        ],
+        "workflow_summary": "This workflow provides a brief tour of the Salesforce Home Page for a real estate business. It demonstrates how to navigate to the 'Accounts' (clients) and 'Properties' tabs, view their respective list views, and identifies key components on the home dashboard, such as quick links, property filters, and dashboards.",
+        "decision_points": [],
+        "potential_variations": "The narrator explicitly states that the Home Page layout and available components may differ based on the user's role (e.g., DA, manager, agent). For example, the 'Existing Accounts' search bar and 'Turnover and Commissions Dashboard' might only be visible to certain roles.",
+        "error_handling_observed": "No error handling or validation messages were observed during this workflow."
+      },
+      "parse_success": true,
+      "step_count": 7,
+      "has_coordinates": true,
+      "has_reasoning": true,
+      "has_preconditions": true,
+      "decision_points": 0
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "success": true,
+      "elapsed_seconds": 48.8,
+      "tokens": {
+        "input": 36744,
+        "output": 5948,
+        "total": 47458
+      },
+      "raw_response": "{\n  \"workflow_title\": \"Salesforce Home Page Overview\",\n  \"application\": \"Salesforce Lightning Experience\",\n  \"total_steps\": 21,\n  \"estimated_duration_seconds\": 122,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:00-0:05\",\n      \"action_type\": \"wait\",\n      \"target_element\": {\n        \"description\": \"Salesforce Home Page\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\"x\": 50, \"y\": 50},\n        \"text_content\": \"Recommended Quick Links, Recent Live, Price Changes, Viewings Please, Targets, Quick Links, List Views\",\n        \"parent_context\": \"Browser window\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The Salesforce Home Page is displayed, showing various sections like 'Recommended Quick Links', property filters, 'Targets', and 'Quick Links'.\",\n      \"why_this_action\": \"The workflow begins with the Salesforce Home Page already loaded to start the overview.\",\n      \"preconditions\": \"User is logged into Salesforce and the Home Page is the default landing page.\",\n      \"visual_feedback\": \"Static display of the Salesforce Home Page.\"\n    },\n    {\n      \"step_number\": 2,\n      \"timestamp_approx\": \"0:05-0:16\",\n      \"action_type\": \"wait\",\n      \"target_element\": {\n        \"description\": \"Salesforce Home Page\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\"x\": 50, \"y\": 50},\n        \"text_content\": \"Recommended Quick Links, Recent Live, Price Changes, Viewings Please, Targets, Quick Links, List Views\",\n        \"parent_context\": \"Browser window\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The narrator explains that the home page layout may vary based on the user's role (DA, Manager, Agent).\",\n      \"why_this_action\": \"To provide context about potential UI variations for different user roles.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"No visual changes on screen, audio narration continues.\"\n    },\n    {\n      \"step_number\": 3,\n      \"timestamp_approx\": \"0:16-0:21\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Left-hand navigation menu (App Launcher-like)\",\n        \"element_type\": \"menu\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\"x\": 5, \"y\": 40},\n        \"text_content\": \"Client Match, Property Match, Property Map, Valuation Tool, Farming App, More\",\n        \"parent_context\": \"Salesforce application frame\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The mouse cursor moves over the icons and labels of the left-hand navigation menu, highlighting them sequentially.\",\n      \"why_this_action\": \"To visually indicate the presence and general location of the main application navigation menu on the left side of the screen.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"Individual menu items on the left highlight as the cursor passes over them.\"\n    },\n    {\n      \"step_number\": 4,\n      \"timestamp_approx\": \"0:21-0:26\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Top navigation bar\",\n        \"element_type\": \"menu\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 50, \"y\": 8},\n        \"text_content\": \"Lucas Fox, Home, Tasks, Accounts, Properties, Viewings, Property Viewings, Offers, Tickets, Reports, Dashboards\",\n        \"parent_context\": \"Salesforce application frame\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The mouse cursor moves over the items in the top horizontal navigation bar, highlighting them.\",\n      \"why_this_action\": \"To visually indicate the presence and general location of the main section navigation menu at the top of the screen.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"Individual menu items in the top navigation bar highlight as the cursor passes over them.\"\n    },\n    {\n      \"step_number\": 5,\n      \"timestamp_approx\": \"0:28-0:31\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Accounts tab/link in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 28, \"y\": 8},\n        \"text_content\": \"Accounts\",\n        \"parent_context\": \"Top navigation bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page navigates from the Home Page to the 'Accounts' list view. A loading spinner appears briefly, and then a list of accounts is displayed under the title '2. My Sellers'.\",\n      \"why_this_action\": \"To demonstrate how to access and view client (account) information within Salesforce.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"Brief loading spinner, page content changes to a table-like list of accounts, 'Accounts' tab is highlighted.\"\n    },\n    {\n      \"step_number\": 6,\n      \"timestamp_approx\": \"0:34-0:35\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to 'My Sellers' list view title\",\n        \"element_type\": \"icon\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 23, \"y\": 18},\n        \"text_content\": null,\n        \"parent_context\": \"Accounts list view header\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"A dropdown menu appears below the 'My Sellers' title, displaying a list of available account views (e.g., 'My Buyers', 'My Sellers', 'My Tenants').\",\n      \"why_this_action\": \"To show the different predefined list views available for filtering and organizing client accounts.\",\n      \"preconditions\": \"The 'Accounts' list view page is loaded.\",\n      \"visual_feedback\": \"A dropdown menu expands, showing various list view options.\"\n    },\n    {\n      \"step_number\": 7,\n      \"timestamp_approx\": \"0:42-0:44\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Properties tab/link in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 35, \"y\": 8},\n        \"text_content\": \"Properties\",\n        \"parent_context\": \"Top navigation bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page navigates from the 'Accounts' list view to the 'Properties' list view. A loading spinner appears briefly, and then a list of properties is displayed under the title '1. MY AVAILABLE PROPERTIES'.\",\n      \"why_this_action\": \"To demonstrate how to access and view property information within Salesforce.\",\n      \"preconditions\": \"The 'Accounts' list view page is loaded (the dropdown from step 6 closes automatically).\",\n      \"visual_feedback\": \"Brief loading spinner, page content changes to a table-like list of properties, 'Properties' tab is highlighted.\"\n    },\n    {\n      \"step_number\": 8,\n      \"timestamp_approx\": \"0:48-0:49\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to 'MY AVAILABLE PROPERTIES' list view title\",\n        \"element_type\": \"icon\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 30, \"y\": 18},\n        \"text_content\": null,\n        \"parent_context\": \"Properties list view header\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"A dropdown menu appears below the 'MY AVAILABLE PROPERTIES' title, displaying a list of available property views (e.g., 'My Live Properties', 'My Pending Properties').\",\n      \"why_this_action\": \"To show the different predefined list views available for filtering and organizing properties.\",\n      \"preconditions\": \"The 'Properties' list view page is loaded.\",\n      \"visual_feedback\": \"A dropdown menu expands, showing various list view options.\"\n    },\n    {\n      \"step_number\": 9,\n      \"timestamp_approx\": \"0:55-0:58\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Tickets, Reports, and Dashboards tabs/links in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-right\",\n        \"approximate_coordinates_percent\": {\"x\": 65, \"y\": 8},\n        \"text_content\": \"Tickets, Reports, Dashboards\",\n        \"parent_context\": \"Top navigation bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The mouse cursor moves over the 'Tickets', 'Reports', and 'Dashboards' items in the top navigation bar, highlighting them.\",\n      \"why_this_action\": \"To indicate other important sections available in the top navigation menu.\",\n      \"preconditions\": \"The 'Properties' list view page is loaded.\",\n      \"visual_feedback\": \"The 'Tickets', 'Reports', and 'Dashboards' tabs highlight sequentially.\"\n    },\n    {\n      \"step_number\": 10,\n      \"timestamp_approx\": \"1:00-1:02\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Home tab/link in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 22, \"y\": 8},\n        \"text_content\": \"Home\",\n        \"parent_context\": \"Top navigation bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page navigates back to the Salesforce Home Page.\",\n      \"why_this_action\": \"To return to the main Home Page to continue the overview of its specific features.\",\n      \"preconditions\": \"The 'Properties' list view page is loaded.\",\n      \"visual_feedback\": \"Page content changes back to the Salesforce Home Page layout, 'Home' tab is highlighted.\"\n    },\n    {\n      \"step_number\": 11,\n      \"timestamp_approx\": \"1:04-1:06\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Training Hub quick link\",\n        \"element_type\": \"link\",\n        \"location_on_screen\": \"center-top\",\n        \"approximate_coordinates_percent\": {\"x\": 35, \"y\": 20},\n        \"text_content\": \"TRAINING HUB\",\n        \"parent_context\": \"Recommended Quick Links section\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'TRAINING HUB' link is highlighted.\",\n      \"why_this_action\": \"To point out a direct access link to training resources.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'TRAINING HUB' button-like link changes color or shows a hover effect.\"\n    },\n    {\n      \"step_number\": 12,\n      \"timestamp_approx\": \"1:08-1:11\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Salestrail Configuration Guide quick link\",\n        \"element_type\": \"link\",\n        \"location_on_screen\": \"center-top\",\n        \"approximate_coordinates_percent\": {\"x\": 35, \"y\": 25},\n        \"text_content\": \"Salestrail Configuration Guide\",\n        \"parent_context\": \"Recommended Quick Links section\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Salestrail Configuration Guide' link is highlighted.\",\n      \"why_this_action\": \"To point out a direct access link to the Salestrail configuration guide, relevant for regional offices.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Salestrail Configuration Guide' button-like link changes color or shows a hover effect.\"\n    },\n    {\n      \"step_number\": 13,\n      \"timestamp_approx\": \"1:13-1:16\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Property Publication Guide quick link\",\n        \"element_type\": \"link\",\n        \"location_on_screen\": \"center-top\",\n        \"approximate_coordinates_percent\": {\"x\": 35, \"y\": 30},\n        \"text_content\": \"Property Publication Guide\",\n        \"parent_context\": \"Recommended Quick Links section\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Property Publication Guide' link is highlighted.\",\n      \"why_this_action\": \"To point out a direct access link to the property publication guide, relevant for team assistants.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Property Publication Guide' button-like link changes color or shows a hover effect.\"\n    },\n    {\n      \"step_number\": 14,\n      \"timestamp_approx\": \"1:18-1:20\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Recent Live property filter section\",\n        \"element_type\": \"section_header\",\n        \"location_on_screen\": \"center-left\",\n        \"approximate_coordinates_percent\": {\"x\": 15, \"y\": 38},\n        \"text_content\": \"Recent Live\",\n        \"parent_context\": \"Main content area of Home Page\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Recent Live' section, displaying recently published properties, is highlighted.\",\n      \"why_this_action\": \"To introduce the first of three property filters, showing properties recently published by the user's office.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Recent Live' section header and its content area are visually emphasized.\"\n    },\n    {\n      \"step_number\": 15,\n      \"timestamp_approx\": \"1:28-1:30\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Price Changes property filter section\",\n        \"element_type\": \"section_header\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\"x\": 40, \"y\": 38},\n        \"text_content\": \"Price Changes\",\n        \"parent_context\": \"Main content area of Home Page\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Price Changes' section, displaying properties with recent price adjustments, is highlighted.\",\n      \"why_this_action\": \"To introduce the second property filter, showing properties whose prices have recently changed.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Price Changes' section header and its content area are visually emphasized.\"\n    },\n    {\n      \"step_number\": 16,\n      \"timestamp_approx\": \"1:33-1:35\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Viewings Please property filter section\",\n        \"element_type\": \"section_header\",\n        \"location_on_screen\": \"center-right\",\n        \"approximate_coordinates_percent\": {\"x\": 65, \"y\": 38},\n        \"text_content\": \"Viewings Please\",\n        \"parent_context\": \"Main content area of Home Page\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Viewings Please' section, displaying properties requiring movement or attention, is highlighted.\",\n      \"why_this_action\": \"To introduce the third property filter, showing properties that need follow-up or action regarding viewings.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Viewings Please' section header and its content area are visually emphasized.\"\n    },\n    {\n      \"step_number\": 17,\n      \"timestamp_approx\": \"1:37-1:39\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Show my target calculation button\",\n        \"element_type\": \"button\",\n        \"location_on_screen\": \"top-right\",\n        \"approximate_coordinates_percent\": {\"x\": 85, \"y\": 30},\n        \"text_content\": \"Show my target calculation\",\n        \"parent_context\": \"Targets section\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Show my target calculation' button is highlighted.\",\n      \"why_this_action\": \"To point out the direct access to the user's target calculation.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Show my target calculation' button changes color or shows a hover effect.\"\n    },\n    {\n      \"step_number\": 18,\n      \"timestamp_approx\": \"1:40-1:41\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Recommended Subscriptions quick link\",\n        \"element_type\": \"link\",\n        \"location_on_screen\": \"center-right\",\n        \"approximate_coordinates_percent\": {\"x\": 85, \"y\": 40},\n        \"text_content\": \"Recommended Subscriptions\",\n        \"parent_context\": \"Quick Links section\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Recommended Subscriptions' link is highlighted.\",\n      \"why_this_action\": \"To point out a quick link to recommended subscriptions.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Recommended Subscriptions' button-like link changes color or shows a hover effect.\"\n    },\n    {\n      \"step_number\": 19,\n      \"timestamp_approx\": \"1:43-1:44\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Performance Dashboard quick link\",\n        \"element_type\": \"link\",\n        \"location_on_screen\": \"center-right\",\n        \"approximate_coordinates_percent\": {\"x\": 85, \"y\": 50},\n        \"text_content\": \"Performance Dashboard\",\n        \"parent_context\": \"Quick Links section\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Performance Dashboard' link is highlighted.\",\n      \"why_this_action\": \"To point out a quick link to the performance dashboard.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Performance Dashboard' button-like link changes color or shows a hover effect.\"\n    },\n    {\n      \"step_number\": 20,\n      \"timestamp_approx\": \"1:47-1:54\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Existing Accounts () search bar section\",\n        \"element_type\": \"form\",\n        \"location_on_screen\": \"bottom-left\",\n        \"approximate_coordinates_percent\": {\"x\": 35, \"y\": 75},\n        \"text_content\": \"Existing Accounts (), Name, Email, Phone, Criteria, All must match, Search\",\n        \"parent_context\": \"Main content area of Home Page\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The search bar section for 'Existing Accounts ()' is highlighted, showing input fields for Name, Email, Phone, and Criteria.\",\n      \"why_this_action\": \"To demonstrate where users can search for existing clients in the database.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Existing Accounts ()' search form area is visually emphasized.\"\n    },\n    {\n      \"step_number\": 21,\n      \"timestamp_approx\": \"1:56-1:59\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Turnover and Commissions Dashboard section\",\n        \"element_type\": \"dashboard\",\n        \"location_on_screen\": \"bottom-center\",\n        \"approximate_coordinates_percent\": {\"x\": 35, \"y\": 90},\n        \"text_content\": \"Turnover and Commissions Dashboard, NET Income Paid This Year, Offers Created This Year detail, Follow, Open, Refresh\",\n        \"parent_context\": \"Main content area of Home Page\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The 'Turnover and Commissions Dashboard' section is highlighted, showing summary information and action buttons.\",\n      \"why_this_action\": \"To point out the dashboard where agents can view their turnover and commissions.\",\n      \"preconditions\": \"Salesforce Home Page is displayed.\",\n      \"visual_feedback\": \"The 'Turnover and Commissions Dashboard' section is visually emphasized.\"\n    }\n  ],\n  \"workflow_summary\": \"This workflow provides a guided tour of the Salesforce Home Page, demonstrating navigation to key sections like Accounts and Properties via the top navigation bar. It highlights quick access links such as the Training Hub, Salestrail Configuration Guide, and Property Publication Guide. The overview also covers various property filters (Recent Live, Price Changes, Viewings Please), target calculation, and other quick links like the Performance Dashboard. Finally, it showcases the search bar for existing accounts and the Turnover and Commissions Dashboard.\",\n  \"decision_points\": [\n    {\n      \"at_step\": 2,\n      \"description\": \"The appearance of the Salesforce Home Page may differ based on the user's role (e.g., DA, Manager, Agent), affecting the visibility or layout of certain components.\"\n    },\n    {\n      \"at_step\": 6,\n      \"description\": \"When viewing Accounts, the user can choose from various predefined list views (e.g., 'My Buyers', 'My Sellers', 'My Tenants') to filter and display client information.\"\n    },\n    {\n      \"at_step\": 8,\n      \"description\": \"When viewing Properties, the user can choose from various predefined list views (e.g., 'My Available Properties', 'My Live Properties', 'My Pending Properties') to filter and display property information.\"\n    }\n  ],\n  \"potential_variations\": \"The content displayed in the 'Recent Live', 'Price Changes', and 'Viewings Please' property filters will dynamically change based on real-time property data and office activity. The 'Items to Approve' section, which is empty in this video, could contain pending approval requests. The 'Targets' and 'Quick Links' sections might be customized with different content or links depending on user permissions or organizational configuration. The 'Report Generator' section, while visible, is not interacted with, and its available reports would vary based on user access and defined reports.\",\n  \"error_handling_observed\": \"No error states or validation messages were observed during this workflow overview. All demonstrated actions proceeded successfully.\"\n}",
+      "parsed": {
+        "workflow_title": "Salesforce Home Page Overview",
+        "application": "Salesforce Lightning Experience",
+        "total_steps": 21,
+        "estimated_duration_seconds": 122,
+        "steps": [
+          {
+            "step_number": 1,
+            "timestamp_approx": "0:00-0:05",
+            "action_type": "wait",
+            "target_element": {
+              "description": "Salesforce Home Page",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": "Recommended Quick Links, Recent Live, Price Changes, Viewings Please, Targets, Quick Links, List Views",
+              "parent_context": "Browser window"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The Salesforce Home Page is displayed, showing various sections like 'Recommended Quick Links', property filters, 'Targets', and 'Quick Links'.",
+            "why_this_action": "The workflow begins with the Salesforce Home Page already loaded to start the overview.",
+            "preconditions": "User is logged into Salesforce and the Home Page is the default landing page.",
+            "visual_feedback": "Static display of the Salesforce Home Page."
+          },
+          {
+            "step_number": 2,
+            "timestamp_approx": "0:05-0:16",
+            "action_type": "wait",
+            "target_element": {
+              "description": "Salesforce Home Page",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": "Recommended Quick Links, Recent Live, Price Changes, Viewings Please, Targets, Quick Links, List Views",
+              "parent_context": "Browser window"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The narrator explains that the home page layout may vary based on the user's role (DA, Manager, Agent).",
+            "why_this_action": "To provide context about potential UI variations for different user roles.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "No visual changes on screen, audio narration continues."
+          },
+          {
+            "step_number": 3,
+            "timestamp_approx": "0:16-0:21",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Left-hand navigation menu (App Launcher-like)",
+              "element_type": "menu",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 5,
+                "y": 40
+              },
+              "text_content": "Client Match, Property Match, Property Map, Valuation Tool, Farming App, More",
+              "parent_context": "Salesforce application frame"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The mouse cursor moves over the icons and labels of the left-hand navigation menu, highlighting them sequentially.",
+            "why_this_action": "To visually indicate the presence and general location of the main application navigation menu on the left side of the screen.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "Individual menu items on the left highlight as the cursor passes over them."
+          },
+          {
+            "step_number": 4,
+            "timestamp_approx": "0:21-0:26",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Top navigation bar",
+              "element_type": "menu",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 8
+              },
+              "text_content": "Lucas Fox, Home, Tasks, Accounts, Properties, Viewings, Property Viewings, Offers, Tickets, Reports, Dashboards",
+              "parent_context": "Salesforce application frame"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The mouse cursor moves over the items in the top horizontal navigation bar, highlighting them.",
+            "why_this_action": "To visually indicate the presence and general location of the main section navigation menu at the top of the screen.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "Individual menu items in the top navigation bar highlight as the cursor passes over them."
+          },
+          {
+            "step_number": 5,
+            "timestamp_approx": "0:28-0:31",
+            "action_type": "click",
+            "target_element": {
+              "description": "Accounts tab/link in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 28,
+                "y": 8
+              },
+              "text_content": "Accounts",
+              "parent_context": "Top navigation bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The page navigates from the Home Page to the 'Accounts' list view. A loading spinner appears briefly, and then a list of accounts is displayed under the title '2. My Sellers'.",
+            "why_this_action": "To demonstrate how to access and view client (account) information within Salesforce.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "Brief loading spinner, page content changes to a table-like list of accounts, 'Accounts' tab is highlighted."
+          },
+          {
+            "step_number": 6,
+            "timestamp_approx": "0:34-0:35",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to 'My Sellers' list view title",
+              "element_type": "icon",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 23,
+                "y": 18
+              },
+              "text_content": null,
+              "parent_context": "Accounts list view header"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "A dropdown menu appears below the 'My Sellers' title, displaying a list of available account views (e.g., 'My Buyers', 'My Sellers', 'My Tenants').",
+            "why_this_action": "To show the different predefined list views available for filtering and organizing client accounts.",
+            "preconditions": "The 'Accounts' list view page is loaded.",
+            "visual_feedback": "A dropdown menu expands, showing various list view options."
+          },
+          {
+            "step_number": 7,
+            "timestamp_approx": "0:42-0:44",
+            "action_type": "click",
+            "target_element": {
+              "description": "Properties tab/link in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 8
+              },
+              "text_content": "Properties",
+              "parent_context": "Top navigation bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The page navigates from the 'Accounts' list view to the 'Properties' list view. A loading spinner appears briefly, and then a list of properties is displayed under the title '1. MY AVAILABLE PROPERTIES'.",
+            "why_this_action": "To demonstrate how to access and view property information within Salesforce.",
+            "preconditions": "The 'Accounts' list view page is loaded (the dropdown from step 6 closes automatically).",
+            "visual_feedback": "Brief loading spinner, page content changes to a table-like list of properties, 'Properties' tab is highlighted."
+          },
+          {
+            "step_number": 8,
+            "timestamp_approx": "0:48-0:49",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to 'MY AVAILABLE PROPERTIES' list view title",
+              "element_type": "icon",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 30,
+                "y": 18
+              },
+              "text_content": null,
+              "parent_context": "Properties list view header"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "A dropdown menu appears below the 'MY AVAILABLE PROPERTIES' title, displaying a list of available property views (e.g., 'My Live Properties', 'My Pending Properties').",
+            "why_this_action": "To show the different predefined list views available for filtering and organizing properties.",
+            "preconditions": "The 'Properties' list view page is loaded.",
+            "visual_feedback": "A dropdown menu expands, showing various list view options."
+          },
+          {
+            "step_number": 9,
+            "timestamp_approx": "0:55-0:58",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Tickets, Reports, and Dashboards tabs/links in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-right",
+              "approximate_coordinates_percent": {
+                "x": 65,
+                "y": 8
+              },
+              "text_content": "Tickets, Reports, Dashboards",
+              "parent_context": "Top navigation bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The mouse cursor moves over the 'Tickets', 'Reports', and 'Dashboards' items in the top navigation bar, highlighting them.",
+            "why_this_action": "To indicate other important sections available in the top navigation menu.",
+            "preconditions": "The 'Properties' list view page is loaded.",
+            "visual_feedback": "The 'Tickets', 'Reports', and 'Dashboards' tabs highlight sequentially."
+          },
+          {
+            "step_number": 10,
+            "timestamp_approx": "1:00-1:02",
+            "action_type": "click",
+            "target_element": {
+              "description": "Home tab/link in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 22,
+                "y": 8
+              },
+              "text_content": "Home",
+              "parent_context": "Top navigation bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The page navigates back to the Salesforce Home Page.",
+            "why_this_action": "To return to the main Home Page to continue the overview of its specific features.",
+            "preconditions": "The 'Properties' list view page is loaded.",
+            "visual_feedback": "Page content changes back to the Salesforce Home Page layout, 'Home' tab is highlighted."
+          },
+          {
+            "step_number": 11,
+            "timestamp_approx": "1:04-1:06",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Training Hub quick link",
+              "element_type": "link",
+              "location_on_screen": "center-top",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 20
+              },
+              "text_content": "TRAINING HUB",
+              "parent_context": "Recommended Quick Links section"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'TRAINING HUB' link is highlighted.",
+            "why_this_action": "To point out a direct access link to training resources.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'TRAINING HUB' button-like link changes color or shows a hover effect."
+          },
+          {
+            "step_number": 12,
+            "timestamp_approx": "1:08-1:11",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Salestrail Configuration Guide quick link",
+              "element_type": "link",
+              "location_on_screen": "center-top",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 25
+              },
+              "text_content": "Salestrail Configuration Guide",
+              "parent_context": "Recommended Quick Links section"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Salestrail Configuration Guide' link is highlighted.",
+            "why_this_action": "To point out a direct access link to the Salestrail configuration guide, relevant for regional offices.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Salestrail Configuration Guide' button-like link changes color or shows a hover effect."
+          },
+          {
+            "step_number": 13,
+            "timestamp_approx": "1:13-1:16",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Property Publication Guide quick link",
+              "element_type": "link",
+              "location_on_screen": "center-top",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 30
+              },
+              "text_content": "Property Publication Guide",
+              "parent_context": "Recommended Quick Links section"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Property Publication Guide' link is highlighted.",
+            "why_this_action": "To point out a direct access link to the property publication guide, relevant for team assistants.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Property Publication Guide' button-like link changes color or shows a hover effect."
+          },
+          {
+            "step_number": 14,
+            "timestamp_approx": "1:18-1:20",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Recent Live property filter section",
+              "element_type": "section_header",
+              "location_on_screen": "center-left",
+              "approximate_coordinates_percent": {
+                "x": 15,
+                "y": 38
+              },
+              "text_content": "Recent Live",
+              "parent_context": "Main content area of Home Page"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Recent Live' section, displaying recently published properties, is highlighted.",
+            "why_this_action": "To introduce the first of three property filters, showing properties recently published by the user's office.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Recent Live' section header and its content area are visually emphasized."
+          },
+          {
+            "step_number": 15,
+            "timestamp_approx": "1:28-1:30",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Price Changes property filter section",
+              "element_type": "section_header",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 40,
+                "y": 38
+              },
+              "text_content": "Price Changes",
+              "parent_context": "Main content area of Home Page"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Price Changes' section, displaying properties with recent price adjustments, is highlighted.",
+            "why_this_action": "To introduce the second property filter, showing properties whose prices have recently changed.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Price Changes' section header and its content area are visually emphasized."
+          },
+          {
+            "step_number": 16,
+            "timestamp_approx": "1:33-1:35",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Viewings Please property filter section",
+              "element_type": "section_header",
+              "location_on_screen": "center-right",
+              "approximate_coordinates_percent": {
+                "x": 65,
+                "y": 38
+              },
+              "text_content": "Viewings Please",
+              "parent_context": "Main content area of Home Page"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Viewings Please' section, displaying properties requiring movement or attention, is highlighted.",
+            "why_this_action": "To introduce the third property filter, showing properties that need follow-up or action regarding viewings.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Viewings Please' section header and its content area are visually emphasized."
+          },
+          {
+            "step_number": 17,
+            "timestamp_approx": "1:37-1:39",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Show my target calculation button",
+              "element_type": "button",
+              "location_on_screen": "top-right",
+              "approximate_coordinates_percent": {
+                "x": 85,
+                "y": 30
+              },
+              "text_content": "Show my target calculation",
+              "parent_context": "Targets section"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Show my target calculation' button is highlighted.",
+            "why_this_action": "To point out the direct access to the user's target calculation.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Show my target calculation' button changes color or shows a hover effect."
+          },
+          {
+            "step_number": 18,
+            "timestamp_approx": "1:40-1:41",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Recommended Subscriptions quick link",
+              "element_type": "link",
+              "location_on_screen": "center-right",
+              "approximate_coordinates_percent": {
+                "x": 85,
+                "y": 40
+              },
+              "text_content": "Recommended Subscriptions",
+              "parent_context": "Quick Links section"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Recommended Subscriptions' link is highlighted.",
+            "why_this_action": "To point out a quick link to recommended subscriptions.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Recommended Subscriptions' button-like link changes color or shows a hover effect."
+          },
+          {
+            "step_number": 19,
+            "timestamp_approx": "1:43-1:44",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Performance Dashboard quick link",
+              "element_type": "link",
+              "location_on_screen": "center-right",
+              "approximate_coordinates_percent": {
+                "x": 85,
+                "y": 50
+              },
+              "text_content": "Performance Dashboard",
+              "parent_context": "Quick Links section"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Performance Dashboard' link is highlighted.",
+            "why_this_action": "To point out a quick link to the performance dashboard.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Performance Dashboard' button-like link changes color or shows a hover effect."
+          },
+          {
+            "step_number": 20,
+            "timestamp_approx": "1:47-1:54",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Existing Accounts () search bar section",
+              "element_type": "form",
+              "location_on_screen": "bottom-left",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 75
+              },
+              "text_content": "Existing Accounts (), Name, Email, Phone, Criteria, All must match, Search",
+              "parent_context": "Main content area of Home Page"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The search bar section for 'Existing Accounts ()' is highlighted, showing input fields for Name, Email, Phone, and Criteria.",
+            "why_this_action": "To demonstrate where users can search for existing clients in the database.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Existing Accounts ()' search form area is visually emphasized."
+          },
+          {
+            "step_number": 21,
+            "timestamp_approx": "1:56-1:59",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Turnover and Commissions Dashboard section",
+              "element_type": "dashboard",
+              "location_on_screen": "bottom-center",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 90
+              },
+              "text_content": "Turnover and Commissions Dashboard, NET Income Paid This Year, Offers Created This Year detail, Follow, Open, Refresh",
+              "parent_context": "Main content area of Home Page"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The 'Turnover and Commissions Dashboard' section is highlighted, showing summary information and action buttons.",
+            "why_this_action": "To point out the dashboard where agents can view their turnover and commissions.",
+            "preconditions": "Salesforce Home Page is displayed.",
+            "visual_feedback": "The 'Turnover and Commissions Dashboard' section is visually emphasized."
+          }
+        ],
+        "workflow_summary": "This workflow provides a guided tour of the Salesforce Home Page, demonstrating navigation to key sections like Accounts and Properties via the top navigation bar. It highlights quick access links such as the Training Hub, Salestrail Configuration Guide, and Property Publication Guide. The overview also covers various property filters (Recent Live, Price Changes, Viewings Please), target calculation, and other quick links like the Performance Dashboard. Finally, it showcases the search bar for existing accounts and the Turnover and Commissions Dashboard.",
+        "decision_points": [
+          {
+            "at_step": 2,
+            "description": "The appearance of the Salesforce Home Page may differ based on the user's role (e.g., DA, Manager, Agent), affecting the visibility or layout of certain components."
+          },
+          {
+            "at_step": 6,
+            "description": "When viewing Accounts, the user can choose from various predefined list views (e.g., 'My Buyers', 'My Sellers', 'My Tenants') to filter and display client information."
+          },
+          {
+            "at_step": 8,
+            "description": "When viewing Properties, the user can choose from various predefined list views (e.g., 'My Available Properties', 'My Live Properties', 'My Pending Properties') to filter and display property information."
+          }
+        ],
+        "potential_variations": "The content displayed in the 'Recent Live', 'Price Changes', and 'Viewings Please' property filters will dynamically change based on real-time property data and office activity. The 'Items to Approve' section, which is empty in this video, could contain pending approval requests. The 'Targets' and 'Quick Links' sections might be customized with different content or links depending on user permissions or organizational configuration. The 'Report Generator' section, while visible, is not interacted with, and its available reports would vary based on user access and defined reports.",
+        "error_handling_observed": "No error states or validation messages were observed during this workflow overview. All demonstrated actions proceeded successfully."
+      },
+      "parse_success": true,
+      "step_count": 21,
+      "has_coordinates": true,
+      "has_reasoning": true,
+      "has_preconditions": true,
+      "decision_points": 3
+    }
+  ]
+}

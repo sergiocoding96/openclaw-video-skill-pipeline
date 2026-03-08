@@ -1,0 +1,347 @@
+{
+  "workflow_title": "Publishing, Reordering, and Tagging Property Images in Salesforce Web Manager",
+  "application": "Salesforce (Lucas Fox instance)",
+  "total_steps": 15,
+  "estimated_duration_seconds": 130,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:05-0:06",
+      "action_type": "click",
+      "target_element": {
+        "description": "The 'Web Manager' tab, located in the main content area below the property header.",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 20,
+          "y": 39
+        },
+        "text_content": "Web Manager",
+        "parent_context": "Main tab set for the Property record (Details, Web Manager, Activities & History, etc.)"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The content area below the tab set reloads to display the Web Manager interface, with sub-tabs like 'Overview', 'Images', and 'Publications'.",
+      "why_this_action": "To access the section where website-related content, such as images and publications, is managed for the property.",
+      "preconditions": "The user is on a Property record page, viewing the 'Details' tab.",
+      "visual_feedback": "The 'Web Manager' tab becomes highlighted, and the content below changes from 'General Info' to the 'Web Manager' overview."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:12-0:13",
+      "action_type": "click",
+      "target_element": {
+        "description": "The 'Images' sub-tab within the Web Manager section.",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 18,
+          "y": 46
+        },
+        "text_content": "Images",
+        "parent_context": "Web Manager sub-tab set (Overview, Images, Publications, etc.)"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The page content updates to show the image management interface, with a 'Published images' section at the top.",
+      "why_this_action": "To view and manage the photos associated with this property listing.",
+      "preconditions": "The 'Web Manager' tab is active.",
+      "visual_feedback": "The 'Images' sub-tab becomes highlighted, and a grid of 'Published images' appears."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:14-0:22",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "The main content area of the page.",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 60
+        },
+        "text_content": null,
+        "parent_context": "The entire page body."
+      },
+      "input_data": "Scroll down",
+      "keyboard_shortcut": null,
+      "what_happened": "The user scrolls past all the 'Published images' to reveal the 'Remaining images' section at the bottom of the page.",
+      "why_this_action": "To find the newly uploaded images that are not yet published and are waiting in the 'Remaining images' queue.",
+      "preconditions": "The 'Images' sub-tab is active.",
+      "visual_feedback": "The page content moves upwards, revealing the 'Remaining images' section which contains an unpublished floor plan image."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:24-0:25",
+      "action_type": "click",
+      "target_element": {
+        "description": "A plus icon with a checkmark inside a circle, located below the 'Remaining images' thumbnail.",
+        "element_type": "icon",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 17,
+          "y": 88
+        },
+        "text_content": null,
+        "parent_context": "The 'Remaining images' section."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The icon turns into a solid blue circle with a white checkmark, indicating the image is selected. The 'Publish selected' button becomes active (blue).",
+      "why_this_action": "To select the image(s) that need to be published to the website.",
+      "preconditions": "The user has scrolled to the 'Remaining images' section.",
+      "visual_feedback": "The icon changes color and state, and the 'Publish selected' button changes from greyed-out to blue."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "0:27-0:28",
+      "action_type": "click",
+      "target_element": {
+        "description": "The blue 'Publish selected' button.",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 38,
+          "y": 85
+        },
+        "text_content": "Publish selected",
+        "parent_context": "The 'Remaining images' section."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A modal dialog titled 'Publish these images' appears over the page.",
+      "why_this_action": "To initiate the publishing process for the selected images.",
+      "preconditions": "At least one image in the 'Remaining images' section has been selected.",
+      "visual_feedback": "The screen dims and a modal window appears in the center."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "0:31-0:32",
+      "action_type": "click",
+      "target_element": {
+        "description": "The blue 'Publish' button in the bottom-right of the modal dialog.",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 56,
+          "y": 64
+        },
+        "text_content": "Publish",
+        "parent_context": "The 'Publish these images' modal dialog."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The image thumbnail in the modal is replaced by a green progress bar that fills up, indicating the upload is in progress.",
+      "why_this_action": "To confirm the action and start the upload/publishing process.",
+      "preconditions": "The 'Publish these images' modal is open.",
+      "visual_feedback": "A green progress bar appears and animates from left to right."
+    },
+    {
+      "step_number": 7,
+      "timestamp_approx": "0:33-0:34",
+      "action_type": "click",
+      "target_element": {
+        "description": "The 'Done' button in the bottom-right of the modal dialog, which appears after the upload is complete.",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 56,
+          "y": 64
+        },
+        "text_content": "Done",
+        "parent_context": "The 'Publish these images' modal dialog."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The modal dialog closes, and the user is returned to the 'Images' tab. The 'Remaining images' section is now empty, and the newly published image appears at the end of the 'Published images' list.",
+      "why_this_action": "To close the confirmation dialog and return to the image management screen.",
+      "preconditions": "The image publishing process has completed successfully, showing a 'Completed successfully' message.",
+      "visual_feedback": "The modal disappears, and the main page is visible again. The page content has been updated."
+    },
+    {
+      "step_number": 8,
+      "timestamp_approx": "0:37-0:39",
+      "action_type": "drag",
+      "target_element": {
+        "description": "The fourth image thumbnail in the 'Published images' list, labeled '4. Balcony'.",
+        "element_type": "image",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 55
+        },
+        "text_content": "4. Balcony",
+        "parent_context": "The 'Published images' grid."
+      },
+      "input_data": "Dragged from position 4 to position 5.",
+      "keyboard_shortcut": null,
+      "what_happened": "The image is moved one position to the right, and the other images shift to accommodate the new order. The numbering on the images updates automatically.",
+      "why_this_action": "To change the display order of the images on the public-facing website. The user is ensuring the best photos appear first.",
+      "preconditions": "The user is viewing the 'Published images' grid.",
+      "visual_feedback": "A semi-transparent version of the image is dragged by the cursor. When dropped, the images in the grid rearrange themselves."
+    },
+    {
+      "step_number": 9,
+      "timestamp_approx": "0:48-0:53",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "The main content area of the page.",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 60
+        },
+        "text_content": null,
+        "parent_context": "The entire page body."
+      },
+      "input_data": "Scroll down",
+      "keyboard_shortcut": null,
+      "what_happened": "The user scrolls down through the grid of published images.",
+      "why_this_action": "To navigate to a specific image further down the list that needs to be tagged.",
+      "preconditions": "The user is viewing the 'Published images' grid.",
+      "visual_feedback": "The grid of images scrolls upwards."
+    },
+    {
+      "step_number": 10,
+      "timestamp_approx": "0:54-0:55",
+      "action_type": "hover",
+      "target_element": {
+        "description": "The image thumbnail for image #20.",
+        "element_type": "image",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 80
+        },
+        "text_content": "20. No label",
+        "parent_context": "The 'Published images' grid."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A set of icons (delete, reorder, tag) appears overlaid on the image thumbnail.",
+      "why_this_action": "To make the action icons for that specific image visible.",
+      "preconditions": "The user is viewing the 'Published images' grid.",
+      "visual_feedback": "Three icons fade in on the image."
+    },
+    {
+      "step_number": 11,
+      "timestamp_approx": "0:55-0:56",
+      "action_type": "click",
+      "target_element": {
+        "description": "The blue tag icon on the right side of the image thumbnail.",
+        "element_type": "icon",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 48,
+          "y": 80
+        },
+        "text_content": null,
+        "parent_context": "The overlay on image thumbnail #20."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A modal dialog titled 'Select the image label' appears over the page.",
+      "why_this_action": "To assign a descriptive label (e.g., 'Kitchen', 'Living room') to the image, which helps with organization and SEO on property portals.",
+      "preconditions": "The user is hovering over an image thumbnail, making the tag icon visible.",
+      "visual_feedback": "The screen dims and a modal window appears in the center, showing a list of possible labels."
+    },
+    {
+      "step_number": 12,
+      "timestamp_approx": "0:57-1:02",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "The list of labels within the 'Select the image label' modal.",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": null,
+        "parent_context": "The 'Select the image label' modal dialog."
+      },
+      "input_data": "Scroll down",
+      "keyboard_shortcut": null,
+      "what_happened": "The user scrolls through the alphabetical list of available labels.",
+      "why_this_action": "To find the correct label for the image being tagged.",
+      "preconditions": "The 'Select the image label' modal is open.",
+      "visual_feedback": "The list of text labels scrolls upwards within the modal."
+    },
+    {
+      "step_number": 13,
+      "timestamp_approx": "1:02-1:03",
+      "action_type": "click",
+      "target_element": {
+        "description": "The 'Kitchen' option in the list of labels.",
+        "element_type": "menu_item",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 48,
+          "y": 42
+        },
+        "text_content": "Kitchen",
+        "parent_context": "The 'Select the image label' modal dialog."
+      },
+      "input_data": "Kitchen",
+      "keyboard_shortcut": null,
+      "what_happened": "The radio button next to 'Kitchen' becomes selected.",
+      "why_this_action": "To select the 'Kitchen' label for the current image.",
+      "preconditions": "The 'Select the image label' modal is open.",
+      "visual_feedback": "A blue dot appears in the circle next to the word 'Kitchen'."
+    },
+    {
+      "step_number": 14,
+      "timestamp_approx": "1:05-1:06",
+      "action_type": "click",
+      "target_element": {
+        "description": "The blue 'Save' button in the bottom-right of the modal dialog.",
+        "element_type": "button",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 56,
+          "y": 70
+        },
+        "text_content": "Save",
+        "parent_context": "The 'Select the image label' modal dialog."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The modal dialog closes, and the label on the image thumbnail updates from '20. No label' to '20. Kitchen'.",
+      "why_this_action": "To save the selected label and apply it to the image.",
+      "preconditions": "A label has been selected in the 'Select the image label' modal.",
+      "visual_feedback": "The modal disappears, and the text below the image thumbnail on the main page is updated to reflect the new label."
+    },
+    {
+      "step_number": 15,
+      "timestamp_approx": "1:07-1:29",
+      "action_type": "wait",
+      "target_element": {
+        "description": "The user pauses while the voiceover explains the importance of the previous actions.",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": null,
+        "parent_context": "The 'Images' tab."
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The screen remains static on the 'Images' tab.",
+      "why_this_action": "The user is listening to the narration which provides context and best practices for image management, such as the optimal number of photos and the importance of tagging for SEO.",
+      "preconditions": "The image has been successfully tagged.",
+      "visual_feedback": "No visual change on the screen."
+    }
+  ],
+  "workflow_summary": "This workflow demonstrates how to manage property images within a Salesforce-based web management system. It covers publishing new images from a pending queue, reordering the published images for better presentation, and applying descriptive tags to individual images to improve organization and search engine optimization (SEO) on real estate portals.",
+  "decision_points": [
+    {
+      "at_step": 13,
+      "description": "The user chose the 'Kitchen' label. They could have chosen any other label from the list (e.g., 'Living room', 'Bedroom', 'Bathroom') depending on what the photo actually depicted."
+    }
+  ],
+  "potential_variations": "The user could select multiple images to publish at once using the 'Select all' link or by checking multiple boxes. The order of images could be changed differently. Different labels would be chosen for different types of photos. If there were no 'Remaining images', steps 3-7 would be skipped.",
+  "error_handling_observed": "None observed. The workflow proceeds without any errors or validation messages."
+}

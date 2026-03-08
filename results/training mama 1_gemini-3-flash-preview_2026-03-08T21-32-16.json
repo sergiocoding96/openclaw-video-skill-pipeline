@@ -1,0 +1,241 @@
+{
+  "workflow_title": "Property Image Management in Salesforce",
+  "application": "Salesforce (Lucas Fox)",
+  "total_steps": 10,
+  "estimated_duration_seconds": 130,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:00-0:06",
+      "action_type": "click",
+      "target_element": {
+        "description": "Web Manager tab",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 54
+        },
+        "text_content": "Web Manager",
+        "parent_context": "Property record detail tabs"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Web Manager sub-navigation menu appears.",
+      "why_this_action": "To access the tools for managing how the property is displayed on the web.",
+      "preconditions": "Property record BCN30555 is open in Salesforce.",
+      "visual_feedback": "The tab is highlighted, and new sub-tabs (Overview, Images, Publications, etc.) appear below."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:07-0:12",
+      "action_type": "click",
+      "target_element": {
+        "description": "Images sub-tab",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 10,
+          "y": 58
+        },
+        "text_content": "Images",
+        "parent_context": "Web Manager sub-navigation"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The image management interface loads, showing 'Published images'.",
+      "why_this_action": "To manage the photos associated with the property listing.",
+      "preconditions": "Web Manager tab is active.",
+      "visual_feedback": "The Images sub-tab is underlined, and a grid of published photos is displayed."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:13-0:22",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "Main content area",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": null,
+        "parent_context": "Images tab"
+      },
+      "input_data": "Scroll down",
+      "keyboard_shortcut": null,
+      "what_happened": "The page scrolls down to reveal the 'Remaining images' section.",
+      "why_this_action": "To find images that have been uploaded to Synology but not yet published to Salesforce.",
+      "preconditions": "Images tab is active.",
+      "visual_feedback": "The 'Remaining images' section becomes visible at the bottom of the page."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:23-0:25",
+      "action_type": "click",
+      "target_element": {
+        "description": "Selection checkbox on a remaining image",
+        "element_type": "checkbox",
+        "location_on_screen": "bottom-left",
+        "approximate_coordinates_percent": {
+          "x": 12,
+          "y": 74
+        },
+        "text_content": null,
+        "parent_context": "Remaining images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The image is selected for publication.",
+      "why_this_action": "To choose which specific images to move from the pending state to the published state.",
+      "preconditions": "Images are visible in the 'Remaining images' section.",
+      "visual_feedback": "A blue checkmark or highlight appears on the selected image."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "0:26-0:28",
+      "action_type": "click",
+      "target_element": {
+        "description": "Publish selected button",
+        "element_type": "button",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 65,
+          "y": 27
+        },
+        "text_content": "Publish selected",
+        "parent_context": "Remaining images section header"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A confirmation modal titled 'Publish these images' appears.",
+      "why_this_action": "To initiate the process of publishing the selected images.",
+      "preconditions": "At least one image in 'Remaining images' is selected.",
+      "visual_feedback": "A modal dialog box opens in the center of the screen."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "0:29-0:31",
+      "action_type": "click",
+      "target_element": {
+        "description": "Publish button in modal",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 42
+        },
+        "text_content": "Publish",
+        "parent_context": "Publish these images modal"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The system processes the publication and shows a success message.",
+      "why_this_action": "To confirm and finalize the publication of the selected images.",
+      "preconditions": "Publish modal is open.",
+      "visual_feedback": "A green success message 'Completed successfully' appears in the modal."
+    },
+    {
+      "step_number": 7,
+      "timestamp_approx": "0:32-0:35",
+      "action_type": "click",
+      "target_element": {
+        "description": "Done button",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 60,
+          "y": 42
+        },
+        "text_content": "Done",
+        "parent_context": "Success modal"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The modal closes and the view returns to the published images grid.",
+      "why_this_action": "To dismiss the success message and return to the main interface.",
+      "preconditions": "Publication is complete.",
+      "visual_feedback": "The modal disappears, and the newly published image is now visible in the 'Published images' section."
+    },
+    {
+      "step_number": 8,
+      "timestamp_approx": "0:55-0:58",
+      "action_type": "click",
+      "target_element": {
+        "description": "Tag icon on a published image",
+        "element_type": "icon",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 18
+        },
+        "text_content": null,
+        "parent_context": "Published image card (image #16)"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A 'Select the image label' modal appears.",
+      "why_this_action": "To assign a descriptive label (e.g., room type) to the image for SEO and portal categorization.",
+      "preconditions": "Images are published.",
+      "visual_feedback": "A modal with a list of room labels (Balcony, Kitchen, Living room, etc.) opens."
+    },
+    {
+      "step_number": 9,
+      "timestamp_approx": "0:59-1:03",
+      "action_type": "click",
+      "target_element": {
+        "description": "Kitchen label option",
+        "element_type": "menu_item",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 52,
+          "y": 15
+        },
+        "text_content": "Kitchen",
+        "parent_context": "Select the image label modal"
+      },
+      "input_data": "Kitchen",
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Kitchen' label is selected.",
+      "why_this_action": "To identify the room shown in the photo.",
+      "preconditions": "Label modal is open.",
+      "visual_feedback": "The radio button or text for 'Kitchen' is highlighted/selected."
+    },
+    {
+      "step_number": 10,
+      "timestamp_approx": "1:04-1:07",
+      "action_type": "click",
+      "target_element": {
+        "description": "Save button in label modal",
+        "element_type": "button",
+        "location_on_screen": "bottom-center",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 68
+        },
+        "text_content": "Save",
+        "parent_context": "Select the image label modal"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The label is saved and the modal closes.",
+      "why_this_action": "To apply the selected label to the image.",
+      "preconditions": "A label has been selected.",
+      "visual_feedback": "The modal closes, and the image card now displays the 'Kitchen' label instead of 'No label'."
+    }
+  ],
+  "workflow_summary": "This workflow describes how to manage property images within the Lucas Fox Salesforce environment. It covers navigating to the Web Manager, publishing pending images from the 'Remaining images' section, and tagging published images with specific room labels (like 'Kitchen') to optimize listing presentation and SEO on real estate portals.",
+  "decision_points": [
+    {
+      "at_step": 4,
+      "description": "The user can select images individually or use 'Select all' to publish multiple images at once."
+    },
+    {
+      "at_step": 9,
+      "description": "The user must choose the most appropriate label from a predefined list that matches the content of the photo."
+    }
+  ],
+  "potential_variations": "The user might also reorder images by dragging and dropping them within the 'Published images' section to ensure the best photos appear first. The number of images published can vary, though the video recommends between 20 and 40.",
+  "error_handling_observed": "None observed; the workflow proceeded through successful confirmation states."
+}

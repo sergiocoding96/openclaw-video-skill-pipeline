@@ -1,0 +1,26 @@
+{
+  "name": "openclaw-video-skill-pipeline",
+  "version": "1.0.0",
+  "description": "Convert screen recording videos into replayable AI agent skills (OpenClaw SKILL.md)",
+  "main": "accurate-pipeline.js",
+  "scripts": {
+    "pipeline": "node accurate-pipeline.js",
+    "benchmark": "node benchmark-video.js",
+    "costs": "node calc-costs.js"
+  },
+  "keywords": [
+    "openclaw",
+    "video-understanding",
+    "workflow-automation",
+    "gemini",
+    "browser-automation",
+    "skill-generation"
+  ],
+  "author": "sergiocoding96",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "dotenv": "^16.4.7",
+    "openai": "^4.0.0"
+  }
+}

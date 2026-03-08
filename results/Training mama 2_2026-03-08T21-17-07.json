@@ -1,0 +1,666 @@
+{
+  "benchmark_date": "2026-03-08T21:17:07.226Z",
+  "video_file": "Training mama 2.mp4",
+  "video_size_bytes": 61152215,
+  "models_tested": [
+    "gemini-3-pro-preview",
+    "gemini-3-flash-preview",
+    "gemini-3.1-pro-preview",
+    "gemini-3.1-flash-lite-preview"
+  ],
+  "prompt": "You are an expert workflow analyst. Your job is to watch this screen recording of a business workflow and produce an extremely detailed, step-by-step description that another AI agent with browser automation capabilities could use to EXACTLY replicate this workflow.\n\nFor EVERY action in the video, provide:\n\n## Output Format\n\nReturn a JSON object with this structure:\n\n{\n  \"workflow_title\": \"Brief title of the workflow\",\n  \"application\": \"What application/website is being used\",\n  \"total_steps\": <number>,\n  \"estimated_duration_seconds\": <number>,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:00-0:05\",\n      \"action_type\": \"click|type|scroll|drag|select|navigate|wait|hover|right_click|double_click|keyboard_shortcut\",\n      \"target_element\": {\n        \"description\": \"Detailed description of the UI element (e.g., 'Blue Submit button in the top-right corner')\",\n        \"element_type\": \"button|link|input|dropdown|menu_item|tab|checkbox|icon|text|image|other\",\n        \"location_on_screen\": \"top-left|top-center|top-right|center-left|center|center-right|bottom-left|bottom-center|bottom-right\",\n        \"approximate_coordinates_percent\": {\"x\": 50, \"y\": 50},\n        \"text_content\": \"Visible text on or near the element\",\n        \"parent_context\": \"What section/panel/dialog the element is in\"\n      },\n      \"input_data\": \"If typing, what text was entered. If selecting, what option was chosen.\",\n      \"keyboard_shortcut\": \"If a keyboard shortcut was used (e.g., Ctrl+C)\",\n      \"what_happened\": \"Describe the visible result/response after this action\",\n      \"why_this_action\": \"Explain the logical reason for this action in the workflow context\",\n      \"preconditions\": \"What must be true on screen before this action (e.g., 'modal dialog is open', 'page has loaded')\",\n      \"visual_feedback\": \"Any visual changes: loading spinners, highlights, animations, new elements appearing\"\n    }\n  ],\n  \"workflow_summary\": \"High-level description of what this workflow accomplishes\",\n  \"decision_points\": [\n    {\n      \"at_step\": 5,\n      \"description\": \"What decision was made and what alternatives existed\"\n    }\n  ],\n  \"potential_variations\": \"Where the workflow might differ based on data or conditions\",\n  \"error_handling_observed\": \"Any error states or validation messages seen\"\n}\n\nCRITICAL REQUIREMENTS:\n1. Be EXTREMELY precise about click locations - another agent needs to find these exact elements\n2. Include EVERY mouse movement and click, even small ones like closing popups or dismissing tooltips\n3. Note any waits/loading states between actions\n4. Describe the visual state of the screen before and after each action\n5. If text is typed, capture it EXACTLY\n6. Note any scrolling that occurs\n7. Identify the application/website being used\n8. Explain the BUSINESS LOGIC behind each action - WHY is the user doing this?\n\nRespond ONLY with the JSON object, no markdown fencing.",
+  "results": [
+    {
+      "model": "gemini-3-pro-preview",
+      "success": true,
+      "elapsed_seconds": 29.5,
+      "tokens": {
+        "input": 11612,
+        "output": 1660,
+        "total": 14924
+      },
+      "raw_response": "{\n  \"workflow_title\": \"Salesforce Home Page Overview\",\n  \"application\": \"Salesforce\",\n  \"total_steps\": 6,\n  \"estimated_duration_seconds\": 122,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:28-0:31\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Accounts tab in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 25,\n          \"y\": 15\n        },\n        \"text_content\": \"Accounts\",\n        \"parent_context\": \"Top navigation menu\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"Navigates to the Accounts list view page.\",\n      \"why_this_action\": \"To demonstrate the Accounts section where client lists are stored.\",\n      \"preconditions\": \"Home page is loaded.\",\n      \"visual_feedback\": \"Page changes to the Accounts list view, showing a list of records.\"\n    },\n    {\n      \"step_number\": 2,\n      \"timestamp_approx\": \"0:33-0:35\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to the current list view name\",\n        \"element_type\": \"dropdown\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 15,\n          \"y\": 25\n        },\n        \"text_content\": \"2. My Sellers\",\n        \"parent_context\": \"Accounts list view header\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"Opens a dropdown menu showing available list views.\",\n      \"why_this_action\": \"To show the different types of client lists available (buyers, sellers, tenants).\",\n      \"preconditions\": \"Accounts page is loaded.\",\n      \"visual_feedback\": \"Dropdown menu appears with a list of options like '1. My Buyers', '2. My Sellers', etc.\"\n    },\n    {\n      \"step_number\": 3,\n      \"timestamp_approx\": \"0:41-0:44\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Properties tab in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 35,\n          \"y\": 15\n        },\n        \"text_content\": \"Properties\",\n        \"parent_context\": \"Top navigation menu\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"Navigates to the Properties list view page.\",\n      \"why_this_action\": \"To demonstrate the Properties section where property lists are stored.\",\n      \"preconditions\": \"Accounts page is loaded.\",\n      \"visual_feedback\": \"Page changes to the Properties list view, showing a list of property records.\"\n    },\n    {\n      \"step_number\": 4,\n      \"timestamp_approx\": \"0:47-0:49\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to the current list view name\",\n        \"element_type\": \"dropdown\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 15,\n          \"y\": 25\n        },\n        \"text_content\": \"1. MY AVAILABLE PROPERTIES\",\n        \"parent_context\": \"Properties list view header\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"Opens a dropdown menu showing available list views.\",\n      \"why_this_action\": \"To show the different types of property lists available (available, live, pending).\",\n      \"preconditions\": \"Properties page is loaded.\",\n      \"visual_feedback\": \"Dropdown menu appears with a list of options like '1. MY AVAILABLE PROPERTIES', 'All Live Properties', etc.\"\n    },\n    {\n      \"step_number\": 5,\n      \"timestamp_approx\": \"0:59-1:02\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Home tab in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 10,\n          \"y\": 15\n        },\n        \"text_content\": \"Home\",\n        \"parent_context\": \"Top navigation menu\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"Navigates back to the main Home page dashboard.\",\n      \"why_this_action\": \"To return to the main dashboard to explain its components.\",\n      \"preconditions\": \"Properties page is loaded.\",\n      \"visual_feedback\": \"Page changes back to the initial Home page dashboard with various widgets.\"\n    },\n    {\n      \"step_number\": 6,\n      \"timestamp_approx\": \"1:45-1:50\",\n      \"action_type\": \"scroll\",\n      \"target_element\": {\n        \"description\": \"Main page content area\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 50,\n          \"y\": 50\n        },\n        \"text_content\": \"\",\n        \"parent_context\": \"Home page dashboard\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"The page scrolls down to reveal lower sections of the dashboard.\",\n      \"why_this_action\": \"To show additional components on the dashboard like the 'Existing Accounts' search and 'Turnover' dashboard.\",\n      \"preconditions\": \"Home page is loaded and user has finished explaining the top sections.\",\n      \"visual_feedback\": \"The view shifts downwards, revealing new UI elements like a search form and a dashboard component.\"\n    }\n  ],\n  \"workflow_summary\": \"This workflow provides an overview of the Salesforce Home Page and basic navigation. It demonstrates how to access the Accounts and Properties tabs, view different list views within those tabs, and explores the various widgets and sections available on the main Home dashboard, including quick links, property filters, and search tools.\",\n  \"decision_points\": [],\n  \"potential_variations\": \"The specific list views available in the dropdowns and the widgets visible on the Home page may vary depending on the user's role and permissions within Salesforce.\",\n  \"error_handling_observed\": \"None observed.\"\n}",
+      "parsed": {
+        "workflow_title": "Salesforce Home Page Overview",
+        "application": "Salesforce",
+        "total_steps": 6,
+        "estimated_duration_seconds": 122,
+        "steps": [
+          {
+            "step_number": 1,
+            "timestamp_approx": "0:28-0:31",
+            "action_type": "click",
+            "target_element": {
+              "description": "Accounts tab in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 25,
+                "y": 15
+              },
+              "text_content": "Accounts",
+              "parent_context": "Top navigation menu"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "Navigates to the Accounts list view page.",
+            "why_this_action": "To demonstrate the Accounts section where client lists are stored.",
+            "preconditions": "Home page is loaded.",
+            "visual_feedback": "Page changes to the Accounts list view, showing a list of records."
+          },
+          {
+            "step_number": 2,
+            "timestamp_approx": "0:33-0:35",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to the current list view name",
+              "element_type": "dropdown",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 15,
+                "y": 25
+              },
+              "text_content": "2. My Sellers",
+              "parent_context": "Accounts list view header"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "Opens a dropdown menu showing available list views.",
+            "why_this_action": "To show the different types of client lists available (buyers, sellers, tenants).",
+            "preconditions": "Accounts page is loaded.",
+            "visual_feedback": "Dropdown menu appears with a list of options like '1. My Buyers', '2. My Sellers', etc."
+          },
+          {
+            "step_number": 3,
+            "timestamp_approx": "0:41-0:44",
+            "action_type": "click",
+            "target_element": {
+              "description": "Properties tab in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 15
+              },
+              "text_content": "Properties",
+              "parent_context": "Top navigation menu"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "Navigates to the Properties list view page.",
+            "why_this_action": "To demonstrate the Properties section where property lists are stored.",
+            "preconditions": "Accounts page is loaded.",
+            "visual_feedback": "Page changes to the Properties list view, showing a list of property records."
+          },
+          {
+            "step_number": 4,
+            "timestamp_approx": "0:47-0:49",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to the current list view name",
+              "element_type": "dropdown",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 15,
+                "y": 25
+              },
+              "text_content": "1. MY AVAILABLE PROPERTIES",
+              "parent_context": "Properties list view header"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "Opens a dropdown menu showing available list views.",
+            "why_this_action": "To show the different types of property lists available (available, live, pending).",
+            "preconditions": "Properties page is loaded.",
+            "visual_feedback": "Dropdown menu appears with a list of options like '1. MY AVAILABLE PROPERTIES', 'All Live Properties', etc."
+          },
+          {
+            "step_number": 5,
+            "timestamp_approx": "0:59-1:02",
+            "action_type": "click",
+            "target_element": {
+              "description": "Home tab in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 10,
+                "y": 15
+              },
+              "text_content": "Home",
+              "parent_context": "Top navigation menu"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "Navigates back to the main Home page dashboard.",
+            "why_this_action": "To return to the main dashboard to explain its components.",
+            "preconditions": "Properties page is loaded.",
+            "visual_feedback": "Page changes back to the initial Home page dashboard with various widgets."
+          },
+          {
+            "step_number": 6,
+            "timestamp_approx": "1:45-1:50",
+            "action_type": "scroll",
+            "target_element": {
+              "description": "Main page content area",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": "",
+              "parent_context": "Home page dashboard"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "The page scrolls down to reveal lower sections of the dashboard.",
+            "why_this_action": "To show additional components on the dashboard like the 'Existing Accounts' search and 'Turnover' dashboard.",
+            "preconditions": "Home page is loaded and user has finished explaining the top sections.",
+            "visual_feedback": "The view shifts downwards, revealing new UI elements like a search form and a dashboard component."
+          }
+        ],
+        "workflow_summary": "This workflow provides an overview of the Salesforce Home Page and basic navigation. It demonstrates how to access the Accounts and Properties tabs, view different list views within those tabs, and explores the various widgets and sections available on the main Home dashboard, including quick links, property filters, and search tools.",
+        "decision_points": [],
+        "potential_variations": "The specific list views available in the dropdowns and the widgets visible on the Home page may vary depending on the user's role and permissions within Salesforce.",
+        "error_handling_observed": "None observed."
+      },
+      "parse_success": true,
+      "step_count": 6,
+      "has_coordinates": true,
+      "has_reasoning": true,
+      "has_preconditions": true,
+      "decision_points": 0
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "success": true,
+      "elapsed_seconds": 23.3,
+      "tokens": {
+        "input": 11612,
+        "output": 1755,
+        "total": 15006
+      },
+      "raw_response": "{\n  \"workflow_title\": \"Salesforce Home Page Overview and Navigation\",\n  \"application\": \"Salesforce (Lucas Fox instance)\",\n  \"total_steps\": 6,\n  \"estimated_duration_seconds\": 120,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:30-0:32\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Accounts tab in the main navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 24,\n          \"y\": 24\n        },\n        \"text_content\": \"Accounts\",\n        \"parent_context\": \"Main Salesforce navigation menu\"\n      },\n      \"input_data\": null,\n      \"what_happened\": \"The application navigated to the Accounts object page, showing a list of sellers.\",\n      \"why_this_action\": \"To demonstrate where client information (buyers, sellers, tenants) is stored and how to access it.\",\n      \"preconditions\": \"The Salesforce Home Page is loaded.\",\n      \"visual_feedback\": \"The page content refreshes to show the Accounts list view.\"\n    },\n    {\n      \"step_number\": 2,\n      \"timestamp_approx\": \"0:34-0:36\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to the list view title '2. My Sellers'\",\n        \"element_type\": \"button\",\n        \"location_on_screen\": \"center-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 21,\n          \"y\": 34\n        },\n        \"text_content\": \"▼\",\n        \"parent_context\": \"Accounts list view header\"\n      },\n      \"input_data\": null,\n      \"what_happened\": \"A dropdown menu appeared showing various list views like 'My Buyers', 'My Sellers', and 'My Tenants'.\",\n      \"why_this_action\": \"To show the different categories of clients available in the Accounts section.\",\n      \"preconditions\": \"The Accounts page is loaded.\",\n      \"visual_feedback\": \"A list of available views expands below the search bar.\"\n    },\n    {\n      \"step_number\": 3,\n      \"timestamp_approx\": \"0:43-0:45\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Properties tab in the main navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 33,\n          \"y\": 24\n        },\n        \"text_content\": \"Properties\",\n        \"parent_context\": \"Main Salesforce navigation menu\"\n      },\n      \"input_data\": null,\n      \"what_happened\": \"The application navigated to the Properties object page.\",\n      \"why_this_action\": \"To demonstrate how to access property listings and management.\",\n      \"preconditions\": \"The user is currently on the Accounts page.\",\n      \"visual_feedback\": \"The page content refreshes to show the Properties list view.\"\n    },\n    {\n      \"step_number\": 4,\n      \"timestamp_approx\": \"0:48-0:50\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to the list view title '1. MY AVAILABLE PROPERTIES'\",\n        \"element_type\": \"button\",\n        \"location_on_screen\": \"center-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 28,\n          \"y\": 49\n        },\n        \"text_content\": \"▼\",\n        \"parent_context\": \"Properties list view header\"\n      },\n      \"input_data\": null,\n      \"what_happened\": \"A dropdown menu appeared showing property list views such as 'Available', 'Life', and 'Pending'.\",\n      \"why_this_action\": \"To show how to filter properties by their status.\",\n      \"preconditions\": \"The Properties page is loaded.\",\n      \"visual_feedback\": \"A list of property views expands below the search bar.\"\n    },\n    {\n      \"step_number\": 5,\n      \"timestamp_approx\": \"1:01-1:03\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Home tab in the main navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 14,\n          \"y\": 24\n        },\n        \"text_content\": \"Home\",\n        \"parent_context\": \"Main Salesforce navigation menu\"\n      },\n      \"input_data\": null,\n      \"what_happened\": \"The application returned to the main Salesforce Home Page.\",\n      \"why_this_action\": \"To return to the main dashboard to explain other home page features.\",\n      \"preconditions\": \"The user is currently on the Properties page.\",\n      \"visual_feedback\": \"The page content refreshes to show the Home dashboard.\"\n    },\n    {\n      \"step_number\": 6,\n      \"timestamp_approx\": \"1:45-1:50\",\n      \"action_type\": \"scroll\",\n      \"target_element\": {\n        \"description\": \"Main body of the Home Page\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 50,\n          \"y\": 50\n        },\n        \"text_content\": null,\n        \"parent_context\": \"Salesforce Home Page\"\n      },\n      \"input_data\": \"Scroll down\",\n      \"what_happened\": \"The page scrolled down to reveal the 'Existing Accounts' search bar and the 'Turnover and Commissions Dashboard'.\",\n      \"why_this_action\": \"To show additional tools and dashboards located at the bottom of the home page.\",\n      \"preconditions\": \"The Home Page is loaded.\",\n      \"visual_feedback\": \"The upper sections move off-screen and lower sections become visible.\"\n    }\n  ],\n  \"workflow_summary\": \"This workflow demonstrates basic navigation within the Lucas Fox Salesforce instance, specifically focusing on the Home Page, Accounts, and Properties sections. It shows how to switch between main tabs, access different list views for clients and properties, and locate key dashboard elements like training guides, property filters, and performance metrics.\",\n  \"decision_points\": [\n    {\n      \"at_step\": 2,\n      \"description\": \"The user chooses to view the list of available Account views rather than selecting a specific account.\"\n    },\n    {\n      \"at_step\": 4,\n      \"description\": \"The user chooses to view the list of available Property views to show status-based filtering.\"\n    }\n  ],\n  \"potential_variations\": \"Depending on the user's role (DA, Manager, or Agent), the specific widgets and list views visible on the Home Page and within objects may vary. For example, agents might see a 'Turnover' dashboard while others might see different reporting tools.\",\n  \"error_handling_observed\": \"None observed. The navigation was smooth and the page loaded correctly at each step.\"\n}",
+      "parsed": {
+        "workflow_title": "Salesforce Home Page Overview and Navigation",
+        "application": "Salesforce (Lucas Fox instance)",
+        "total_steps": 6,
+        "estimated_duration_seconds": 120,
+        "steps": [
+          {
+            "step_number": 1,
+            "timestamp_approx": "0:30-0:32",
+            "action_type": "click",
+            "target_element": {
+              "description": "Accounts tab in the main navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 24,
+                "y": 24
+              },
+              "text_content": "Accounts",
+              "parent_context": "Main Salesforce navigation menu"
+            },
+            "input_data": null,
+            "what_happened": "The application navigated to the Accounts object page, showing a list of sellers.",
+            "why_this_action": "To demonstrate where client information (buyers, sellers, tenants) is stored and how to access it.",
+            "preconditions": "The Salesforce Home Page is loaded.",
+            "visual_feedback": "The page content refreshes to show the Accounts list view."
+          },
+          {
+            "step_number": 2,
+            "timestamp_approx": "0:34-0:36",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to the list view title '2. My Sellers'",
+              "element_type": "button",
+              "location_on_screen": "center-left",
+              "approximate_coordinates_percent": {
+                "x": 21,
+                "y": 34
+              },
+              "text_content": "▼",
+              "parent_context": "Accounts list view header"
+            },
+            "input_data": null,
+            "what_happened": "A dropdown menu appeared showing various list views like 'My Buyers', 'My Sellers', and 'My Tenants'.",
+            "why_this_action": "To show the different categories of clients available in the Accounts section.",
+            "preconditions": "The Accounts page is loaded.",
+            "visual_feedback": "A list of available views expands below the search bar."
+          },
+          {
+            "step_number": 3,
+            "timestamp_approx": "0:43-0:45",
+            "action_type": "click",
+            "target_element": {
+              "description": "Properties tab in the main navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 33,
+                "y": 24
+              },
+              "text_content": "Properties",
+              "parent_context": "Main Salesforce navigation menu"
+            },
+            "input_data": null,
+            "what_happened": "The application navigated to the Properties object page.",
+            "why_this_action": "To demonstrate how to access property listings and management.",
+            "preconditions": "The user is currently on the Accounts page.",
+            "visual_feedback": "The page content refreshes to show the Properties list view."
+          },
+          {
+            "step_number": 4,
+            "timestamp_approx": "0:48-0:50",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to the list view title '1. MY AVAILABLE PROPERTIES'",
+              "element_type": "button",
+              "location_on_screen": "center-left",
+              "approximate_coordinates_percent": {
+                "x": 28,
+                "y": 49
+              },
+              "text_content": "▼",
+              "parent_context": "Properties list view header"
+            },
+            "input_data": null,
+            "what_happened": "A dropdown menu appeared showing property list views such as 'Available', 'Life', and 'Pending'.",
+            "why_this_action": "To show how to filter properties by their status.",
+            "preconditions": "The Properties page is loaded.",
+            "visual_feedback": "A list of property views expands below the search bar."
+          },
+          {
+            "step_number": 5,
+            "timestamp_approx": "1:01-1:03",
+            "action_type": "click",
+            "target_element": {
+              "description": "Home tab in the main navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 14,
+                "y": 24
+              },
+              "text_content": "Home",
+              "parent_context": "Main Salesforce navigation menu"
+            },
+            "input_data": null,
+            "what_happened": "The application returned to the main Salesforce Home Page.",
+            "why_this_action": "To return to the main dashboard to explain other home page features.",
+            "preconditions": "The user is currently on the Properties page.",
+            "visual_feedback": "The page content refreshes to show the Home dashboard."
+          },
+          {
+            "step_number": 6,
+            "timestamp_approx": "1:45-1:50",
+            "action_type": "scroll",
+            "target_element": {
+              "description": "Main body of the Home Page",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": null,
+              "parent_context": "Salesforce Home Page"
+            },
+            "input_data": "Scroll down",
+            "what_happened": "The page scrolled down to reveal the 'Existing Accounts' search bar and the 'Turnover and Commissions Dashboard'.",
+            "why_this_action": "To show additional tools and dashboards located at the bottom of the home page.",
+            "preconditions": "The Home Page is loaded.",
+            "visual_feedback": "The upper sections move off-screen and lower sections become visible."
+          }
+        ],
+        "workflow_summary": "This workflow demonstrates basic navigation within the Lucas Fox Salesforce instance, specifically focusing on the Home Page, Accounts, and Properties sections. It shows how to switch between main tabs, access different list views for clients and properties, and locate key dashboard elements like training guides, property filters, and performance metrics.",
+        "decision_points": [
+          {
+            "at_step": 2,
+            "description": "The user chooses to view the list of available Account views rather than selecting a specific account."
+          },
+          {
+            "at_step": 4,
+            "description": "The user chooses to view the list of available Property views to show status-based filtering."
+          }
+        ],
+        "potential_variations": "Depending on the user's role (DA, Manager, or Agent), the specific widgets and list views visible on the Home Page and within objects may vary. For example, agents might see a 'Turnover' dashboard while others might see different reporting tools.",
+        "error_handling_observed": "None observed. The navigation was smooth and the page loaded correctly at each step."
+      },
+      "parse_success": true,
+      "step_count": 6,
+      "has_coordinates": true,
+      "has_reasoning": true,
+      "has_preconditions": true,
+      "decision_points": 2
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "success": true,
+      "elapsed_seconds": 36.4,
+      "tokens": {
+        "input": 11612,
+        "output": 1718,
+        "total": 16055
+      },
+      "raw_response": "{\n  \"workflow_title\": \"Salesforce Home Page Overview\",\n  \"application\": \"Salesforce Lightning\",\n  \"total_steps\": 6,\n  \"estimated_duration_seconds\": 122,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:28-0:31\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Accounts tab in the top navigation menu\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 25,\n          \"y\": 15\n        },\n        \"text_content\": \"Accounts\",\n        \"parent_context\": \"Top navigation bar\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"The page navigates to the Accounts section, displaying a list view of accounts.\",\n      \"why_this_action\": \"To demonstrate the Accounts section and its available list views.\",\n      \"preconditions\": \"The user is on the Salesforce Home Page.\",\n      \"visual_feedback\": \"A loading spinner appears briefly, then the Accounts list view page is rendered.\"\n    },\n    {\n      \"step_number\": 2,\n      \"timestamp_approx\": \"0:34-0:41\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to the current list view name '2. My Sellers'\",\n        \"element_type\": \"dropdown\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 15,\n          \"y\": 25\n        },\n        \"text_content\": \"2. My Sellers\",\n        \"parent_context\": \"List view header\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"A dropdown menu opens, displaying a list of other available account views (e.g., '1. My Buyers', '3. My Tenants').\",\n      \"why_this_action\": \"To show how to access different predefined lists of accounts.\",\n      \"preconditions\": \"The Accounts list view page has fully loaded.\",\n      \"visual_feedback\": \"A dropdown menu appears below the clicked element.\"\n    },\n    {\n      \"step_number\": 3,\n      \"timestamp_approx\": \"0:41-0:44\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Properties tab in the top navigation menu\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 35,\n          \"y\": 15\n        },\n        \"text_content\": \"Properties\",\n        \"parent_context\": \"Top navigation bar\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"The page navigates to the Properties section, displaying a list view of properties.\",\n      \"why_this_action\": \"To demonstrate the Properties section and its available list views.\",\n      \"preconditions\": \"The user is on the Accounts page.\",\n      \"visual_feedback\": \"A loading spinner appears briefly, then the Properties list view page is rendered.\"\n    },\n    {\n      \"step_number\": 4,\n      \"timestamp_approx\": \"0:48-0:54\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Dropdown arrow next to the current list view name '1. MY AVAILABLE PROPERTIES'\",\n        \"element_type\": \"dropdown\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 20,\n          \"y\": 25\n        },\n        \"text_content\": \"1. MY AVAILABLE PROPERTIES\",\n        \"parent_context\": \"List view header\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"A dropdown menu opens, displaying a list of other available property views (e.g., 'All Live Properties', 'My Pending Properties').\",\n      \"why_this_action\": \"To show how to access different predefined lists of properties.\",\n      \"preconditions\": \"The Properties list view page has fully loaded.\",\n      \"visual_feedback\": \"A dropdown menu appears below the clicked element.\"\n    },\n    {\n      \"step_number\": 5,\n      \"timestamp_approx\": \"1:00-1:02\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Home tab in the top navigation menu\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-left\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 10,\n          \"y\": 15\n        },\n        \"text_content\": \"Home\",\n        \"parent_context\": \"Top navigation bar\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"The page navigates back to the main Salesforce Home Page.\",\n      \"why_this_action\": \"To return to the starting point and continue the overview of the Home Page components.\",\n      \"preconditions\": \"The user is on the Properties page.\",\n      \"visual_feedback\": \"The Home Page layout is rendered.\"\n    },\n    {\n      \"step_number\": 6,\n      \"timestamp_approx\": \"1:45-2:02\",\n      \"action_type\": \"scroll\",\n      \"target_element\": {\n        \"description\": \"Main page body\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\n          \"x\": 50,\n          \"y\": 50\n        },\n        \"text_content\": \"\",\n        \"parent_context\": \"Home Page\"\n      },\n      \"input_data\": \"\",\n      \"keyboard_shortcut\": \"\",\n      \"what_happened\": \"The view scrolls down to reveal the lower sections of the Home Page.\",\n      \"why_this_action\": \"To show additional components on the Home Page, such as the 'Existing Accounts' search and the 'Turnover and Commissions Dashboard'.\",\n      \"preconditions\": \"The user is on the Home Page.\",\n      \"visual_feedback\": \"The page content moves upwards, revealing new elements at the bottom.\"\n    }\n  ],\n  \"workflow_summary\": \"This workflow provides a high-level overview of a customized Salesforce Lightning Home Page. It demonstrates navigation to key sections like Accounts and Properties, shows how to switch between different list views within those sections, and highlights various components available on the Home Page itself, such as quick links, property filters, and dashboards.\",\n  \"decision_points\": [],\n  \"potential_variations\": \"The specific list views available in the dropdowns and the components visible on the Home Page may vary depending on the user's role (e.g., agent, manager, assistant) and permissions, as mentioned by the narrator.\",\n  \"error_handling_observed\": \"None observed.\"\n}",
+      "parsed": {
+        "workflow_title": "Salesforce Home Page Overview",
+        "application": "Salesforce Lightning",
+        "total_steps": 6,
+        "estimated_duration_seconds": 122,
+        "steps": [
+          {
+            "step_number": 1,
+            "timestamp_approx": "0:28-0:31",
+            "action_type": "click",
+            "target_element": {
+              "description": "Accounts tab in the top navigation menu",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 25,
+                "y": 15
+              },
+              "text_content": "Accounts",
+              "parent_context": "Top navigation bar"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "The page navigates to the Accounts section, displaying a list view of accounts.",
+            "why_this_action": "To demonstrate the Accounts section and its available list views.",
+            "preconditions": "The user is on the Salesforce Home Page.",
+            "visual_feedback": "A loading spinner appears briefly, then the Accounts list view page is rendered."
+          },
+          {
+            "step_number": 2,
+            "timestamp_approx": "0:34-0:41",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to the current list view name '2. My Sellers'",
+              "element_type": "dropdown",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 15,
+                "y": 25
+              },
+              "text_content": "2. My Sellers",
+              "parent_context": "List view header"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "A dropdown menu opens, displaying a list of other available account views (e.g., '1. My Buyers', '3. My Tenants').",
+            "why_this_action": "To show how to access different predefined lists of accounts.",
+            "preconditions": "The Accounts list view page has fully loaded.",
+            "visual_feedback": "A dropdown menu appears below the clicked element."
+          },
+          {
+            "step_number": 3,
+            "timestamp_approx": "0:41-0:44",
+            "action_type": "click",
+            "target_element": {
+              "description": "Properties tab in the top navigation menu",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 15
+              },
+              "text_content": "Properties",
+              "parent_context": "Top navigation bar"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "The page navigates to the Properties section, displaying a list view of properties.",
+            "why_this_action": "To demonstrate the Properties section and its available list views.",
+            "preconditions": "The user is on the Accounts page.",
+            "visual_feedback": "A loading spinner appears briefly, then the Properties list view page is rendered."
+          },
+          {
+            "step_number": 4,
+            "timestamp_approx": "0:48-0:54",
+            "action_type": "click",
+            "target_element": {
+              "description": "Dropdown arrow next to the current list view name '1. MY AVAILABLE PROPERTIES'",
+              "element_type": "dropdown",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 20,
+                "y": 25
+              },
+              "text_content": "1. MY AVAILABLE PROPERTIES",
+              "parent_context": "List view header"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "A dropdown menu opens, displaying a list of other available property views (e.g., 'All Live Properties', 'My Pending Properties').",
+            "why_this_action": "To show how to access different predefined lists of properties.",
+            "preconditions": "The Properties list view page has fully loaded.",
+            "visual_feedback": "A dropdown menu appears below the clicked element."
+          },
+          {
+            "step_number": 5,
+            "timestamp_approx": "1:00-1:02",
+            "action_type": "click",
+            "target_element": {
+              "description": "Home tab in the top navigation menu",
+              "element_type": "tab",
+              "location_on_screen": "top-left",
+              "approximate_coordinates_percent": {
+                "x": 10,
+                "y": 15
+              },
+              "text_content": "Home",
+              "parent_context": "Top navigation bar"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "The page navigates back to the main Salesforce Home Page.",
+            "why_this_action": "To return to the starting point and continue the overview of the Home Page components.",
+            "preconditions": "The user is on the Properties page.",
+            "visual_feedback": "The Home Page layout is rendered."
+          },
+          {
+            "step_number": 6,
+            "timestamp_approx": "1:45-2:02",
+            "action_type": "scroll",
+            "target_element": {
+              "description": "Main page body",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": "",
+              "parent_context": "Home Page"
+            },
+            "input_data": "",
+            "keyboard_shortcut": "",
+            "what_happened": "The view scrolls down to reveal the lower sections of the Home Page.",
+            "why_this_action": "To show additional components on the Home Page, such as the 'Existing Accounts' search and the 'Turnover and Commissions Dashboard'.",
+            "preconditions": "The user is on the Home Page.",
+            "visual_feedback": "The page content moves upwards, revealing new elements at the bottom."
+          }
+        ],
+        "workflow_summary": "This workflow provides a high-level overview of a customized Salesforce Lightning Home Page. It demonstrates navigation to key sections like Accounts and Properties, shows how to switch between different list views within those sections, and highlights various components available on the Home Page itself, such as quick links, property filters, and dashboards.",
+        "decision_points": [],
+        "potential_variations": "The specific list views available in the dropdowns and the components visible on the Home Page may vary depending on the user's role (e.g., agent, manager, assistant) and permissions, as mentioned by the narrator.",
+        "error_handling_observed": "None observed."
+      },
+      "parse_success": true,
+      "step_count": 6,
+      "has_coordinates": true,
+      "has_reasoning": true,
+      "has_preconditions": true,
+      "decision_points": 0
+    },
+    {
+      "model": "gemini-3.1-flash-lite-preview",
+      "success": true,
+      "elapsed_seconds": 6.7,
+      "tokens": {
+        "input": 11612,
+        "output": 1575,
+        "total": 13187
+      },
+      "raw_response": "{\n  \"workflow_title\": \"Salesforce Home Page Overview\",\n  \"application\": \"Salesforce\",\n  \"total_steps\": 6,\n  \"estimated_duration_seconds\": 120,\n  \"steps\": [\n    {\n      \"step_number\": 1,\n      \"timestamp_approx\": \"0:00-0:30\",\n      \"action_type\": \"navigate\",\n      \"target_element\": {\n        \"description\": \"Salesforce Home Page\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center\",\n        \"approximate_coordinates_percent\": {\"x\": 50, \"y\": 50},\n        \"text_content\": \"Lucas Fox\",\n        \"parent_context\": \"Browser\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The user is viewing the Salesforce home page dashboard.\",\n      \"why_this_action\": \"To provide an overview of the interface layout and key sections.\",\n      \"preconditions\": \"User is logged into Salesforce.\",\n      \"visual_feedback\": \"Dashboard widgets are visible.\"\n    },\n    {\n      \"step_number\": 2,\n      \"timestamp_approx\": \"0:30-0:42\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Accounts dropdown menu in the top navigation bar\",\n        \"element_type\": \"menu_item\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 35, \"y\": 25},\n        \"text_content\": \"Accounts\",\n        \"parent_context\": \"Top Navigation Bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The Accounts list view opens, showing '2. My Sellers'.\",\n      \"why_this_action\": \"To demonstrate how to access client lists.\",\n      \"preconditions\": \"Home page is loaded.\",\n      \"visual_feedback\": \"Dropdown menu expands, then page content updates to a list view.\"\n    },\n    {\n      \"step_number\": 3,\n      \"timestamp_approx\": \"0:42-0:55\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Properties dropdown menu in the top navigation bar\",\n        \"element_type\": \"menu_item\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 42, \"y\": 25},\n        \"text_content\": \"Properties\",\n        \"parent_context\": \"Top Navigation Bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The Properties list view opens, showing '1. MY AVAILABLE PROPERTIES'.\",\n      \"why_this_action\": \"To demonstrate how to access property listings.\",\n      \"preconditions\": \"Accounts page was loaded.\",\n      \"visual_feedback\": \"Page content updates to a list view of properties.\"\n    },\n    {\n      \"step_number\": 4,\n      \"timestamp_approx\": \"0:55-1:00\",\n      \"action_type\": \"click\",\n      \"target_element\": {\n        \"description\": \"Home tab in the top navigation bar\",\n        \"element_type\": \"tab\",\n        \"location_on_screen\": \"top-center\",\n        \"approximate_coordinates_percent\": {\"x\": 28, \"y\": 25},\n        \"text_content\": \"Home\",\n        \"parent_context\": \"Top Navigation Bar\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The user returns to the main Home page.\",\n      \"why_this_action\": \"To continue the overview of the home page features.\",\n      \"preconditions\": \"Properties page was loaded.\",\n      \"visual_feedback\": \"Page content reverts to the dashboard view.\"\n    },\n    {\n      \"step_number\": 5,\n      \"timestamp_approx\": \"1:00-1:45\",\n      \"action_type\": \"hover\",\n      \"target_element\": {\n        \"description\": \"Recommended Quick Links section\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"center-left\",\n        \"approximate_coordinates_percent\": {\"x\": 30, \"y\": 40},\n        \"text_content\": \"Recommended Quick Links\",\n        \"parent_context\": \"Main Dashboard\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The user highlights the Training Hub and other quick links.\",\n      \"why_this_action\": \"To explain the purpose of the quick access buttons.\",\n      \"preconditions\": \"Home page is loaded.\",\n      \"visual_feedback\": \"Cursor moves over the section.\"\n    },\n    {\n      \"step_number\": 6,\n      \"timestamp_approx\": \"1:45-2:00\",\n      \"action_type\": \"scroll\",\n      \"target_element\": {\n        \"description\": \"Bottom section of the dashboard\",\n        \"element_type\": \"other\",\n        \"location_on_screen\": \"bottom-center\",\n        \"approximate_coordinates_percent\": {\"x\": 50, \"y\": 80},\n        \"text_content\": \"Existing Accounts\",\n        \"parent_context\": \"Main Dashboard\"\n      },\n      \"input_data\": null,\n      \"keyboard_shortcut\": null,\n      \"what_happened\": \"The page scrolls down to reveal the 'Existing Accounts' search bar and 'Turnover and Commissions' dashboard.\",\n      \"why_this_action\": \"To show the remaining dashboard components.\",\n      \"preconditions\": \"Home page is loaded.\",\n      \"visual_feedback\": \"Page content shifts upward.\"\n    }\n  ],\n  \"workflow_summary\": \"This workflow provides a guided tour of the Salesforce home page, demonstrating how to navigate between client accounts, property listings, and various dashboard widgets.\",\n  \"decision_points\": [\n    {\n      \"at_step\": 2,\n      \"description\": \"The user chose to navigate to 'Accounts' to show client management, but could have chosen any other tab in the navigation bar.\"\n    }\n  ],\n  \"potential_variations\": \"The specific list views (e.g., 'My Sellers' vs 'My Buyers') or dashboard widgets displayed may vary based on the user's specific role (DA, Manager, or Agent) and permissions.\",\n  \"error_handling_observed\": \"None observed.\"\n}",
+      "parsed": {
+        "workflow_title": "Salesforce Home Page Overview",
+        "application": "Salesforce",
+        "total_steps": 6,
+        "estimated_duration_seconds": 120,
+        "steps": [
+          {
+            "step_number": 1,
+            "timestamp_approx": "0:00-0:30",
+            "action_type": "navigate",
+            "target_element": {
+              "description": "Salesforce Home Page",
+              "element_type": "other",
+              "location_on_screen": "center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 50
+              },
+              "text_content": "Lucas Fox",
+              "parent_context": "Browser"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The user is viewing the Salesforce home page dashboard.",
+            "why_this_action": "To provide an overview of the interface layout and key sections.",
+            "preconditions": "User is logged into Salesforce.",
+            "visual_feedback": "Dashboard widgets are visible."
+          },
+          {
+            "step_number": 2,
+            "timestamp_approx": "0:30-0:42",
+            "action_type": "click",
+            "target_element": {
+              "description": "Accounts dropdown menu in the top navigation bar",
+              "element_type": "menu_item",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 35,
+                "y": 25
+              },
+              "text_content": "Accounts",
+              "parent_context": "Top Navigation Bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The Accounts list view opens, showing '2. My Sellers'.",
+            "why_this_action": "To demonstrate how to access client lists.",
+            "preconditions": "Home page is loaded.",
+            "visual_feedback": "Dropdown menu expands, then page content updates to a list view."
+          },
+          {
+            "step_number": 3,
+            "timestamp_approx": "0:42-0:55",
+            "action_type": "click",
+            "target_element": {
+              "description": "Properties dropdown menu in the top navigation bar",
+              "element_type": "menu_item",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 42,
+                "y": 25
+              },
+              "text_content": "Properties",
+              "parent_context": "Top Navigation Bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The Properties list view opens, showing '1. MY AVAILABLE PROPERTIES'.",
+            "why_this_action": "To demonstrate how to access property listings.",
+            "preconditions": "Accounts page was loaded.",
+            "visual_feedback": "Page content updates to a list view of properties."
+          },
+          {
+            "step_number": 4,
+            "timestamp_approx": "0:55-1:00",
+            "action_type": "click",
+            "target_element": {
+              "description": "Home tab in the top navigation bar",
+              "element_type": "tab",
+              "location_on_screen": "top-center",
+              "approximate_coordinates_percent": {
+                "x": 28,
+                "y": 25
+              },
+              "text_content": "Home",
+              "parent_context": "Top Navigation Bar"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The user returns to the main Home page.",
+            "why_this_action": "To continue the overview of the home page features.",
+            "preconditions": "Properties page was loaded.",
+            "visual_feedback": "Page content reverts to the dashboard view."
+          },
+          {
+            "step_number": 5,
+            "timestamp_approx": "1:00-1:45",
+            "action_type": "hover",
+            "target_element": {
+              "description": "Recommended Quick Links section",
+              "element_type": "other",
+              "location_on_screen": "center-left",
+              "approximate_coordinates_percent": {
+                "x": 30,
+                "y": 40
+              },
+              "text_content": "Recommended Quick Links",
+              "parent_context": "Main Dashboard"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The user highlights the Training Hub and other quick links.",
+            "why_this_action": "To explain the purpose of the quick access buttons.",
+            "preconditions": "Home page is loaded.",
+            "visual_feedback": "Cursor moves over the section."
+          },
+          {
+            "step_number": 6,
+            "timestamp_approx": "1:45-2:00",
+            "action_type": "scroll",
+            "target_element": {
+              "description": "Bottom section of the dashboard",
+              "element_type": "other",
+              "location_on_screen": "bottom-center",
+              "approximate_coordinates_percent": {
+                "x": 50,
+                "y": 80
+              },
+              "text_content": "Existing Accounts",
+              "parent_context": "Main Dashboard"
+            },
+            "input_data": null,
+            "keyboard_shortcut": null,
+            "what_happened": "The page scrolls down to reveal the 'Existing Accounts' search bar and 'Turnover and Commissions' dashboard.",
+            "why_this_action": "To show the remaining dashboard components.",
+            "preconditions": "Home page is loaded.",
+            "visual_feedback": "Page content shifts upward."
+          }
+        ],
+        "workflow_summary": "This workflow provides a guided tour of the Salesforce home page, demonstrating how to navigate between client accounts, property listings, and various dashboard widgets.",
+        "decision_points": [
+          {
+            "at_step": 2,
+            "description": "The user chose to navigate to 'Accounts' to show client management, but could have chosen any other tab in the navigation bar."
+          }
+        ],
+        "potential_variations": "The specific list views (e.g., 'My Sellers' vs 'My Buyers') or dashboard widgets displayed may vary based on the user's specific role (DA, Manager, or Agent) and permissions.",
+        "error_handling_observed": "None observed."
+      },
+      "parse_success": true,
+      "step_count": 6,
+      "has_coordinates": true,
+      "has_reasoning": true,
+      "has_preconditions": true,
+      "decision_points": 1
+    }
+  ]
+}

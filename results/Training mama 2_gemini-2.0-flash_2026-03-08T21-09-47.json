@@ -1,0 +1,430 @@
+{
+  "workflow_title": "Salesforce Home Page Overview",
+  "application": "Salesforce",
+  "total_steps": 19,
+  "estimated_duration_seconds": 61,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:00-0:04",
+      "action_type": "none",
+      "target_element": {
+        "description": "Salesforce Home Page",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": "lucasfox.lightning.force.com/lightning/page/home",
+        "parent_context": "Browser Window"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Salesforce home page is displayed.",
+      "why_this_action": "The video starts with the Salesforce home page already loaded.",
+      "preconditions": "Salesforce is open and the user is logged in.",
+      "visual_feedback": "The Salesforce home page is visible."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:30-0:30",
+      "action_type": "click",
+      "target_element": {
+        "description": "Accounts Tab",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 25,
+          "y": 10
+        },
+        "text_content": "Accounts",
+        "parent_context": "Top Menu"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "Navigated to the Accounts page.",
+      "why_this_action": "To view the list of accounts (clients).",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Accounts page loads, displaying a list of accounts."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:34-0:35",
+      "action_type": "click",
+      "target_element": {
+        "description": "Dropdown to select a list view",
+        "element_type": "dropdown",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 25
+        },
+        "text_content": "2. My Sellers",
+        "parent_context": "Accounts List View"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The list view dropdown is opened.",
+      "why_this_action": "To select a different list view for accounts.",
+      "preconditions": "The Accounts page is displayed.",
+      "visual_feedback": "A dropdown menu appears with a list of available list views."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:36-0:36",
+      "action_type": "click",
+      "target_element": {
+        "description": "My Buyers List View",
+        "element_type": "menu_item",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 35
+        },
+        "text_content": "1. My Buyers",
+        "parent_context": "Accounts List View Dropdown"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The list view is changed to 'My Buyers'.",
+      "why_this_action": "To view the list of buyers.",
+      "preconditions": "The list view dropdown is open.",
+      "visual_feedback": "The Accounts page updates to display the 'My Buyers' list view."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "0:42-0:42",
+      "action_type": "click",
+      "target_element": {
+        "description": "Properties Tab",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 35,
+          "y": 10
+        },
+        "text_content": "Properties",
+        "parent_context": "Top Menu"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "Navigated to the Properties page.",
+      "why_this_action": "To view the list of properties.",
+      "preconditions": "The Accounts page is displayed.",
+      "visual_feedback": "The Properties page loads, displaying a list of properties."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "0:46-0:46",
+      "action_type": "click",
+      "target_element": {
+        "description": "Dropdown to select a list view",
+        "element_type": "dropdown",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 25
+        },
+        "text_content": "1. MY AVAILABLE PROPERTIES",
+        "parent_context": "Properties List View"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The list view dropdown is opened.",
+      "why_this_action": "To select a different list view for properties.",
+      "preconditions": "The Properties page is displayed.",
+      "visual_feedback": "A dropdown menu appears with a list of available list views."
+    },
+    {
+      "step_number": 7,
+      "timestamp_approx": "0:50-0:50",
+      "action_type": "click",
+      "target_element": {
+        "description": "All Live Properties (Last 30 days) List View",
+        "element_type": "menu_item",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 50
+        },
+        "text_content": "7. All Live Properties (Last 30 days)",
+        "parent_context": "Properties List View Dropdown"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The list view is changed to 'All Live Properties (Last 30 days)'.",
+      "why_this_action": "To view the list of all live properties from the last 30 days.",
+      "preconditions": "The list view dropdown is open.",
+      "visual_feedback": "The Properties page updates to display the 'All Live Properties (Last 30 days)' list view."
+    },
+    {
+      "step_number": 8,
+      "timestamp_approx": "1:00-1:00",
+      "action_type": "click",
+      "target_element": {
+        "description": "Home Tab",
+        "element_type": "tab",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 10
+        },
+        "text_content": "Home",
+        "parent_context": "Top Menu"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "Navigated back to the Home page.",
+      "why_this_action": "To return to the main Salesforce home page.",
+      "preconditions": "The Properties page is displayed.",
+      "visual_feedback": "The Salesforce home page is displayed."
+    },
+    {
+      "step_number": 9,
+      "timestamp_approx": "1:04-1:04",
+      "action_type": "none",
+      "target_element": {
+        "description": "Training Hub Link",
+        "element_type": "link",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 30,
+          "y": 30
+        },
+        "text_content": "TRAINING HUB",
+        "parent_context": "Recommended Quick Links"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Training Hub link is highlighted.",
+      "why_this_action": "To show the location of the Training Hub link.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Training Hub link is highlighted."
+    },
+    {
+      "step_number": 10,
+      "timestamp_approx": "1:08-1:08",
+      "action_type": "none",
+      "target_element": {
+        "description": "Salestrail Configuration Guide Link",
+        "element_type": "link",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 30,
+          "y": 35
+        },
+        "text_content": "Salestrail Configuration Guide",
+        "parent_context": "Recommended Quick Links"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Salestrail Configuration Guide link is highlighted.",
+      "why_this_action": "To show the location of the Salestrail Configuration Guide link.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Salestrail Configuration Guide link is highlighted."
+    },
+    {
+      "step_number": 11,
+      "timestamp_approx": "1:14-1:15",
+      "action_type": "none",
+      "target_element": {
+        "description": "Property Publication Guide Link",
+        "element_type": "link",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 30,
+          "y": 40
+        },
+        "text_content": "Property Publication Guide",
+        "parent_context": "Recommended Quick Links"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Property Publication Guide link is highlighted.",
+      "why_this_action": "To show the location of the Property Publication Guide link.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Property Publication Guide link is highlighted."
+    },
+    {
+      "step_number": 12,
+      "timestamp_approx": "1:22-1:22",
+      "action_type": "none",
+      "target_element": {
+        "description": "Recent Live Properties Filter",
+        "element_type": "other",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 20,
+          "y": 50
+        },
+        "text_content": "Recent Live",
+        "parent_context": "Home Page"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Recent Live properties filter is highlighted.",
+      "why_this_action": "To show the location of the Recent Live properties filter.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Recent Live properties filter is highlighted."
+    },
+    {
+      "step_number": 13,
+      "timestamp_approx": "1:28-1:28",
+      "action_type": "none",
+      "target_element": {
+        "description": "Price Changes Properties Filter",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 40,
+          "y": 50
+        },
+        "text_content": "Price Changes",
+        "parent_context": "Home Page"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Price Changes properties filter is highlighted.",
+      "why_this_action": "To show the location of the Price Changes properties filter.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Price Changes properties filter is highlighted."
+    },
+    {
+      "step_number": 14,
+      "timestamp_approx": "1:33-1:34",
+      "action_type": "none",
+      "target_element": {
+        "description": "Viewings Please Properties Filter",
+        "element_type": "other",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 60,
+          "y": 50
+        },
+        "text_content": "Viewings Please",
+        "parent_context": "Home Page"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Viewings Please properties filter is highlighted.",
+      "why_this_action": "To show the location of the Viewings Please properties filter.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Viewings Please properties filter is highlighted."
+    },
+    {
+      "step_number": 15,
+      "timestamp_approx": "1:38-1:38",
+      "action_type": "none",
+      "target_element": {
+        "description": "Show my target calculation Link",
+        "element_type": "link",
+        "location_on_screen": "top-right",
+        "approximate_coordinates_percent": {
+          "x": 80,
+          "y": 40
+        },
+        "text_content": "Show my target calculation",
+        "parent_context": "Targets"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Show my target calculation link is highlighted.",
+      "why_this_action": "To show the location of the Show my target calculation link.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Show my target calculation link is highlighted."
+    },
+    {
+      "step_number": 16,
+      "timestamp_approx": "1:41-1:41",
+      "action_type": "none",
+      "target_element": {
+        "description": "Recommended Subscriptions Link",
+        "element_type": "link",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 80,
+          "y": 50
+        },
+        "text_content": "Recommended Subscriptions",
+        "parent_context": "Quick Links"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Recommended Subscriptions link is highlighted.",
+      "why_this_action": "To show the location of the Recommended Subscriptions link.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Recommended Subscriptions link is highlighted."
+    },
+    {
+      "step_number": 17,
+      "timestamp_approx": "1:43-1:43",
+      "action_type": "none",
+      "target_element": {
+        "description": "Performance Dashboard Link",
+        "element_type": "link",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 80,
+          "y": 55
+        },
+        "text_content": "Performance Dashboard",
+        "parent_context": "Quick Links"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Performance Dashboard link is highlighted.",
+      "why_this_action": "To show the location of the Performance Dashboard link.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Performance Dashboard link is highlighted."
+    },
+    {
+      "step_number": 18,
+      "timestamp_approx": "1:48-1:48",
+      "action_type": "none",
+      "target_element": {
+        "description": "Existing Accounts Search Bar",
+        "element_type": "input",
+        "location_on_screen": "bottom-left",
+        "approximate_coordinates_percent": {
+          "x": 30,
+          "y": 80
+        },
+        "text_content": "Name",
+        "parent_context": "Home Page"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Existing Accounts search bar is highlighted.",
+      "why_this_action": "To show the location of the Existing Accounts search bar.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Existing Accounts search bar is highlighted."
+    },
+    {
+      "step_number": 19,
+      "timestamp_approx": "1:57-1:57",
+      "action_type": "none",
+      "target_element": {
+        "description": "Turnover and Commissions Dashboard",
+        "element_type": "other",
+        "location_on_screen": "bottom-left",
+        "approximate_coordinates_percent": {
+          "x": 30,
+          "y": 90
+        },
+        "text_content": "Turnover and Commissions Dashboard",
+        "parent_context": "Home Page"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Turnover and Commissions Dashboard is highlighted.",
+      "why_this_action": "To show the location of the Turnover and Commissions Dashboard.",
+      "preconditions": "The Salesforce home page is displayed.",
+      "visual_feedback": "The Turnover and Commissions Dashboard is highlighted."
+    }
+  ],
+  "workflow_summary": "The video provides a brief overview of the Salesforce home page, highlighting key sections and functionalities such as accounts, properties, training hub, property filters, target calculation, and performance dashboard.",
+  "decision_points": [],
+  "potential_variations": "The home page layout and available features may vary depending on the user's role (DA, manager, agent) and the specific Salesforce configuration.",
+  "error_handling_observed": "No error handling was observed in this video."
+}

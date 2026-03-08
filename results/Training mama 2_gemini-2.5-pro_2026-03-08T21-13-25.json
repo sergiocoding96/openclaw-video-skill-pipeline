@@ -1,0 +1,166 @@
+{
+  "workflow_title": "Overview of Salesforce Home Page Navigation",
+  "application": "Salesforce Lightning Experience",
+  "total_steps": 7,
+  "estimated_duration_seconds": 35,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:29-0:31",
+      "action_type": "click",
+      "target_element": {
+        "description": "The 'Accounts' tab in the main horizontal navigation bar at the top of the page.",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 24,
+          "y": 12
+        },
+        "text_content": "Accounts",
+        "parent_context": "Main application navigation bar"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The page navigates to the 'Accounts' list view, displaying a table of client accounts. The default view shown is '2. My Sellers'.",
+      "why_this_action": "To demonstrate how to access the list of clients, which are referred to as 'Accounts' in Salesforce.",
+      "preconditions": "The user is on the Salesforce Home page.",
+      "visual_feedback": "A loading spinner with green dots appears in the center of the screen, followed by the 'Accounts' page loading."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:34-0:35",
+      "action_type": "click",
+      "target_element": {
+        "description": "The dropdown arrow icon to the right of the '2. My Sellers' list view title.",
+        "element_type": "dropdown",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 21,
+          "y": 23
+        },
+        "text_content": "2. My Sellers",
+        "parent_context": "Accounts list view header"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A dropdown menu appears, showing a list of available 'Recent List Views' such as '1. My Buyers', '2. My Sellers (Pinned list)', and '3. My Tenants'.",
+      "why_this_action": "To show the different pre-configured lists of clients that can be accessed from the Accounts tab.",
+      "preconditions": "The 'Accounts' list view page is loaded.",
+      "visual_feedback": "A dropdown menu with a search bar and a list of links is displayed below the list view title."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:42-0:44",
+      "action_type": "click",
+      "target_element": {
+        "description": "The 'Properties' tab in the main horizontal navigation bar at the top of the page.",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 30,
+          "y": 12
+        },
+        "text_content": "Properties",
+        "parent_context": "Main application navigation bar"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The page navigates to the 'Properties' list view. The view is initially empty, with a 'No items to display' message.",
+      "why_this_action": "To demonstrate how to access the list of properties.",
+      "preconditions": "The user is on the 'Accounts' list view page.",
+      "visual_feedback": "A loading spinner with green dots appears, and then the 'Properties' page loads. The previously open dropdown menu on the Accounts page is no longer visible."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:48-0:49",
+      "action_type": "click",
+      "target_element": {
+        "description": "The dropdown arrow icon to the right of the '1. MY AVAILABLE PROPERTIES' list view title.",
+        "element_type": "dropdown",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 26,
+          "y": 23
+        },
+        "text_content": "1. MY AVAILABLE PROPERTIES",
+        "parent_context": "Properties list view header"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A dropdown menu appears, showing a list of available 'Recent List Views' for properties, such as 'My Live Properties' and 'My Pending Properties'.",
+      "why_this_action": "To show the different pre-configured lists of properties that can be accessed from the Properties tab.",
+      "preconditions": "The 'Properties' list view page is loaded.",
+      "visual_feedback": "A dropdown menu with a search bar and a list of links is displayed below the list view title."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "1:00-1:02",
+      "action_type": "click",
+      "target_element": {
+        "description": "The 'Home' tab in the main horizontal navigation bar at the top of the page.",
+        "element_type": "tab",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 14,
+          "y": 12
+        },
+        "text_content": "Home",
+        "parent_context": "Main application navigation bar"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The page navigates back to the main Salesforce Home Page dashboard.",
+      "why_this_action": "To return to the main dashboard to continue the overview of its components.",
+      "preconditions": "The user is on the 'Properties' list view page.",
+      "visual_feedback": "A loading spinner with green dots appears, and then the Home page reloads, displaying all its widgets."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "1:18-1:20",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "The main content area of the Home page.",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": null,
+        "parent_context": "Home page body"
+      },
+      "input_data": "down",
+      "keyboard_shortcut": null,
+      "what_happened": "The page scrolls down, revealing the 'Existing Accounts ()' search component and the 'Turnover and Commissions Dashboard' at the bottom of the page.",
+      "why_this_action": "To show the components located at the bottom of the Home page.",
+      "preconditions": "The user is on the Salesforce Home page.",
+      "visual_feedback": "The content on the page moves upwards, bringing the lower sections into view."
+    },
+    {
+      "step_number": 7,
+      "timestamp_approx": "2:00-2:01",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "The main content area of the Home page.",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": null,
+        "parent_context": "Home page body"
+      },
+      "input_data": "up",
+      "keyboard_shortcut": null,
+      "what_happened": "The page scrolls back to the top, bringing the 'Recommended Quick Links' and property filter sections back into full view.",
+      "why_this_action": "To return to the top of the page to conclude the overview.",
+      "preconditions": "The Home page is scrolled to the bottom.",
+      "visual_feedback": "The content on the page moves downwards, bringing the upper sections back into view."
+    }
+  ],
+  "workflow_summary": "This workflow provides a brief tour of the Salesforce Home Page for a real estate business. It demonstrates how to navigate to the 'Accounts' (clients) and 'Properties' tabs, view their respective list views, and identifies key components on the home dashboard, such as quick links, property filters, and dashboards.",
+  "decision_points": [],
+  "potential_variations": "The narrator explicitly states that the Home Page layout and available components may differ based on the user's role (e.g., DA, manager, agent). For example, the 'Existing Accounts' search bar and 'Turnover and Commissions Dashboard' might only be visible to certain roles.",
+  "error_handling_observed": "No error handling or validation messages were observed during this workflow."
+}

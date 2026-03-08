@@ -1,0 +1,144 @@
+{
+  "workflow_title": "Salesforce Home Page Overview",
+  "application": "Salesforce Lightning",
+  "total_steps": 6,
+  "estimated_duration_seconds": 122,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:28-0:31",
+      "action_type": "click",
+      "target_element": {
+        "description": "Accounts tab in the top navigation menu",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 25,
+          "y": 15
+        },
+        "text_content": "Accounts",
+        "parent_context": "Top navigation bar"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The page navigates to the Accounts section, displaying a list view of accounts.",
+      "why_this_action": "To demonstrate the Accounts section and its available list views.",
+      "preconditions": "The user is on the Salesforce Home Page.",
+      "visual_feedback": "A loading spinner appears briefly, then the Accounts list view page is rendered."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:34-0:41",
+      "action_type": "click",
+      "target_element": {
+        "description": "Dropdown arrow next to the current list view name '2. My Sellers'",
+        "element_type": "dropdown",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 25
+        },
+        "text_content": "2. My Sellers",
+        "parent_context": "List view header"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "A dropdown menu opens, displaying a list of other available account views (e.g., '1. My Buyers', '3. My Tenants').",
+      "why_this_action": "To show how to access different predefined lists of accounts.",
+      "preconditions": "The Accounts list view page has fully loaded.",
+      "visual_feedback": "A dropdown menu appears below the clicked element."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:41-0:44",
+      "action_type": "click",
+      "target_element": {
+        "description": "Properties tab in the top navigation menu",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 35,
+          "y": 15
+        },
+        "text_content": "Properties",
+        "parent_context": "Top navigation bar"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The page navigates to the Properties section, displaying a list view of properties.",
+      "why_this_action": "To demonstrate the Properties section and its available list views.",
+      "preconditions": "The user is on the Accounts page.",
+      "visual_feedback": "A loading spinner appears briefly, then the Properties list view page is rendered."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:48-0:54",
+      "action_type": "click",
+      "target_element": {
+        "description": "Dropdown arrow next to the current list view name '1. MY AVAILABLE PROPERTIES'",
+        "element_type": "dropdown",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 20,
+          "y": 25
+        },
+        "text_content": "1. MY AVAILABLE PROPERTIES",
+        "parent_context": "List view header"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "A dropdown menu opens, displaying a list of other available property views (e.g., 'All Live Properties', 'My Pending Properties').",
+      "why_this_action": "To show how to access different predefined lists of properties.",
+      "preconditions": "The Properties list view page has fully loaded.",
+      "visual_feedback": "A dropdown menu appears below the clicked element."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "1:00-1:02",
+      "action_type": "click",
+      "target_element": {
+        "description": "Home tab in the top navigation menu",
+        "element_type": "tab",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 10,
+          "y": 15
+        },
+        "text_content": "Home",
+        "parent_context": "Top navigation bar"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The page navigates back to the main Salesforce Home Page.",
+      "why_this_action": "To return to the starting point and continue the overview of the Home Page components.",
+      "preconditions": "The user is on the Properties page.",
+      "visual_feedback": "The Home Page layout is rendered."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "1:45-2:02",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "Main page body",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": "",
+        "parent_context": "Home Page"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The view scrolls down to reveal the lower sections of the Home Page.",
+      "why_this_action": "To show additional components on the Home Page, such as the 'Existing Accounts' search and the 'Turnover and Commissions Dashboard'.",
+      "preconditions": "The user is on the Home Page.",
+      "visual_feedback": "The page content moves upwards, revealing new elements at the bottom."
+    }
+  ],
+  "workflow_summary": "This workflow provides a high-level overview of a customized Salesforce Lightning Home Page. It demonstrates navigation to key sections like Accounts and Properties, shows how to switch between different list views within those sections, and highlights various components available on the Home Page itself, such as quick links, property filters, and dashboards.",
+  "decision_points": [],
+  "potential_variations": "The specific list views available in the dropdowns and the components visible on the Home Page may vary depending on the user's role (e.g., agent, manager, assistant) and permissions, as mentioned by the narrator.",
+  "error_handling_observed": "None observed."
+}

@@ -1,0 +1,215 @@
+{
+  "workflow_title": "Publishing Property Images to Lucas Fox Salesforce",
+  "application": "Lucas Fox Salesforce CRM",
+  "total_steps": 10,
+  "estimated_duration_seconds": 95,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:05-0:07",
+      "action_type": "click",
+      "target_element": {
+        "description": "Web Manager tab",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 130
+        },
+        "text_content": "Web Manager",
+        "parent_context": "Property details page"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Web Manager section expanded to show sub-tabs.",
+      "why_this_action": "To access the image management interface for the property.",
+      "preconditions": "Property record page is loaded.",
+      "visual_feedback": "Sub-tabs (Overview, Images, Publications, etc.) appeared."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:09-0:11",
+      "action_type": "click",
+      "target_element": {
+        "description": "Images sub-tab",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 12,
+          "y": 160
+        },
+        "text_content": "Images",
+        "parent_context": "Web Manager section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The Images management view loaded, showing Published and Remaining sections.",
+      "why_this_action": "To view uploaded images that are pending publication.",
+      "preconditions": "Web Manager tab is active.",
+      "visual_feedback": "Image grid displayed."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:23-0:25",
+      "action_type": "click",
+      "target_element": {
+        "description": "Checkbox for the pending image",
+        "element_type": "checkbox",
+        "location_on_screen": "bottom-left",
+        "approximate_coordinates_percent": {
+          "x": 10,
+          "y": 850
+        },
+        "text_content": null,
+        "parent_context": "Remaining images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The image was selected.",
+      "why_this_action": "To prepare the image for publication.",
+      "preconditions": "Pending images are visible in the 'Remaining' section.",
+      "visual_feedback": "Checkbox turned blue/checked."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:27-0:29",
+      "action_type": "click",
+      "target_element": {
+        "description": "Publish selected button",
+        "element_type": "button",
+        "location_on_screen": "bottom-left",
+        "approximate_coordinates_percent": {
+          "x": 25,
+          "y": 850
+        },
+        "text_content": "Publish selected",
+        "parent_context": "Remaining images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A confirmation modal appeared.",
+      "why_this_action": "To initiate the publication process for the selected image.",
+      "preconditions": "Image is selected.",
+      "visual_feedback": "Modal dialog appeared over the screen."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "0:30-0:32",
+      "action_type": "click",
+      "target_element": {
+        "description": "Publish button in modal",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 850
+        },
+        "text_content": "Publish",
+        "parent_context": "Confirmation modal"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The image was published.",
+      "why_this_action": "To confirm the action.",
+      "preconditions": "Confirmation modal is open.",
+      "visual_feedback": "Loading spinner, then 'Completed successfully' message."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "0:33-0:35",
+      "action_type": "click",
+      "target_element": {
+        "description": "Done button in modal",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 65,
+          "y": 850
+        },
+        "text_content": "Done",
+        "parent_context": "Confirmation modal"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "Modal closed.",
+      "why_this_action": "To return to the main image management view.",
+      "preconditions": "Publication successful message is visible.",
+      "visual_feedback": "Modal disappeared."
+    },
+    {
+      "step_number": 7,
+      "timestamp_approx": "0:56-0:58",
+      "action_type": "click",
+      "target_element": {
+        "description": "Tag icon on an image",
+        "element_type": "icon",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 450
+        },
+        "text_content": null,
+        "parent_context": "Published images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "Tagging modal opened.",
+      "why_this_action": "To categorize the image by room type for SEO/portal optimization.",
+      "preconditions": "Image is in the 'Published' section.",
+      "visual_feedback": "Tagging modal appeared."
+    },
+    {
+      "step_number": 8,
+      "timestamp_approx": "1:03-1:05",
+      "action_type": "click",
+      "target_element": {
+        "description": "Kitchen option in tag list",
+        "element_type": "menu_item",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 550
+        },
+        "text_content": "Kitchen",
+        "parent_context": "Tagging modal"
+      },
+      "input_data": "Kitchen",
+      "keyboard_shortcut": null,
+      "what_happened": "Kitchen tag selected.",
+      "why_this_action": "To correctly label the room type.",
+      "preconditions": "Tagging modal is open.",
+      "visual_feedback": "Option highlighted."
+    },
+    {
+      "step_number": 9,
+      "timestamp_approx": "1:05-1:07",
+      "action_type": "click",
+      "target_element": {
+        "description": "Save button in tagging modal",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 60,
+          "y": 850
+        },
+        "text_content": "Save",
+        "parent_context": "Tagging modal"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "Tag saved.",
+      "why_this_action": "To commit the tag change.",
+      "preconditions": "Tag selected.",
+      "visual_feedback": "Modal closed."
+    }
+  ],
+  "workflow_summary": "This workflow guides the user through publishing property images from a 'Remaining' queue to a 'Published' status in the Lucas Fox CRM, including tagging images with room types for better portal performance.",
+  "decision_points": [
+    {
+      "at_step": 3,
+      "description": "User decides whether to select individual images or use 'Select All' to publish multiple images at once."
+    }
+  ],
+  "potential_variations": "Users might choose to drag and drop images to reorder them instead of just publishing, or they might skip tagging if the image is not a specific room type.",
+  "error_handling_observed": "The system provides a 'Completed successfully' confirmation message upon successful publication."
+}

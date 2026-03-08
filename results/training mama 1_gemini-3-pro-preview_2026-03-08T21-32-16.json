@@ -1,0 +1,263 @@
+{
+  "workflow_title": "Publishing and Tagging Property Images in Salesforce Web Manager",
+  "application": "Salesforce (Lucas Fox custom application)",
+  "total_steps": 11,
+  "estimated_duration_seconds": 91,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:04-0:06",
+      "action_type": "click",
+      "target_element": {
+        "description": "Web Manager tab in the property record navigation menu",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 12,
+          "y": 53
+        },
+        "text_content": "Web Manager",
+        "parent_context": "Property record main navigation bar"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The view switches to the Web Manager interface for the selected property.",
+      "why_this_action": "To access the tools for managing the property's web presence, including images.",
+      "preconditions": "User must be on a property record page in Salesforce.",
+      "visual_feedback": "The content area below the tabs updates to show Web Manager options."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:09-0:11",
+      "action_type": "click",
+      "target_element": {
+        "description": "Images sub-tab within the Web Manager section",
+        "element_type": "tab",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 8,
+          "y": 62
+        },
+        "text_content": "Images",
+        "parent_context": "Web Manager sub-navigation menu"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The Images management interface loads, displaying 'Published images' and 'Remaining images' sections.",
+      "why_this_action": "To view and manage the photographs associated with the property.",
+      "preconditions": "The Web Manager tab must be active.",
+      "visual_feedback": "A grid of image placeholders or actual images appears in the main content area."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:18-0:22",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "Main browser window scrollbar",
+        "element_type": "other",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 99,
+          "y": 50
+        },
+        "text_content": "",
+        "parent_context": "Browser window"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The page scrolls down to reveal the 'Remaining images' section.",
+      "why_this_action": "To locate the newly uploaded images that have not yet been published to the website.",
+      "preconditions": "The Images tab must be loaded.",
+      "visual_feedback": "The 'Remaining images' section becomes visible, showing thumbnails of unpublished photos."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:25-0:27",
+      "action_type": "click",
+      "target_element": {
+        "description": "Select all link above the remaining images grid",
+        "element_type": "link",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 35,
+          "y": 24
+        },
+        "text_content": "Select all",
+        "parent_context": "Remaining images section header"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "All checkboxes on the thumbnails in the 'Remaining images' section are checked.",
+      "why_this_action": "To quickly select all newly uploaded images for publishing in one batch.",
+      "preconditions": "There must be images in the 'Remaining images' section.",
+      "visual_feedback": "Checkmarks appear on all image thumbnails in the section."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "0:27-0:29",
+      "action_type": "click",
+      "target_element": {
+        "description": "Publish selected button next to the Select all link",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 24
+        },
+        "text_content": "Publish selected",
+        "parent_context": "Remaining images section header"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "A modal dialog titled 'Publish these images' appears.",
+      "why_this_action": "To initiate the publishing process for the selected images.",
+      "preconditions": "At least one image must be selected.",
+      "visual_feedback": "A modal overlay appears on the screen."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "0:30-0:32",
+      "action_type": "click",
+      "target_element": {
+        "description": "Blue Publish button inside the modal dialog",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 85
+        },
+        "text_content": "Publish",
+        "parent_context": "Publish these images modal dialog"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The system processes the request to publish the images.",
+      "why_this_action": "To confirm the action and actually publish the images to the web.",
+      "preconditions": "The 'Publish these images' modal must be open.",
+      "visual_feedback": "A loading state may briefly appear, followed by a success message within the modal."
+    },
+    {
+      "step_number": 7,
+      "timestamp_approx": "0:33-0:35",
+      "action_type": "click",
+      "target_element": {
+        "description": "Done button inside the success modal dialog",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 85
+        },
+        "text_content": "Done",
+        "parent_context": "Publish these images modal dialog (success state)"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The modal dialog closes.",
+      "why_this_action": "To dismiss the success message and return to the image management interface.",
+      "preconditions": "The publishing process must be complete and the success message displayed.",
+      "visual_feedback": "The modal disappears, revealing the underlying page."
+    },
+    {
+      "step_number": 8,
+      "timestamp_approx": "0:35-0:40",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "Main browser window scrollbar",
+        "element_type": "other",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 99,
+          "y": 50
+        },
+        "text_content": "",
+        "parent_context": "Browser window"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The page scrolls up to the 'Published images' section.",
+      "why_this_action": "To view the newly published images and begin organizing/tagging them.",
+      "preconditions": "The modal must be closed.",
+      "visual_feedback": "The 'Published images' grid becomes visible, now including the recently published photos."
+    },
+    {
+      "step_number": 9,
+      "timestamp_approx": "0:55-0:57",
+      "action_type": "click",
+      "target_element": {
+        "description": "Tag icon below the first image thumbnail",
+        "element_type": "icon",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 65
+        },
+        "text_content": "No label",
+        "parent_context": "Image thumbnail card in Published images section"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "A popover menu titled 'Select the image label' appears with a list of room types.",
+      "why_this_action": "To assign a descriptive label to the image for better web presentation and SEO.",
+      "preconditions": "The image must be in the 'Published images' section.",
+      "visual_feedback": "A popover menu appears near the clicked icon."
+    },
+    {
+      "step_number": 10,
+      "timestamp_approx": "0:59-1:01",
+      "action_type": "click",
+      "target_element": {
+        "description": "Living room option in the label selection list",
+        "element_type": "menu_item",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 75
+        },
+        "text_content": "Living room",
+        "parent_context": "Select the image label popover menu"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The 'Living room' option is selected.",
+      "why_this_action": "To accurately describe the content of the specific photograph.",
+      "preconditions": "The label selection popover must be open.",
+      "visual_feedback": "The selected option may be highlighted."
+    },
+    {
+      "step_number": 11,
+      "timestamp_approx": "1:05-1:07",
+      "action_type": "click",
+      "target_element": {
+        "description": "Save button at the bottom of the label selection popover",
+        "element_type": "button",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 85
+        },
+        "text_content": "Save",
+        "parent_context": "Select the image label popover menu"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The popover closes, and the label below the image updates to 'Living room'.",
+      "why_this_action": "To apply the selected label to the image.",
+      "preconditions": "A label option must be selected in the popover.",
+      "visual_feedback": "The popover disappears, and the text 'No label' changes to 'Living room' on the image card."
+    }
+  ],
+  "workflow_summary": "This workflow demonstrates how to publish newly uploaded property images to a website using a Salesforce-based Web Manager tool. It involves navigating to the image management section, selecting unpublished images, publishing them in bulk, and then assigning descriptive labels (tags) to individual published images to improve web positioning and user experience.",
+  "decision_points": [
+    {
+      "at_step": 4,
+      "description": "The user chose to 'Select all' remaining images. Alternatively, they could have manually checked specific images to publish only a subset."
+    },
+    {
+      "at_step": 10,
+      "description": "The user selected 'Living room' based on the visual content of the specific photo. This decision must be made individually for each photo based on what it depicts."
+    }
+  ],
+  "potential_variations": "The number of images to publish will vary. The specific labels applied will depend entirely on the content of each photograph. The user might also choose to drag and drop images to reorder them before or after tagging, as mentioned in the audio track.",
+  "error_handling_observed": "No errors were observed in this workflow. A success message was displayed after publishing."
+}

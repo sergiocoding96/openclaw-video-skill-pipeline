@@ -1,0 +1,144 @@
+{
+  "workflow_title": "Salesforce Home Page Overview",
+  "application": "Salesforce",
+  "total_steps": 6,
+  "estimated_duration_seconds": 122,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:28-0:31",
+      "action_type": "click",
+      "target_element": {
+        "description": "Accounts tab in the top navigation bar",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 25,
+          "y": 15
+        },
+        "text_content": "Accounts",
+        "parent_context": "Top navigation menu"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "Navigates to the Accounts list view page.",
+      "why_this_action": "To demonstrate the Accounts section where client lists are stored.",
+      "preconditions": "Home page is loaded.",
+      "visual_feedback": "Page changes to the Accounts list view, showing a list of records."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:33-0:35",
+      "action_type": "click",
+      "target_element": {
+        "description": "Dropdown arrow next to the current list view name",
+        "element_type": "dropdown",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 25
+        },
+        "text_content": "2. My Sellers",
+        "parent_context": "Accounts list view header"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "Opens a dropdown menu showing available list views.",
+      "why_this_action": "To show the different types of client lists available (buyers, sellers, tenants).",
+      "preconditions": "Accounts page is loaded.",
+      "visual_feedback": "Dropdown menu appears with a list of options like '1. My Buyers', '2. My Sellers', etc."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:41-0:44",
+      "action_type": "click",
+      "target_element": {
+        "description": "Properties tab in the top navigation bar",
+        "element_type": "tab",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 35,
+          "y": 15
+        },
+        "text_content": "Properties",
+        "parent_context": "Top navigation menu"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "Navigates to the Properties list view page.",
+      "why_this_action": "To demonstrate the Properties section where property lists are stored.",
+      "preconditions": "Accounts page is loaded.",
+      "visual_feedback": "Page changes to the Properties list view, showing a list of property records."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:47-0:49",
+      "action_type": "click",
+      "target_element": {
+        "description": "Dropdown arrow next to the current list view name",
+        "element_type": "dropdown",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 25
+        },
+        "text_content": "1. MY AVAILABLE PROPERTIES",
+        "parent_context": "Properties list view header"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "Opens a dropdown menu showing available list views.",
+      "why_this_action": "To show the different types of property lists available (available, live, pending).",
+      "preconditions": "Properties page is loaded.",
+      "visual_feedback": "Dropdown menu appears with a list of options like '1. MY AVAILABLE PROPERTIES', 'All Live Properties', etc."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "0:59-1:02",
+      "action_type": "click",
+      "target_element": {
+        "description": "Home tab in the top navigation bar",
+        "element_type": "tab",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 10,
+          "y": 15
+        },
+        "text_content": "Home",
+        "parent_context": "Top navigation menu"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "Navigates back to the main Home page dashboard.",
+      "why_this_action": "To return to the main dashboard to explain its components.",
+      "preconditions": "Properties page is loaded.",
+      "visual_feedback": "Page changes back to the initial Home page dashboard with various widgets."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "1:45-1:50",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "Main page content area",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": "",
+        "parent_context": "Home page dashboard"
+      },
+      "input_data": "",
+      "keyboard_shortcut": "",
+      "what_happened": "The page scrolls down to reveal lower sections of the dashboard.",
+      "why_this_action": "To show additional components on the dashboard like the 'Existing Accounts' search and 'Turnover' dashboard.",
+      "preconditions": "Home page is loaded and user has finished explaining the top sections.",
+      "visual_feedback": "The view shifts downwards, revealing new UI elements like a search form and a dashboard component."
+    }
+  ],
+  "workflow_summary": "This workflow provides an overview of the Salesforce Home Page and basic navigation. It demonstrates how to access the Accounts and Properties tabs, view different list views within those tabs, and explores the various widgets and sections available on the main Home dashboard, including quick links, property filters, and search tools.",
+  "decision_points": [],
+  "potential_variations": "The specific list views available in the dropdowns and the widgets visible on the Home page may vary depending on the user's role and permissions within Salesforce.",
+  "error_handling_observed": "None observed."
+}

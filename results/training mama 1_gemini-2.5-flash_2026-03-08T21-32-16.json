@@ -1,0 +1,368 @@
+{
+  "workflow_title": "Publish and Tag Property Images in Salesforce Web Manager",
+  "application": "Salesforce (Lucas Fox custom interface)",
+  "total_steps": 15,
+  "estimated_duration_seconds": 90,
+  "steps": [
+    {
+      "step_number": 1,
+      "timestamp_approx": "0:05-0:06",
+      "action_type": "click",
+      "target_element": {
+        "description": "Web Manager tab",
+        "element_type": "tab",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 19.5,
+          "y": 10.5
+        },
+        "text_content": "Web Manager",
+        "parent_context": "Property record navigation tabs"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Web Manager' tab becomes active, and the content area below updates to show the Web Manager overview for the property.",
+      "why_this_action": "To access the interface for managing web-related content, including images, for the property.",
+      "preconditions": "The Salesforce Property record 'BCN30555' is open and the 'Details' tab is currently active.",
+      "visual_feedback": "The 'Web Manager' tab changes appearance to indicate it's active. The main content area below the tabs refreshes."
+    },
+    {
+      "step_number": 2,
+      "timestamp_approx": "0:07-0:08",
+      "action_type": "click",
+      "target_element": {
+        "description": "Images sub-tab within Web Manager",
+        "element_type": "tab",
+        "location_on_screen": "top-left",
+        "approximate_coordinates_percent": {
+          "x": 15,
+          "y": 15.5
+        },
+        "text_content": "Images",
+        "parent_context": "Web Manager sub-tabs"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Images' sub-tab becomes active, and the content area updates to display sections for 'Published images' and 'Remaining images'.",
+      "why_this_action": "To view and manage the images associated with the property, specifically to publish new images.",
+      "preconditions": "The 'Web Manager' tab is active.",
+      "visual_feedback": "The 'Images' sub-tab changes appearance to indicate it's active. The content area below refreshes to show image management sections."
+    },
+    {
+      "step_number": 3,
+      "timestamp_approx": "0:19-0:20",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "Main content area of the page",
+        "element_type": "other",
+        "location_on_screen": "center",
+        "approximate_coordinates_percent": {
+          "x": 50,
+          "y": 50
+        },
+        "text_content": null,
+        "parent_context": "Salesforce property page"
+      },
+      "input_data": "scroll_down",
+      "keyboard_shortcut": null,
+      "what_happened": "The page scrolls down, revealing the 'Remaining images' section which was previously partially or entirely off-screen.",
+      "why_this_action": "To make the 'Remaining images' section visible, where newly uploaded images from Synology appear before being published.",
+      "preconditions": "The 'Images' sub-tab is active and the 'Remaining images' section is not fully visible.",
+      "visual_feedback": "The scroll bar on the right side of the page moves down, and the content shifts upwards."
+    },
+    {
+      "step_number": 4,
+      "timestamp_approx": "0:24-0:25",
+      "action_type": "click",
+      "target_element": {
+        "description": "Checkbox next to the image file 'BCN31289 (2).jpg'",
+        "element_type": "checkbox",
+        "location_on_screen": "bottom-left",
+        "approximate_coordinates_percent": {
+          "x": 8,
+          "y": 75
+        },
+        "text_content": null,
+        "parent_context": "Remaining images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The checkbox is selected, indicating the image is chosen for an action. A 'Clear selection' button appears.",
+      "why_this_action": "To select a specific image from the 'Remaining images' section to be published to the website.",
+      "preconditions": "The 'Remaining images' section is visible and contains at least one unpublished image.",
+      "visual_feedback": "The checkbox fills with a checkmark. A 'Clear selection' button appears next to 'Publish selected'."
+    },
+    {
+      "step_number": 5,
+      "timestamp_approx": "0:26-0:27",
+      "action_type": "click",
+      "target_element": {
+        "description": "Publish selected button",
+        "element_type": "button",
+        "location_on_screen": "bottom-center",
+        "approximate_coordinates_percent": {
+          "x": 30,
+          "y": 75
+        },
+        "text_content": "Publish selected",
+        "parent_context": "Remaining images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A modal dialog titled 'Publish these images' appears, showing the selected image and a 'Publish' button.",
+      "why_this_action": "To initiate the publishing process for the selected image(s).",
+      "preconditions": "At least one image is selected in the 'Remaining images' section.",
+      "visual_feedback": "A new modal window overlays the current page content."
+    },
+    {
+      "step_number": 6,
+      "timestamp_approx": "0:29-0:30",
+      "action_type": "click",
+      "target_element": {
+        "description": "Publish button within the 'Publish these images' modal dialog",
+        "element_type": "button",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 60
+        },
+        "text_content": "Publish",
+        "parent_context": "Publish these images modal dialog"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A green progress bar appears, indicating the image is being uploaded. Upon completion, 'Completed successfully' and 'All images uploaded!' messages are displayed.",
+      "why_this_action": "To confirm and execute the publishing of the selected image(s) to the website.",
+      "preconditions": "The 'Publish these images' modal dialog is open.",
+      "visual_feedback": "A progress bar animates, then success messages appear in green."
+    },
+    {
+      "step_number": 7,
+      "timestamp_approx": "0:33-0:34",
+      "action_type": "click",
+      "target_element": {
+        "description": "Done button within the 'Publish these images' modal dialog",
+        "element_type": "button",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 60,
+          "y": 60
+        },
+        "text_content": "Done",
+        "parent_context": "Publish these images modal dialog"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Publish these images' modal dialog closes. The newly published image now appears in the 'Published images' section.",
+      "why_this_action": "To dismiss the publishing confirmation and return to the image management screen.",
+      "preconditions": "The image publishing process is complete and the success message is displayed.",
+      "visual_feedback": "The modal dialog disappears. The 'Published images' section updates to include the newly published image."
+    },
+    {
+      "step_number": 8,
+      "timestamp_approx": "0:37-0:38",
+      "action_type": "drag",
+      "target_element": {
+        "description": "Image thumbnail labeled '4. Balcony'",
+        "element_type": "image",
+        "location_on_screen": "top-center",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 30
+        },
+        "text_content": "4. Balcony",
+        "parent_context": "Published images section"
+      },
+      "input_data": {
+        "start_coordinates_percent": {
+          "x": 45,
+          "y": 30
+        },
+        "end_coordinates_percent": {
+          "x": 35,
+          "y": 30
+        }
+      },
+      "keyboard_shortcut": null,
+      "what_happened": "The image '4. Balcony' is moved to the position previously occupied by '3. Living room'. The numbering of the images adjusts accordingly.",
+      "why_this_action": "To reorder the published images, ensuring the most appealing photos appear first on the property listing, which is important for marketing and user engagement.",
+      "preconditions": "Images are displayed in the 'Published images' section.",
+      "visual_feedback": "The dragged image visually moves, and other images shift to accommodate the new order. The numerical labels on the images update."
+    },
+    {
+      "step_number": 9,
+      "timestamp_approx": "0:55-0:56",
+      "action_type": "click",
+      "target_element": {
+        "description": "Label icon (tag icon) on image thumbnail '16 No label'",
+        "element_type": "icon",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 60
+        },
+        "text_content": null,
+        "parent_context": "Published images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A modal dialog titled 'Select the image label' appears, displaying the image and a list of predefined room/area labels.",
+      "why_this_action": "To assign a descriptive label to the image, which helps with website positioning and organization in real estate portals.",
+      "preconditions": "Images are displayed in the 'Published images' section.",
+      "visual_feedback": "A new modal window overlays the current page content."
+    },
+    {
+      "step_number": 10,
+      "timestamp_approx": "1:03-1:04",
+      "action_type": "click",
+      "target_element": {
+        "description": "Kitchen label option in the 'Select the image label' modal",
+        "element_type": "menu_item",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 65,
+          "y": 35
+        },
+        "text_content": "Kitchen",
+        "parent_context": "Select the image label modal dialog"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Kitchen' radio button is selected.",
+      "why_this_action": "To categorize the image as depicting a kitchen, providing structured data for the property listing.",
+      "preconditions": "The 'Select the image label' modal dialog is open and the image clearly shows a kitchen.",
+      "visual_feedback": "A blue dot appears next to 'Kitchen', indicating selection."
+    },
+    {
+      "step_number": 11,
+      "timestamp_approx": "1:06-1:07",
+      "action_type": "click",
+      "target_element": {
+        "description": "Save button within the 'Select the image label' modal dialog",
+        "element_type": "button",
+        "location_on_screen": "bottom-right",
+        "approximate_coordinates_percent": {
+          "x": 60,
+          "y": 80
+        },
+        "text_content": "Save",
+        "parent_context": "Select the image label modal dialog"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Select the image label' modal dialog closes. The image thumbnail '16 No label' now displays 'Kitchen' as its label.",
+      "why_this_action": "To apply the chosen label to the image and close the labeling interface.",
+      "preconditions": "A label has been selected in the 'Select the image label' modal dialog.",
+      "visual_feedback": "The modal dialog disappears. The text on the image thumbnail updates from 'No label' to 'Kitchen'."
+    },
+    {
+      "step_number": 12,
+      "timestamp_approx": "1:10-1:11",
+      "action_type": "click",
+      "target_element": {
+        "description": "Label icon (tag icon) on image thumbnail '19 No label'",
+        "element_type": "icon",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 65,
+          "y": 60
+        },
+        "text_content": null,
+        "parent_context": "Published images section"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "A modal dialog titled 'Select the image label' appears, displaying the image and a list of predefined room/area labels.",
+      "why_this_action": "To assign a descriptive label to another image, continuing the process of organizing property media.",
+      "preconditions": "Images are displayed in the 'Published images' section.",
+      "visual_feedback": "A new modal window overlays the current page content."
+    },
+    {
+      "step_number": 13,
+      "timestamp_approx": "1:13-1:14",
+      "action_type": "scroll",
+      "target_element": {
+        "description": "List of labels within the 'Select the image label' modal dialog",
+        "element_type": "other",
+        "location_on_screen": "center-right",
+        "approximate_coordinates_percent": {
+          "x": 55,
+          "y": 50
+        },
+        "text_content": null,
+        "parent_context": "Select the image label modal dialog"
+      },
+      "input_data": "scroll_down",
+      "keyboard_shortcut": null,
+      "what_happened": "The list of labels within the modal scrolls down, revealing more options.",
+      "why_this_action": "To find the appropriate label ('Facade') which was not initially visible in the list.",
+      "preconditions": "The 'Select the image label' modal dialog is open and the desired label is off-screen.",
+      "visual_feedback": "The scroll bar within the label list moves down, and the visible labels change."
+    },
+    {
+      "step_number": 14,
+      "timestamp_approx": "1:15-1:16",
+      "action_type": "click",
+      "target_element": {
+        "description": "Facade label option in the 'Select the image label' modal",
+        "element_type": "menu_item",
+        "location_on_screen": "center-left",
+        "approximate_coordinates_percent": {
+          "x": 45,
+          "y": 70
+        },
+        "text_content": "Facade",
+        "parent_context": "Select the image label modal dialog"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Facade' radio button is selected.",
+      "why_this_action": "To categorize the image as depicting the facade of the property, contributing to better web positioning.",
+      "preconditions": "The 'Select the image label' modal dialog is open and 'Facade' is visible in the list.",
+      "visual_feedback": "A blue dot appears next to 'Facade', indicating selection."
+    },
+    {
+      "step_number": 15,
+      "timestamp_approx": "1:20-1:21",
+      "action_type": "click",
+      "target_element": {
+        "description": "Save button within the 'Select the image label' modal dialog",
+        "element_type": "button",
+        "location_on_screen": "bottom-right",
+        "approximate_coordinates_percent": {
+          "x": 60,
+          "y": 80
+        },
+        "text_content": "Save",
+        "parent_context": "Select the image label modal dialog"
+      },
+      "input_data": null,
+      "keyboard_shortcut": null,
+      "what_happened": "The 'Select the image label' modal dialog closes. The image thumbnail '19 No label' now displays 'Facade' as its label.",
+      "why_this_action": "To apply the chosen label to the image and close the labeling interface.",
+      "preconditions": "A label has been selected in the 'Select the image label' modal dialog.",
+      "visual_feedback": "The modal dialog disappears. The text on the image thumbnail updates from 'No label' to 'Facade'."
+    }
+  ],
+  "workflow_summary": "This workflow demonstrates how to publish images that have been uploaded to Synology to a Salesforce property record's 'Web Manager' section. It covers selecting and publishing pending images, reordering published images for optimal display, and tagging individual images with relevant room/area labels to improve website positioning on real estate portals.",
+  "decision_points": [
+    {
+      "at_step": 4,
+      "description": "The user chose to select a single image for publishing. An alternative would be to click 'Select all' if multiple images needed to be published simultaneously."
+    },
+    {
+      "at_step": 8,
+      "description": "The user decided to reorder the images by dragging 'Balcony' to an earlier position. This decision is based on the best visual representation of the property, typically placing the most attractive images first."
+    },
+    {
+      "at_step": 10,
+      "description": "The user selected 'Kitchen' as the label for the image. This decision is based on the content of the image itself. Many other labels were available, and the correct one must be chosen for each image."
+    },
+    {
+      "at_step": 14,
+      "description": "The user selected 'Facade' as the label for the image. Similar to step 10, this decision is based on the image content, with many other labels available."
+    }
+  ],
+  "potential_variations": "The number of 'Remaining images' can vary. The specific labels chosen for images will depend on the content of each image. The order of images will be determined by marketing strategy. The number of images to publish (20-40 recommended) can vary.",
+  "error_handling_observed": "No error handling was observed in this recording. The publishing process completed successfully."
+}
