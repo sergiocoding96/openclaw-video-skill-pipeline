@@ -6,5 +6,7 @@ node_modules/
 *.avi
 *.mkv
 pipeline-output/
+screenpipe-samples/
+.npm-cache-npx/
 videos/
 *.png
