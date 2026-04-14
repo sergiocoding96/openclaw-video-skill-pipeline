@@ -6,6 +6,7 @@ node_modules/
 *.avi
 *.mkv
 pipeline-output/
+results/manifests/
 screenpipe-samples/
 npx-out.txt
 npx-screenpipe-log.txt
