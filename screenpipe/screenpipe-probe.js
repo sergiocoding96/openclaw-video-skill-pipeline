@@ -62,12 +62,21 @@ function parseArgs(argv) {
   const limitRaw = getArg(argv, '--limit');
   const baseUrlOverride = getArg(argv, '--base-url');
 
-  if (minutesRaw != null) {
+  // Allow bare number as positional arg: `node probe.js 5` == `--minutes 5`
+  const firstArg = argv[0];
+  const bareMinutes =
+    minutesRaw == null && since == null && until == null &&
+    firstArg && !firstArg.startsWith('-') && Number.isFinite(Number(firstArg))
+      ? firstArg
+      : null;
+
+  if (bareMinutes != null || minutesRaw != null) {
+    const raw = bareMinutes || minutesRaw;
     if (since != null || until != null) {
       console.error('ERROR: Use either --minutes or --since/--until, not both.');
       process.exit(1);
     }
-    const n = Number(minutesRaw);
+    const n = Number(raw);
     if (!Number.isFinite(n) || n <= 0) {
       console.error('ERROR: --minutes must be a positive number.');
       process.exit(1);
