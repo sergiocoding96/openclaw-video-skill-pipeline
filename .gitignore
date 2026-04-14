@@ -7,6 +7,9 @@ node_modules/
 *.mkv
 pipeline-output/
 screenpipe-samples/
+npx-out.txt
+npx-screenpipe-log.txt
 .npm-cache-npx/
+vendor/screenpipe/
 videos/
 *.png
