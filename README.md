@@ -64,6 +64,7 @@ node benchmark-video.js "path/to/video.mp4"
 | `calc-costs.js` | Calculate per-model API costs from benchmark results |
 | `record-feedback.js` | Record replay outcomes and selector corrections |
 | `npm run mcp:badass-skills` | MCP stdio server: list/read `SKILL.md` from `BADASS_SKILLS_ROOT` (install deps under `mcp/badass-skills-server` first) |
+| `npm test` | Runs MCP skill-store unit tests + publish-workflow YAML smoke check |
 
 ## Feedback Loop
 

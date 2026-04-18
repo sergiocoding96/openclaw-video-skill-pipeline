@@ -6,7 +6,8 @@
   "description": "MCP server: list and read OpenClaw SKILL.md folders (badass-skills layout)",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node --test test/skill-store.test.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
