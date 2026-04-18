@@ -1,0 +1,72 @@
+# Publishes a skill folder from this repo into https://github.com/sergiocoding96/badass-skills
+#
+# One-time: Repo → Settings → Secrets → Actions → BADASS_SKILLS_PUBLISH_TOKEN
+# (PAT with contents:write on sergiocoding96/badass-skills; GITHUB_TOKEN cannot push to another repo.)
+#
+# Run: Actions → "Publish skill to badass-skills" → workflow_dispatch
+#   skill_slug   — target folder name in badass-skills (e.g. my-workflow)
+#   source_path  — path in THIS repo to the folder containing SKILL.md (e.g. skills/export/my-workflow)
+
+name: Publish skill to badass-skills
+
+on:
+  workflow_dispatch:
+    inputs:
+      skill_slug:
+        description: 'Folder name in badass-skills (letters, numbers, . _ -)'
+        required: true
+        type: string
+      source_path:
+        description: 'Path in this repo to the skill folder (must contain SKILL.md)'
+        required: true
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pipeline repo
+        uses: actions/checkout@v4
+
+      - name: Validate inputs
+        env:
+          SLUG: ${{ github.event.inputs.skill_slug }}
+          SRC: ${{ github.event.inputs.source_path }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$SLUG" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]*$ ]]; then
+            echo "::error::skill_slug must be a single safe path segment"
+            exit 1
+          fi
+          SRC="${SRC%/}"
+          if [[ ! -f "$SRC/SKILL.md" ]]; then
+            echo "::error::Expected $SRC/SKILL.md — fix source_path or add the file."
+            exit 1
+          fi
+          echo "SOURCE_DIR=$SRC" >> "$GITHUB_ENV"
+
+      - name: Clone badass-skills and push
+        env:
+          TOKEN: ${{ secrets.BADASS_SKILLS_PUBLISH_TOKEN }}
+          SLUG: ${{ github.event.inputs.skill_slug }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${TOKEN:-}" ]]; then
+            echo "::error::BADASS_SKILLS_PUBLISH_TOKEN is not set (Settings → Secrets → Actions)."
+            exit 1
+          fi
+          git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/sergiocoding96/badass-skills.git" /tmp/badass-skills
+          rm -rf "/tmp/badass-skills/${SLUG}"
+          mkdir -p "/tmp/badass-skills/${SLUG}"
+          cp -a "${GITHUB_WORKSPACE}/${SOURCE_DIR}/." "/tmp/badass-skills/${SLUG}/"
+          cd /tmp/badass-skills
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "${SLUG}"
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          SHORT_SHA="${GITHUB_SHA:0:7}"
+          git commit -m "Update skill: ${SLUG} (from openclaw-video-skill-pipeline ${SHORT_SHA})"
+          git push origin HEAD:main

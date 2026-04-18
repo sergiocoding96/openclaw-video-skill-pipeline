@@ -13,7 +13,8 @@
     "screenpipe:live": "node screenpipe/live-to-skill.js",
     "screenpipe:probe": "node screenpipe/screenpipe-probe.js",
     "screenpipe:setup": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-screenpipe.ps1",
-    "screenpipe:compile": "node src/cli/run-screenpipe-compile.js"
+    "screenpipe:compile": "node src/cli/run-screenpipe-compile.js",
+    "mcp:badass-skills": "node mcp/badass-skills-server/index.js"
   },
   "keywords": [
     "openclaw",

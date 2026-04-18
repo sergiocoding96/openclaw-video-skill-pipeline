@@ -63,6 +63,7 @@ node benchmark-video.js "path/to/video.mp4"
 | `generate-skill.js` | Simple JSON → SKILL.md converter (legacy, uses agent-browser syntax) |
 | `calc-costs.js` | Calculate per-model API costs from benchmark results |
 | `record-feedback.js` | Record replay outcomes and selector corrections |
+| `npm run mcp:badass-skills` | MCP stdio server: list/read `SKILL.md` from `BADASS_SKILLS_ROOT` (install deps under `mcp/badass-skills-server` first) |
 
 ## Feedback Loop
 
@@ -112,6 +113,37 @@ Key finding: **3.x models correctly filter narration/hover noise from actual act
 GEMINI_API_KEY=your-google-ai-key
 OPENAI_API_KEY=your-openai-key
 ```
+
+## Publish skills to badass-skills
+
+The curated skill library lives at [sergiocoding96/badass-skills](https://github.com/sergiocoding96/badass-skills). To publish a generated skill from **this** repo:
+
+1. Copy the skill folder (must include `SKILL.md`) into a stable path in this repo, for example `skills/export/<skill-name>/`.
+2. Commit and push that folder to GitHub (optional but keeps a review trail).
+3. In GitHub: **Actions** → **Publish skill to badass-skills** → **Run workflow**.
+4. Enter **skill_slug** (target folder name in badass-skills) and **source_path** (path in this repo, e.g. `skills/export/my-workflow`).
+
+**Repository secret (one-time):** create `BADASS_SKILLS_PUBLISH_TOKEN` under **Settings → Secrets and variables → Actions**. Use a personal access token with `contents: write` on `badass-skills`. The default `GITHUB_TOKEN` cannot push to another repository.
+
+## MCP server (read skills locally)
+
+A small MCP server lists and reads `SKILL.md` files from a **local clone** of badass-skills (Hermes/Cursor can pin a tag/commit in that clone).
+
+```bash
+cd mcp/badass-skills-server && npm install
+```
+
+Set an absolute path to the clone root, then start stdio (used by Cursor MCP config):
+
+```bash
+# Windows PowerShell
+$env:BADASS_SKILLS_ROOT="D:\path\to\badass-skills"
+npm run mcp:badass-skills
+```
+
+**Tools:** `list_skills` (no args), `get_skill` with `{ "skill_slug": "gemini-video" }`.
+
+**Cursor:** add an MCP server whose command runs `node` with argument `mcp/badass-skills-server/index.js` from this repo, cwd set to the repo root, and env `BADASS_SKILLS_ROOT` pointing at your clone.
 
 ## Example Output
 
