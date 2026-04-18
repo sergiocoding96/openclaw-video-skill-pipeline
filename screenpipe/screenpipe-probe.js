@@ -36,7 +36,7 @@ Options:
   --base-url URL  Override SCREENPIPE_URL for this run
 
 Environment:
-  SCREENPIPE_URL   Default http://localhost:3030
+  SCREENPIPE_URL   Default http://127.0.0.1:3030
 `);
 }
 

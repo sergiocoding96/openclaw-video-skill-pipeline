@@ -105,7 +105,7 @@ function main() {
   console.log('  E2E: Screenpipe → SKILL.md → MiniMax → skills/export');
   console.log('═'.repeat(60));
   console.log(`  Minutes window: ${minutes} (last ${minutes} min of Screenpipe data)`);
-  console.log('  Start Screenpipe first (default API http://localhost:3030).');
+  console.log('  Start Screenpipe first (default API http://127.0.0.1:3030; set SCREENPIPE_URL if needed).');
   console.log('');
 
   const liveScript = path.join(repoRoot, 'screenpipe', 'live-to-skill.js');

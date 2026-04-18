@@ -8,7 +8,8 @@
 
 function normalizeBaseUrl(url) {
   const s = (url || '').trim();
-  if (!s) return 'http://localhost:3030';
+  // Use 127.0.0.1 so Node does not prefer IPv6 (::1) when Screenpipe listens on IPv4 only (common on Windows).
+  if (!s) return 'http://127.0.0.1:3030';
   return s.replace(/\/+$/, '');
 }
 
