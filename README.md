@@ -65,6 +65,7 @@ node benchmark-video.js "path/to/video.mp4"
 | `record-feedback.js` | Record replay outcomes and selector corrections |
 | `npm run mcp:badass-skills` | MCP stdio server: list/read `SKILL.md` from `BADASS_SKILLS_ROOT` (install deps under `mcp/badass-skills-server` first) |
 | `npm test` | Runs MCP skill-store unit tests + publish-workflow YAML smoke check |
+| `npm run e2e:screenpipe -- --minutes 5` | Screenpipe last N min → SKILL.md + MiniMax compile → `skills/export/<slug>/` |
 
 ## Feedback Loop
 
@@ -114,6 +115,16 @@ Key finding: **3.x models correctly filter narration/hover noise from actual act
 GEMINI_API_KEY=your-google-ai-key
 OPENAI_API_KEY=your-openai-key
 ```
+
+## End-to-end: Screenpipe → SKILL → MiniMax → export for badass-skills
+
+With **Screenpipe running and recording**, this uses the **last N minutes** of captured data (it does not wait N minutes in real time):
+
+```bash
+npm run e2e:screenpipe -- --minutes 5
+```
+
+Requires **`GEMINI_API_KEY`** and **`MINIMAX_API_KEY`** in `.env` (use `--no-compile` to skip MiniMax). It runs `screenpipe/live-to-skill.js`, then `run-screenpipe-compile.js` on the saved `search.json`, then copies the skill into **`skills/export/<slug>/`** (plus `artifacts/minimax-compilation.json` and `artifacts/screenpipe-search.json`). Commit that folder, push, then run **Publish skill to badass-skills** with `source_path` = `skills/export/<slug>`.
 
 ## Publish skills to badass-skills
 

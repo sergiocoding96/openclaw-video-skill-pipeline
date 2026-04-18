@@ -17,7 +17,8 @@
     "mcp:badass-skills": "node mcp/badass-skills-server/index.js",
     "test": "npm run test:mcp && npm run test:workflow",
     "test:mcp": "npm test --prefix mcp/badass-skills-server",
-    "test:workflow": "node --test test/publish-workflow.smoke.test.mjs"
+    "test:workflow": "node --test test/publish-workflow.smoke.test.mjs",
+    "e2e:screenpipe": "node scripts/e2e-screenpipe-skill.js"
   },
   "keywords": [
     "openclaw",
