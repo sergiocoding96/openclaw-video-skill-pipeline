@@ -1,5 +1,7 @@
 node_modules/
 .env
+.claude/
+.screenpipe.log
 *.mp4
 *.webm
 *.mov

@@ -1,15 +1,19 @@
-# Publishes a skill folder from this repo into https://github.com/sergiocoding96/badass-skills
+# Publishes skill folders from this repo into https://github.com/sergiocoding96/badass-skills
+#
+# Triggers:
+#   - push to main that touches skills/export/** — auto-publishes every changed skill folder
+#   - workflow_dispatch — manual fallback for a single slug (backfill / re-publish)
 #
 # One-time: Repo → Settings → Secrets → Actions → BADASS_SKILLS_PUBLISH_TOKEN
 # (PAT with contents:write on sergiocoding96/badass-skills; GITHUB_TOKEN cannot push to another repo.)
-#
-# Run: Actions → "Publish skill to badass-skills" → workflow_dispatch
-#   skill_slug   — target folder name in badass-skills (e.g. my-workflow)
-#   source_path  — path in THIS repo to the folder containing SKILL.md (e.g. skills/export/my-workflow)
 
 name: Publish skill to badass-skills
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/export/**'
   workflow_dispatch:
     inputs:
       skill_slug:
@@ -27,46 +31,116 @@ jobs:
     steps:
       - name: Checkout pipeline repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Validate inputs
+      - name: Detect skills to publish
+        id: detect
         env:
-          SLUG: ${{ github.event.inputs.skill_slug }}
-          SRC: ${{ github.event.inputs.source_path }}
+          EVENT: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.event.after }}
+          SLUG_INPUT: ${{ github.event.inputs.skill_slug }}
+          SRC_INPUT: ${{ github.event.inputs.source_path }}
         run: |
           set -euo pipefail
-          if [[ ! "$SLUG" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]*$ ]]; then
-            echo "::error::skill_slug must be a single safe path segment"
-            exit 1
+          targets=()
+
+          slug_re='^[a-zA-Z0-9][a-zA-Z0-9._-]*$'
+
+          if [[ "$EVENT" == "workflow_dispatch" ]]; then
+            if [[ ! "$SLUG_INPUT" =~ $slug_re ]]; then
+              echo "::error::skill_slug must be a single safe path segment"
+              exit 1
+            fi
+            SRC="${SRC_INPUT%/}"
+            if [[ ! -f "$SRC/SKILL.md" ]]; then
+              echo "::error::Expected $SRC/SKILL.md — fix source_path or add the file."
+              exit 1
+            fi
+            targets+=("${SLUG_INPUT}|${SRC}")
+          else
+            # push event: diff before..after for changes under skills/export/<slug>/...
+            # If BEFORE is all zeros (new branch) or unreachable, fall back to the tracked tree.
+            if [[ "$BEFORE_SHA" =~ ^0+$ ]] || ! git rev-parse --quiet --verify "$BEFORE_SHA^{commit}" >/dev/null; then
+              echo "No reachable before-SHA; falling back to all tracked skills/export/*/SKILL.md"
+              mapfile -t slugs < <(git ls-files 'skills/export/*/SKILL.md' | awk -F/ '{print $3}' | sort -u)
+            else
+              mapfile -t slugs < <(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- 'skills/export/*/**' | awk -F/ 'NF>=3 && $1=="skills" && $2=="export" && $3!="" {print $3}' | sort -u)
+            fi
+
+            if [[ ${#slugs[@]} -eq 0 ]]; then
+              echo "No skill folders changed under skills/export/. Nothing to publish."
+            fi
+
+            for slug in "${slugs[@]}"; do
+              [[ -z "$slug" ]] && continue
+              if [[ ! "$slug" =~ $slug_re ]]; then
+                echo "::warning::Skipping invalid slug '$slug'"
+                continue
+              fi
+              src="skills/export/$slug"
+              if [[ ! -f "$src/SKILL.md" ]]; then
+                echo "::warning::Skipping '$slug': no SKILL.md at $src (folder deleted or malformed)"
+                continue
+              fi
+              targets+=("${slug}|${src}")
+            done
           fi
-          SRC="${SRC%/}"
-          if [[ ! -f "$SRC/SKILL.md" ]]; then
-            echo "::error::Expected $SRC/SKILL.md — fix source_path or add the file."
-            exit 1
+
+          if [[ ${#targets[@]} -eq 0 ]]; then
+            echo "Nothing to publish."
+            echo "targets=" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
-          echo "SOURCE_DIR=$SRC" >> "$GITHUB_ENV"
+
+          {
+            echo 'targets<<TARGETS_EOF'
+            printf '%s\n' "${targets[@]}"
+            echo 'TARGETS_EOF'
+          } >> "$GITHUB_OUTPUT"
+          printf 'Will publish:\n%s\n' "${targets[@]}"
 
       - name: Clone badass-skills and push
+        if: steps.detect.outputs.targets != ''
         env:
           TOKEN: ${{ secrets.BADASS_SKILLS_PUBLISH_TOKEN }}
-          SLUG: ${{ github.event.inputs.skill_slug }}
+          TARGETS: ${{ steps.detect.outputs.targets }}
         run: |
           set -euo pipefail
           if [[ -z "${TOKEN:-}" ]]; then
             echo "::error::BADASS_SKILLS_PUBLISH_TOKEN is not set (Settings → Secrets → Actions)."
             exit 1
           fi
+
           git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/sergiocoding96/badass-skills.git" /tmp/badass-skills
-          rm -rf "/tmp/badass-skills/${SLUG}"
-          mkdir -p "/tmp/badass-skills/${SLUG}"
-          cp -a "${GITHUB_WORKSPACE}/${SOURCE_DIR}/." "/tmp/badass-skills/${SLUG}/"
           cd /tmp/badass-skills
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- "${SLUG}"
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
+
           SHORT_SHA="${GITHUB_SHA:0:7}"
-          git commit -m "Update skill: ${SLUG} (from openclaw-video-skill-pipeline ${SHORT_SHA})"
-          git push origin HEAD:main
+          pushed_any=0
+          published=()
+          while IFS='|' read -r slug src; do
+            [[ -z "$slug" ]] && continue
+            echo "--- Publishing $slug from $src ---"
+            rm -rf "./${slug}"
+            mkdir -p "./${slug}"
+            cp -a "${GITHUB_WORKSPACE}/${src}/." "./${slug}/"
+            git add -- "${slug}"
+            if git diff --staged --quiet; then
+              echo "No net changes for ${slug} — skipping commit."
+              git reset -- "${slug}" >/dev/null
+              continue
+            fi
+            git commit -m "Update skill: ${slug} (from openclaw-video-skill-pipeline ${SHORT_SHA})"
+            published+=("${slug}")
+            pushed_any=1
+          done <<< "$TARGETS"
+
+          if [[ $pushed_any -eq 1 ]]; then
+            git push origin HEAD:main
+            printf 'Published: %s\n' "${published[@]}"
+          else
+            echo "Nothing to commit."
+          fi
