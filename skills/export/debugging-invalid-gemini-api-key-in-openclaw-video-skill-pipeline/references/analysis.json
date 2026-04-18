@@ -1,0 +1,105 @@
+{
+  "workflow_title": "Debugging Invalid Gemini API Key in openclaw-video-skill-pipeline",
+  "application": "Cursor.exe",
+  "application_url_pattern": null,
+  "login_required": false,
+  "workflow_summary": "The user encountered an 'INVALID GEMINI API KEY' error when running a pipeline in their Cursor.exe development environment. To investigate, they switched to Google Chrome, navigated to Google AI Studio's API Keys page to inspect their Gemini API key, and then returned to their development environment.",
+  "steps": [
+    {
+      "step_number": 1,
+      "step_type": "informational",
+      "action_type": null,
+      "timestamp_approx": "0:02",
+      "target_element": {
+        "text_content": "Gemini gemini-2.5-flash API key not valid",
+        "visual_description": "Error message in the terminal panel within Cursor.exe, indicating an invalid Gemini API key.",
+        "aria_role": "generic",
+        "location_on_screen": "center"
+      },
+      "narration_context": "The user observes an error message in the terminal, stating that the Gemini API key is not valid, and suggesting to verify it on Google AI Studio.",
+      "why_this_action": "To understand the cause of the pipeline failure and follow the suggested debugging step.",
+      "expected_result": "Identification of the API key issue and the recommended action.",
+      "wait_condition": null,
+      "possible_failure": null
+    },
+    {
+      "step_number": 2,
+      "step_type": "action",
+      "action_type": "keyboard_shortcut",
+      "timestamp_approx": "0:02",
+      "target_element": {
+        "text_content": "Task Switching",
+        "visual_description": "Windows Task Switcher (Alt+Tab) showing open applications.",
+        "aria_role": "generic",
+        "location_on_screen": "center",
+        "_grounding_confidence": 0.4,
+        "_grounded_selector": null
+      },
+      "narration_context": "The user switches from the Cursor.exe application to Google Chrome, likely using a keyboard shortcut like Alt+Tab.",
+      "why_this_action": "To access Google AI Studio as instructed by the terminal error message for API key verification.",
+      "expected_result": "Google Chrome browser window becomes active, displaying the Google AI Studio API Keys page.",
+      "wait_condition": null,
+      "possible_failure": "Browser not open or Google AI Studio tab not found."
+    },
+    {
+      "step_number": 3,
+      "step_type": "action",
+      "action_type": "navigate",
+      "timestamp_approx": "0:07",
+      "target_element": {
+        "text_content": "aistudio.google.com/u/2/api-keys",
+        "visual_description": "The URL in the Chrome address bar, pointing to the Google AI Studio API Keys page.",
+        "aria_role": "textbox",
+        "location_on_screen": "top-center",
+        "_grounded_selector": "openclaw browser find role textbox --name \"aistudio.google.com/u/2/api-keys\" fill \"\"",
+        "_grounded_alt_selector": "openclaw browser snapshot --interactive",
+        "_grounding_confidence": 0.85
+      },
+      "narration_context": "The user navigates to the Google AI Studio API Keys page to review their credentials.",
+      "why_this_action": "To verify the Gemini API key and its configuration (e.g., permissions, restrictions) as recommended by the error message in the terminal.",
+      "expected_result": "The Google AI Studio API Keys page is displayed, showing a list of API keys.",
+      "wait_condition": "networkidle",
+      "possible_failure": "Incorrect URL, network issues, or login required for Google AI Studio.",
+      "_grounding_frame": "frame_6860.jpg",
+      "_grounding_frame_path": "C:\\Users\\myriz\\.screenpipe\\data/data\\2026-04-18\\1776506473885_m65537.jpg",
+      "_context": {}
+    },
+    {
+      "step_number": 4,
+      "step_type": "informational",
+      "action_type": null,
+      "timestamp_approx": "0:07",
+      "target_element": {
+        "text_content": "Gemini API Key",
+        "visual_description": "Text label next to the API key, visible on the Google AI Studio API Keys page.",
+        "aria_role": "generic",
+        "location_on_screen": "center"
+      },
+      "narration_context": "The user visually inspects the 'Gemini API Key' on the Google AI Studio page to ensure it is present and matches expectations.",
+      "why_this_action": "To confirm the validity, existence, and correct project association of the Gemini API key, and to check for any IP/referrer restrictions that might be causing the error.",
+      "expected_result": "The user confirms the API key details or identifies a misconfiguration.",
+      "wait_condition": null,
+      "possible_failure": "Key not found, wrong project selected, or API not enabled for the project."
+    },
+    {
+      "step_number": 5,
+      "step_type": "action",
+      "action_type": "keyboard_shortcut",
+      "timestamp_approx": "0:50",
+      "target_element": {
+        "text_content": "Task Switching",
+        "visual_description": "Windows Task Switcher (Alt+Tab) showing open applications.",
+        "aria_role": "generic",
+        "location_on_screen": "center",
+        "_grounding_confidence": 0.4,
+        "_grounded_selector": null
+      },
+      "narration_context": "The user switches back to the Cursor.exe development environment.",
+      "why_this_action": "To resume debugging or apply any necessary changes to the .env file based on the API key verification.",
+      "expected_result": "Cursor.exe application becomes active, showing the open .env file and terminal.",
+      "wait_condition": null,
+      "possible_failure": null
+    }
+  ],
+  "decision_points": []
+}

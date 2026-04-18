@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-04-18T10:03:41.745Z",
+  "input": "D:\\Code_Space\\Pedicel_WorkSpace\\openclaw-video-skill-pipeline\\pipeline-output\\screenpipe-live_2026-04-18T10-02-54\\search.json",
+  "event_count": 25,
+  "sop": {
+    "workflow_id": "troubleshoot-gemini-api-key-validation",
+    "title": "Troubleshoot invalid Gemini API key in pipeline",
+    "source": "screenpipe",
+    "steps": [
+      {
+        "step": 1,
+        "action": "View API keys in Google AI Studio",
+        "app": "chrome.exe",
+        "window_title": "API keys | Google AI Studio - Google Chrome",
+        "url": "https://aistudio.google.com/u/2/api-keys?project=gen-lang-client-0520497309&pli=1",
+        "description": "User viewed existing API keys in Google AI Studio. Two keys visible: ...mhJ4 (Gemini API Key, created Feb 5, 2026) and ...IzhE (N8N LinkedIn Content, created Jan 29, 2026)",
+        "evidence_timestamps": [
+          "2026-04-18T11:59:32.534664900+02:00"
+        ]
+      },
+      {
+        "step": 2,
+        "action": "Switch to IDE and review error",
+        "app": "Cursor.exe",
+        "window_title": "● .env - openclaw-video-skill-pipeline - Cursor",
+        "url": null,
+        "description": "User switched to Cursor IDE showing the .env file. The terminal showed a failed E2E test: Step 4/5 Gemini failed with 'API key not valid' error",
+        "evidence_timestamps": [
+          "2026-04-18T11:59:34.405221100+02:00",
+          "2026-04-18T11:59:50.711107400+02:00"
+        ]
+      },
+      {
+        "step": 3,
+        "action": "Check API usage in Google AI Studio",
+        "app": "chrome.exe",
+        "window_title": "Usage | Google AI Studio - Google Chrome",
+        "url": "https://aistudio.google.com/u/2/usage?project=gen-lang-client-0988958107&timeRange=last-28-days",
+        "description": "User navigated to Usage page to check API usage and verify the API is working. Shows Tier 1 project 'Creative Design tasks' with 28-day time range",
+        "evidence_timestamps": [
+          "2026-04-18T11:59:57.895017800+02:00",
+          "2026-04-18T12:00:29.406971+02:00"
+        ]
+      },
+      {
+        "step": 4,
+        "action": "Navigate to Projects page",
+        "app": "chrome.exe",
+        "window_title": "Projects | Google AI Studio - Google Chrome",
+        "url": "https://aistudio.google.com/u/2/projects",
+        "description": "User viewed available projects: Jarvis (gen-lang-client-0520497309) and Creative Design tasks (gen-lang-client-0988958107)",
+        "evidence_timestamps": [
+          "2026-04-18T12:01:01.858998300+02:00"
+        ]
+      },
+      {
+        "step": 5,
+        "action": "View API keys for specific project",
+        "app": "chrome.exe",
+        "window_title": "API keys | Google AI Studio - Google Chrome",
+        "url": "https://aistudio.google.com/u/2/api-keys?projectFilter=gen-lang-client-0988958107",
+        "description": "User filtered API keys to view keys for Creative Design tasks project",
+        "evidence_timestamps": [
+          "2026-04-18T12:01:07.083297+02:00"
+        ]
+      },
+      {
+        "step": 6,
+        "action": "Return to IDE to compare keys",
+        "app": "Cursor.exe",
+        "window_title": "● .env - openclaw-video-skill-pipeline - Cursor",
+        "url": null,
+        "description": "User returned to Cursor IDE to compare the API key in .env file (GEMINI_API_KEY=A1zaSyBGyrm78LtD67FTcr406cf4kGyihA1mhJ4try) against keys shown in Google AI Studio",
+        "evidence_timestamps": [
+          "2026-04-18T12:01:15.386324900+02:00",
+          "2026-04-18T12:01:45.581878500+02:00"
+        ]
+      }
+    ],
+    "notes": "The workflow shows user troubleshooting a pipeline failure. The E2E test succeeded for Screenpipe steps (1-3) but failed at Step 4 (Gemini API call) due to invalid API key. The .env contains key ending in 'mhJ4try' which appears to match an existing key in Google AI Studio (ending ...mhJ4). User was comparing the keys to diagnose why a valid-looking key is being rejected - possibly due to project mismatch or API enablement issues. Timeline ends with user still investigating in the IDE."
+  },
+  "_model_raw_preview": "{\"workflow_id\":\"troubleshoot-gemini-api-key-validation\",\"title\":\"Troubleshoot invalid Gemini API key in pipeline\",\"source\":\"screenpipe\",\"steps\":[{\"step\":1,\"action\":\"View API keys in Google AI Studio\",\"app\":\"chrome.exe\",\"window_title\":\"API keys | Google AI Studio - Google Chrome\",\"url\":\"https://aistudio.google.com/u/2/api-keys?project=gen-lang-client-0520497309&pli=1\",\"description\":\"User viewed existing API keys in Google AI Studio. Two keys visible: ...mhJ4 (Gemini API Key, created Feb 5, 2026) and ...IzhE (N8N LinkedIn Content, created Jan 29, 2026)\",\"evidence_timestamps\":[\"2026-04-18T11:59:32.534664900+02:00\"]},{\"step\":2,\"action\":\"Switch to IDE and review error\",\"app\":\"Cursor.exe\",\"window_title\":\"● .env - openclaw-video-skill-pipeline - Cursor\",\"url\":null,\"description\":\"User switched to Cursor IDE showing the .env file. The terminal showed a failed E2E test: Step 4/5 Gemini failed with 'API key not valid' error\",\"evidence_timestamps\":[\"2026-04-18T11:59:34.405221100+02:00\",\"2026-04-18T11:59:50.711107400+02:00\"]},{\"step\":3,\"action\":\"Check API usage in Google AI Studio\",\"app\":\"chrome.exe\",\"window_title\":\"Usage | Google AI Studio - Google Chrome\",\"url\":\"https://aistudio.google.com/u/2/usage?project=gen-lang-client-0988958107&timeRange=last-28-days\",\"description\":\"User navigated to Usage page to check API usage and verify the API is working. Shows Tier 1 project 'Creative Design tasks' with 28-day time range\",\"evidence_timestamps\":[\"2026-04-18T11:59:57.895017800+02:00\",\"2026-04-18T12:00:29.406971+02:00\"]},{\"step\":4,\"action\":\"Navigate to Projects page\",\"app\":\"chrome.exe\",\"window_title\":\"Projects | Google AI Studio - Google Chrome\",\"url\":\"https://aistudio.google.com/u/2/projects\",\"description\":\"User viewed available projects: Jarvis (gen-lang-client-0520497309) and Creative Design tasks (gen-lang-client-0988958107)\",\"evidence_timestamps\":[\"2026-04-18T12:01:01.858998300+02:00\"]},{\"step\":5,\"action\":\"View API keys for specific project\",\"app\":\"chrome.exe\",\"window_title\":\"API"
+}
