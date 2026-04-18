@@ -1,0 +1,33 @@
+{
+  "workflow_title": "Debugging and Preparing to Run E2E Test for OpenClaw Video Skill Pipeline",
+  "application": "Cursor",
+  "application_url_pattern": null,
+  "login_required": true,
+  "workflow_summary": "The user is debugging an end-to-end test setup for the OpenClaw Video Skill Pipeline within the Cursor IDE. An AI agent has provided diagnostic information for previous command failures related to Screenpipe and generated a comprehensive prompt for Claude to guide the execution of the full E2E pipeline.",
+  "steps": [
+    {
+      "step_number": 1,
+      "step_type": "informational",
+      "action_type": null,
+      "timestamp_approx": "0:00",
+      "target_element": {
+        "text_content": "Here’s what’s going on and how to fix it... write prompt for claude to do the test e2e",
+        "visual_description": "AI agent's detailed response in the terminal and a separate chat pane, providing troubleshooting steps and a pre-written prompt for Claude.",
+        "aria_role": "generic",
+        "location_on_screen": "bottom panel (terminal) and right panel (AI chat)"
+      },
+      "narration_context": "The user is reviewing the debugging information provided by an AI agent in the Cursor IDE. This includes an explanation for why previous `curl` commands, `SCREENPIPE_URL` environment variable setting, and `screenpipe` command failed on Windows. The AI also provides an 'Order of operations' for correctly setting up Screenpipe and a detailed 'Prompt for Claude' to execute the end-to-end pipeline.",
+      "why_this_action": "To understand the root causes of the E2E test setup failures, learn the necessary steps to resolve them, and prepare for the next phase of running the E2E test with AI assistance.",
+      "expected_result": "The user gains a clear understanding of the issues and the prescribed solutions, and is ready to proceed with the debugging steps or provide the prompt to Claude.",
+      "wait_condition": null,
+      "possible_failure": "The user might misunderstand the instructions or omit a critical step, leading to continued errors in the E2E test setup or execution. The 'Prompt for Claude' may also require modification if the E2E test parameters change."
+    }
+  ],
+  "decision_points": [
+    {
+      "at_step": 1,
+      "description": "The user needs to decide whether to manually follow the 'Order of operations' for fixing the Screenpipe setup or to use the provided 'Prompt for Claude' to have the AI agent perform the E2E test.",
+      "how_to_decide": "Based on the user's comfort with manual terminal commands versus relying on AI agent automation, they will either execute the curl and npm commands themselves or input the prompt into the Claude chat interface."
+    }
+  ]
+}
