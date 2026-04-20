@@ -83,16 +83,34 @@ function startMockServer(port) {
       }
 
       if (pathname === '/search') {
-        const data = Object.entries(MOCK_FRAMES).map(([id, f]) => ({
-          type: 'OCR',
-          content: {
-            frame_id: Number(id),
-            text: f.text,
-            app_name: f.app,
-            window_name: f.window,
-            timestamp: new Date().toISOString(),
-          },
-        }));
+        const data = [];
+        for (const [id, f] of Object.entries(MOCK_FRAMES)) {
+          data.push({
+            type: 'OCR',
+            content: {
+              frame_id: Number(id),
+              text: f.text,
+              app_name: f.app,
+              window_name: f.window,
+              timestamp: new Date().toISOString(),
+            },
+          });
+          // UI (accessibility tree) snapshot alongside each OCR frame — the app
+          // reports role/name/value directly, no OCR guessing required.
+          data.push({
+            type: 'UI',
+            content: {
+              frame_id: Number(id),
+              app_name: f.app,
+              window_name: f.window,
+              browser_url: f.url,
+              timestamp: new Date().toISOString(),
+              role: f.role,
+              name: f.text,
+              value: f.input || null,
+            },
+          });
+        }
         data.push({
           type: 'Audio',
           content: {
@@ -151,6 +169,7 @@ function jsonRes(res, data) {
 function buildAnalysisFromScreenpipe(searchResults, contexts) {
   const ocrItems = searchResults.data.filter(d => d.type === 'OCR');
   const audioItems = searchResults.data.filter(d => d.type === 'Audio');
+  const uiItems = searchResults.data.filter(d => d.type === 'UI');
 
   const narration = audioItems.map(a => a.content.transcription).join(' ');
 
@@ -158,6 +177,12 @@ function buildAnalysisFromScreenpipe(searchResults, contexts) {
     const fid = item.content.frame_id;
     const ctx = contexts.find(c => c.frame_id === fid);
     const mock = MOCK_FRAMES[fid] || {};
+    // Prefer UI a11y snapshot for this frame over OCR-guessed role.
+    const uiHit = uiItems.find(u => u.content.frame_id === fid);
+    const role = (uiHit?.content?.role || mock.role || 'generic').toLowerCase();
+    const name = uiHit?.content?.name || item.content.text;
+    const groundingSource = uiHit ? 'a11y' : 'ocr';
+    const confidence = uiHit ? 0.95 : 0.85;
 
     return {
       step_number: i + 1,
@@ -165,20 +190,21 @@ function buildAnalysisFromScreenpipe(searchResults, contexts) {
       action_type: mock.action || 'click',
       timestamp_approx: `0:${String((i + 1) * 8).padStart(2, '0')}`,
       target_element: {
-        text_content: item.content.text,
-        visual_description: mock.description || `Interact with "${item.content.text}"`,
-        aria_role: mock.role || 'generic',
+        text_content: name,
+        visual_description: mock.description || `Interact with "${name}"`,
+        aria_role: role,
         location_on_screen: 'center',
-        _grounded_text: item.content.text,
-        _grounded_selector: mock.role === 'tab'
-          ? `openclaw browser find role tab --name "${item.content.text}" click`
-          : mock.role === 'button'
-            ? `openclaw browser find role button --name "${item.content.text}" click`
-            : mock.role === 'textbox'
-              ? `openclaw browser find role textbox --name "${item.content.text}" fill "${mock.input || ''}"`
-              : `openclaw browser find text "${item.content.text}" click`,
+        _grounded_text: name,
+        _grounded_selector: role === 'tab'
+          ? `openclaw browser find role tab --name "${name}" click`
+          : role === 'button'
+            ? `openclaw browser find role button --name "${name}" click`
+            : role === 'textbox'
+              ? `openclaw browser find role textbox --name "${name}" fill "${mock.input || ''}"`
+              : `openclaw browser find text "${name}" click`,
         _grounded_alt_selector: `openclaw browser snapshot --interactive`,
-        _grounding_confidence: 0.92,
+        _grounding_source: groundingSource,
+        _grounding_confidence: confidence,
       },
       narration_context: narration,
       why_this_action: mock.why || 'Perform workflow step',
@@ -321,7 +347,8 @@ async function main() {
     });
     const ocrCount = search.data.filter(d => d.type === 'OCR').length;
     const audioCount = search.data.filter(d => d.type === 'Audio').length;
-    console.log(`        Found ${ocrCount} OCR items, ${audioCount} audio items`);
+    const uiCount = search.data.filter(d => d.type === 'UI').length;
+    console.log(`        Found ${ocrCount} OCR items, ${audioCount} audio items, ${uiCount} UI a11y snapshots`);
     console.log('        OK');
 
     // Step 4: Fetch frames + context
@@ -344,7 +371,9 @@ async function main() {
     const analysis = buildAnalysisFromScreenpipe(search, contexts);
     console.log(`        Workflow: "${analysis.workflow_title}"`);
     console.log(`        Steps: ${analysis.steps.length} action steps`);
-    console.log(`        Grounded: ${analysis.steps.filter(s => s.target_element?._grounding_confidence >= 0.7).length} steps (≥70% confidence)`);
+    const a11yGrounded = analysis.steps.filter(s => s.target_element?._grounding_source === 'a11y').length;
+    const ocrGrounded = analysis.steps.filter(s => s.target_element?._grounding_source === 'ocr').length;
+    console.log(`        Grounded: ${a11yGrounded} via a11y, ${ocrGrounded} via OCR`);
     console.log('        OK');
 
     // Step 6: Generate SKILL.md
