@@ -458,6 +458,12 @@ function buildSelector(role, name, inputData, actionType) {
     return `openclaw browser key "${normalizeShortcut(name)}"`;
   }
 
+  if (actionType === 'navigate') {
+    const rawUrl = String(inputData || name || '').trim();
+    const url = rawUrl.replace(/"/g, '\\"');
+    return `openclaw browser open "${url}"`;
+  }
+
   const verb = ROLE_VERB[role] || 'click';
   const knownRoles = new Set([
     'button', 'tab', 'link', 'menuitem', 'checkbox', 'radio', 'option',

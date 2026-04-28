@@ -1,0 +1,152 @@
+{
+  "workflow_title": "Testing Text Input and Word Count on Online Notepad",
+  "application": "Google Chrome",
+  "application_url_pattern": "onlinenotepad.org/notepad",
+  "login_required": false,
+  "workflow_summary": "The user transfers text from a local Notepad application to an online notepad tool, dismisses an interstitial ad, and then tests the online editor's word count and autosave features by clearing the page and manually typing 'test' on multiple lines.",
+  "steps": [
+    {
+      "step_number": 1,
+      "step_type": "action",
+      "action_type": "navigate",
+      "timestamp_approx": "13:57:12",
+      "target_element": {
+        "text_content": "onlinenotepad.org/notepad",
+        "visual_description": "Address bar in Google Chrome",
+        "aria_role": "textbox",
+        "location_on_screen": "top-center",
+        "_grounded_selector": "openclaw browser find role textbox --name \"onlinenotepad.org/notepad\" fill \"\"",
+        "_grounded_alt_selector": "openclaw browser snapshot --interactive",
+        "_grounding_source": "ocr",
+        "_grounding_confidence": 0.85
+      },
+      "narration_context": "Navigate to the Online Notepad website.",
+      "why_this_action": "To use the web-based text editor for note taking or testing.",
+      "expected_result": "The Online Notepad website loads, potentially showing a full-screen ad (vignette).",
+      "wait_condition": "networkidle",
+      "possible_failure": "Page fails to load or the ad blocks interaction.",
+      "_grounding_frame": "frame_3497.jpg",
+      "_grounding_frame_path": "C:\\Users\\myriz\\.screenpipe\\data/data\\2026-04-28\\1777373879258_m65537.jpg",
+      "_context": {}
+    },
+    {
+      "step_number": 2,
+      "step_type": "action",
+      "action_type": "click",
+      "timestamp_approx": "13:57:12",
+      "target_element": {
+        "text_content": "Close",
+        "visual_description": "Close button on the Google Vignette ad overlay",
+        "aria_role": "button",
+        "location_on_screen": "center",
+        "_grounded_selector": "openclaw browser find role button --name \"Close\" click",
+        "_grounded_alt_selector": "openclaw browser snapshot --interactive",
+        "_grounding_source": "ocr",
+        "_grounding_confidence": 0.85
+      },
+      "narration_context": "Dismiss the full-screen advertisement to access the notepad interface.",
+      "why_this_action": "The ad prevents interaction with the main web application.",
+      "expected_result": "The ad disappears, revealing the notepad editor.",
+      "wait_condition": null,
+      "possible_failure": "Clicking the ad might open the advertiser's page instead of closing it.",
+      "_grounding_frame": "frame_3497.jpg",
+      "_grounding_frame_path": "C:\\Users\\myriz\\.screenpipe\\data/data\\2026-04-28\\1777373879258_m65537.jpg",
+      "_context": {}
+    },
+    {
+      "step_number": 3,
+      "step_type": "action",
+      "action_type": "keyboard_shortcut",
+      "timestamp_approx": "13:57:13",
+      "target_element": {
+        "text_content": "Control+V",
+        "visual_description": "Main text area of the online notepad",
+        "aria_role": "textbox",
+        "location_on_screen": "center",
+        "_grounded_selector": "openclaw browser key \"Control+V\"",
+        "_grounded_alt_selector": "openclaw browser snapshot --interactive",
+        "_grounding_source": "shortcut",
+        "_grounding_confidence": 0.9
+      },
+      "narration_context": "Paste the text copied from the local Notepad application.",
+      "why_this_action": "To transfer draft content to the online tool for editing or storage.",
+      "expected_result": "Multiple lines containing the word 'test' appear in the editor, and the word count updates to 45.",
+      "wait_condition": null,
+      "possible_failure": "Clipboard is empty or paste fails due to browser permissions."
+    },
+    {
+      "step_number": 4,
+      "step_type": "action",
+      "action_type": "keyboard_shortcut",
+      "timestamp_approx": "13:57:16",
+      "target_element": {
+        "text_content": "Control+A",
+        "visual_description": "Text in the online notepad editor",
+        "aria_role": "textbox",
+        "location_on_screen": "center",
+        "_grounded_selector": "openclaw browser key \"Control+A\"",
+        "_grounded_alt_selector": "openclaw browser snapshot --interactive",
+        "_grounding_source": "shortcut",
+        "_grounding_confidence": 0.9
+      },
+      "narration_context": "Select all text in the editor.",
+      "why_this_action": "Preparing to clear the editor to start a new test.",
+      "expected_result": "All text in the document is highlighted.",
+      "wait_condition": null,
+      "possible_failure": "Focus is not on the text editor."
+    },
+    {
+      "step_number": 5,
+      "step_type": "action",
+      "action_type": "keyboard_shortcut",
+      "timestamp_approx": "13:57:16",
+      "target_element": {
+        "text_content": "Backspace",
+        "visual_description": "Selected text in the editor",
+        "aria_role": "textbox",
+        "location_on_screen": "center",
+        "_grounded_selector": "openclaw browser key \"Backspace\"",
+        "_grounded_alt_selector": "openclaw browser snapshot --interactive",
+        "_grounding_source": "shortcut",
+        "_grounding_confidence": 0.9
+      },
+      "narration_context": "Delete the selected text.",
+      "why_this_action": "To empty the notepad for fresh input.",
+      "expected_result": "The editor is empty and the word count resets to 0.",
+      "wait_condition": null,
+      "possible_failure": null
+    },
+    {
+      "step_number": 6,
+      "step_type": "action",
+      "action_type": "type",
+      "timestamp_approx": "13:57:44",
+      "target_element": {
+        "text_content": "Online Notepad",
+        "visual_description": "Main text editor area",
+        "aria_role": "textbox",
+        "location_on_screen": "center",
+        "_grounded_selector": "openclaw browser find role textbox --name \"Online Notepad\" fill \"test\"",
+        "_grounded_alt_selector": "openclaw browser snapshot --interactive",
+        "_grounding_source": "ocr",
+        "_grounding_confidence": 0.85
+      },
+      "input_data": "test",
+      "narration_context": "Type the word 'test' repeatedly on multiple lines.",
+      "why_this_action": "To test the real-time word counter and autosave functionality.",
+      "expected_result": "The words appear in the document and the word count updates incrementally from 12 to 19.",
+      "wait_condition": null,
+      "possible_failure": "Network issues might slow down the autosave feedback.",
+      "_grounding_frame": "frame_3497.jpg",
+      "_grounding_frame_path": "C:\\Users\\myriz\\.screenpipe\\data/data\\2026-04-28\\1777373879258_m65537.jpg",
+      "_context": {}
+    }
+  ],
+  "decision_points": [
+    {
+      "at_step": 2,
+      "description": "Handling the Google Vignette ad",
+      "how_to_decide": "If a grayed-out screen with an ad appears immediately after navigation, look for a 'Close' or 'X' button to reveal the notepad."
+    }
+  ]
+}

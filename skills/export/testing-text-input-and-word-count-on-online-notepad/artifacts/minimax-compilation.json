@@ -1,0 +1,75 @@
+{
+  "generated_at": "2026-04-28T10:59:09.243Z",
+  "input": "D:\\Code_Space\\Pedicel_WorkSpace\\hermes-multi-agent\\hermes-multi-agent\\tools\\openclaw-video-skill-pipeline\\pipeline-output\\screenpipe-live_2026-04-28T10-58-24\\search.json",
+  "event_count": 16,
+  "sop": {
+    "workflow_id": "testing-text-editors",
+    "title": "Testing text entry across Notepad and online editor",
+    "source": "screenpipe",
+    "steps": [
+      {
+        "step": 1,
+        "action": "Open and type in Notepad",
+        "app": "Notepad.exe",
+        "window_title": "*test - Notepad",
+        "url": null,
+        "description": "User opened a test file in Notepad and typed repetitive 'test' text. Document contains various project-related items (Greeting Message, Gmail, Prompts, .env, etc.)",
+        "evidence_timestamps": [
+          "2026-04-28T13:55:43.404729600+03:00"
+        ]
+      },
+      {
+        "step": 2,
+        "action": "Switch to Windows Terminal",
+        "app": "WindowsTerminal.exe",
+        "window_title": "Windows PowerShell",
+        "url": null,
+        "description": "User switched to Windows Terminal (PowerShell) briefly, likely to check something or switch between apps",
+        "evidence_timestamps": [
+          "2026-04-28T13:56:11.746574700+03:00"
+        ]
+      },
+      {
+        "step": 3,
+        "action": "Return to Notepad and continue typing",
+        "app": "Notepad.exe",
+        "window_title": "*test - Notepad",
+        "url": null,
+        "description": "User returned to Notepad and continued adding repetitive 'test' text. Document grew from ~25 lines to 49 lines (83 to 168 characters)",
+        "evidence_timestamps": [
+          "2026-04-28T13:56:20.644945100+03:00",
+          "2026-04-28T13:56:54.986022900+03:00",
+          "2026-04-28T13:57:11.605626900+03:00"
+        ]
+      },
+      {
+        "step": 4,
+        "action": "Switch to browser-based online notepad",
+        "app": "chrome.exe",
+        "window_title": "Online Notepad - Google Chrome",
+        "url": "https://onlinenotepad.org/notepad",
+        "description": "User opened online notepad (onlinenotepad.org) in Chrome. Word count shows initial state was 45 words, then reset to 0, then gradually increased to 12 and 19 words as user typed",
+        "evidence_timestamps": [
+          "2026-04-28T13:57:12.845221600+03:00",
+          "2026-04-28T13:57:13.756519700+03:00",
+          "2026-04-28T13:57:16.824009500+03:00",
+          "2026-04-28T13:57:44.151832500+03:00",
+          "2026-04-28T13:57:59.258514400+03:00"
+        ]
+      },
+      {
+        "step": 5,
+        "action": "Switch to Cursor IDE",
+        "app": "Cursor.exe",
+        "window_title": "SKILL.md - hermes-multi-agent - Cursor",
+        "url": null,
+        "description": "User switched to Cursor IDE and opened SKILL.md file in the hermes-multi-agent project. The file appears to be documentation about a skill pipeline for capturing screen data",
+        "evidence_timestamps": [
+          "2026-04-28T13:58:00.413088800+03:00"
+        ]
+      }
+    ],
+    "notes": "The workflow appears to be testing text entry across different editors (local Notepad, browser-based online notepad) - possibly as part of testing screenpipe capture capabilities. The final step opens a project file related to screen capture/skills pipeline, suggesting this was a test of the capture system itself."
+  },
+  "_model_raw_preview": "{\"workflow_id\":\"testing-text-editors\",\"title\":\"Testing text entry across Notepad and online editor\",\"source\":\"screenpipe\",\"steps\":[{\"step\":1,\"action\":\"Open and type in Notepad\",\"app\":\"Notepad.exe\",\"window_title\":\"*test - Notepad\",\"url\":null,\"description\":\"User opened a test file in Notepad and typed repetitive 'test' text. Document contains various project-related items (Greeting Message, Gmail, Prompts, .env, etc.)\",\"evidence_timestamps\":[\"2026-04-28T13:55:43.404729600+03:00\"]},{\"step\":2,\"action\":\"Switch to Windows Terminal\",\"app\":\"WindowsTerminal.exe\",\"window_title\":\"Windows PowerShell\",\"url\":null,\"description\":\"User switched to Windows Terminal (PowerShell) briefly, likely to check something or switch between apps\",\"evidence_timestamps\":[\"2026-04-28T13:56:11.746574700+03:00\"]},{\"step\":3,\"action\":\"Return to Notepad and continue typing\",\"app\":\"Notepad.exe\",\"window_title\":\"*test - Notepad\",\"url\":null,\"description\":\"User returned to Notepad and continued adding repetitive 'test' text. Document grew from ~25 lines to 49 lines (83 to 168 characters)\",\"evidence_timestamps\":[\"2026-04-28T13:56:20.644945100+03:00\",\"2026-04-28T13:56:54.986022900+03:00\",\"2026-04-28T13:57:11.605626900+03:00\"]},{\"step\":4,\"action\":\"Switch to browser-based online notepad\",\"app\":\"chrome.exe\",\"window_title\":\"Online Notepad - Google Chrome\",\"url\":\"https://onlinenotepad.org/notepad\",\"description\":\"User opened online notepad (onlinenotepad.org) in Chrome. Word count shows initial state was 45 words, then reset to 0, then gradually increased to 12 and 19 words as user typed\",\"evidence_timestamps\":[\"2026-04-28T13:57:12.845221600+03:00\",\"2026-04-28T13:57:13.756519700+03:00\",\"2026-04-28T13:57:16.824009500+03:00\",\"2026-04-28T13:57:44.151832500+03:00\",\"2026-04-28T13:57:59.258514400+03:00\"]},{\"step\":5,\"action\":\"Switch to Cursor IDE\",\"app\":\"Cursor.exe\",\"window_title\":\"SKILL.md - hermes-multi-agent - Cursor\",\"url\":null,\"description\":\"User switched to Cursor IDE and opened SKILL.md file in the hermes-multi-age"
+}
