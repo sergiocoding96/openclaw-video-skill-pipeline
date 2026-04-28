@@ -27,15 +27,25 @@ function createScreenpipeClient(options = {}) {
   const baseUrl = normalizeBaseUrl(
     options.baseUrl != null ? options.baseUrl : process.env.SCREENPIPE_URL
   );
+  const apiKey =
+    options.apiKey != null ? options.apiKey : process.env.SCREENPIPE_API_KEY;
 
   function joinPath(p) {
     const pathPart = p.startsWith('/') ? p : `/${p}`;
     return `${baseUrl}${pathPart}`;
   }
 
+  function withAuth(init = {}) {
+    if (!apiKey) return init;
+    return {
+      ...init,
+      headers: { ...(init.headers || {}), Authorization: `Bearer ${apiKey}` },
+    };
+  }
+
   async function safeFetch(url, init) {
     try {
-      return await fetch(url, init);
+      return await fetch(url, withAuth(init));
     } catch (e) {
       const reason = e && e.cause ? `${e.message} (${e.cause.message || e.cause})` : e.message;
       throw new ScreenpipeApiError(

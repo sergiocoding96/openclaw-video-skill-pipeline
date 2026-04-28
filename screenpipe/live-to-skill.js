@@ -725,7 +725,7 @@ function generateSkillMd(analysis, outputDir) {
 async function main() {
   const argv = process.argv.slice(2);
   const parsed = parseArgs(argv);
-  const modelName = parsed.modelOverride || 'gemini-2.5-flash';
+  const modelName = parsed.modelOverride || 'gemini-3-flash-preview';
 
   const client = createScreenpipeClient(
     parsed.baseUrlOverride ? { baseUrl: parsed.baseUrlOverride } : {}
